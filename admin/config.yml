@@ -1,0 +1,98 @@
+backend:
+  name: git-gateway
+  branch: master # Changez en 'master' si votre branche principale s'appelle master
+
+media_folder: "images" # Dossier où les images seront stockées
+public_folder: "images" # Chemin public pour les images
+
+locale: 'fr' # Interface en français
+
+collections:
+  # Collection pour les véhicules
+  - name: "vehicules"
+    label: "Véhicules"
+    label_singular: "Véhicule"
+    folder: "_vehicules"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    summary: "{{brand}} {{model}} {{year}} {{finition}}"
+    fields:
+      - {label: "ID", name: "id", widget: "number", value_type: "int"}
+      - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2015, max: 2026}
+      - {label: "Marque", name: "brand", widget: "string"}
+      - {label: "Modèle", name: "model", widget: "string"}
+      - {label: "Finition", name: "finition", widget: "string", required: false, hint: "Ex: RS Line, GT Line, Allure, etc."}
+      - label: "État"
+        name: "condition"
+        widget: "select"
+        multiple: true
+        options:
+          - {label: "Neuf", value: "neuf"}
+          - {label: "Occasion", value: "occasion"}
+      - {label: "Kilométrage (km)", name: "mileage", widget: "number", value_type: "int", default: 0}
+      - label: "Transmission"
+        name: "transmission"
+        widget: "select"
+        options:
+          - {label: "Manuelle", value: "Manuelle"}
+          - {label: "Automatique", value: "Automatique"}
+      - {label: "Moteur", name: "motor", widget: "string", hint: "Ex: 1.0 TSI 95 CH"}
+      - label: "Type de carburant"
+        name: "fuel"
+        widget: "select"
+        options:
+          - {label: "Essence", value: "Essence"}
+          - {label: "Diesel", value: "Diesel"}
+          - {label: "Électrique", value: "Électrique"}
+          - {label: "Hybride", value: "Hybride"}
+      - {label: "Couleur extérieure", name: "exterior_color", widget: "string"}
+      - {label: "Couleur intérieure", name: "interior_color", widget: "string"}
+      - {label: "Prix (€)", name: "price", widget: "number", value_type: "int"}
+      - label: "Types"
+        name: "types"
+        widget: "select"
+        multiple: true
+        options:
+          - {label: "Neuf", value: "neuf"}
+          - {label: "Moins de 3 ans", value: "recent"}
+          - {label: "Occasion", value: "occasion"}
+        hint: "Sélectionnez un ou plusieurs types"
+      - label: "Destination"
+        name: "destination"
+        widget: "select"
+        options:
+          - {label: "Export", value: "export"}
+          - {label: "Europe", value: "europe"}
+      - {label: "Image principale", name: "image", widget: "image"}
+      - label: "Galerie d'images"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: {label: "Image", name: "image", widget: "image"}
+        max: 10
+        hint: "Ajoutez jusqu'à 10 images supplémentaires pour la galerie"
+      - {label: "Description", name: "desc", widget: "text", required: false}
+
+  # Collection pour les paramètres du site
+  - name: "settings"
+    label: "Paramètres"
+    files:
+      - label: "Informations de contact"
+
+        name: "contact"
+        file: "_settings/contact.json"
+        fields:
+          - {label: "Téléphone", name: "phone", widget: "string", pattern: ['^\+\d{10,15}$', "Format: +33123456789"]}
+          - {label: "WhatsApp", name: "whatsapp", widget: "string", pattern: ['^\+\d{10,15}$', "Format: +33123456789"]}
+          - {label: "Email", name: "email", widget: "string", pattern: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', "Email invalide"]}
+          - {label: "Adresse", name: "address", widget: "string"}
+          - {label: "Horaires", name: "hours", widget: "string", default: "Lun-Sam: 9h-19h"}
+
+      - label: "Réseaux sociaux"
+        name: "social"
+        file: "_settings/social.json"
+        fields:
+          - {label: "TikTok URL", name: "tiktok", widget: "string", required: false}
+          - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+          - {label: "YouTube URL", name: "youtube", widget: "string", required: false}
+          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}

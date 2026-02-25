@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <meta name="description" content="Contactez MBOULHI AUTO pour toute question sur nos véhicules et services. Nous sommes à votre écoute.">
+    <title>Contact - MBOULHI AUTO</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="MBOULHI AUTO Logo">
+                    </a>
+
+                    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
+                        <li><a href="vehicules-occasion.html" class="nav-link">Véhicules d'Occasion</a></li>
+                        <li><a href="about.html" class="nav-link">À Propos</a></li>
+                        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    </ul>
+
+                    <div class="nav-actions">
+                        <a href="https://wa.me/33636121035" class="btn btn-call" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="background-image: url('images/contact.png'); background-size: cover; background-position: center 40%;">
+        <div class="page-header-overlay"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1 class="page-title">Contactez-Nous</h1>
+            <p class="page-subtitle">Notre équipe est à votre disposition pour répondre à toutes vos questions</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Formulaire de Contact -->
+                <div class="contact-form-section">
+                    <h2>Envoyez-nous un Message</h2>
+                    <p class="form-intro">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+
+                    <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p class="hidden" style="display:none;">
+                            <label>Ne pas remplir si vous êtes humain: <input name="bot-field"></label>
+                        </p>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i> Nom complet <span class="required">*</span>
+                                </label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Votre nom" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i> Email <span class="required">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="votre@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">
+                                    <i class="fas fa-phone"></i> Téléphone
+                                </label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+33 6 12 34 56 78">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">
+                                    <i class="fas fa-tag"></i> Sujet
+                                </label>
+                                <select id="subject" name="subject" class="form-input">
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="achat">Achat d'un véhicule</option>
+                                    <option value="vente">Vente/Reprise</option>
+                                    <option value="export">Export international</option>
+                                    <option value="financement">Financement</option>
+                                    <option value="autre">Autre demande</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fas fa-comment-alt"></i> Message <span class="required">*</span>
+                            </label>
+                            <textarea id="message" name="message" class="form-input" rows="6" placeholder="Décrivez votre projet ou posez votre question..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+
+                        <p class="form-note">
+                            <i class="fas fa-info-circle"></i> Les champs marqués d'un <span class="required">*</span> sont obligatoires
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Informations de Contact -->
+                <div class="contact-info-section">
+                    <h2>Nos Coordonnées</h2>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Téléphone</h3>
+                                <a href="tel:+33636121035">+33 6 36 12 10 35</a>
+                                <p>Lun-Sam: 10h-19h</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>WhatsApp</h3>
+                                <a href="https://wa.me/33636121035" target="_blank">+33 6 36 12 10 35</a>
+                                <p>Réponse rapide 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Email</h3>
+                                <a href="mailto:contact@mboulhiauto.fr">contact@mboulhiauto.fr</a>
+                                <p>Réponse sous 24h</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-content">
+                                <h3>Adresse</h3>
+                                <p>69 chem. Neuf, 69780 Toussieu</p>
+                                <p>Sur rendez-vous</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horaires -->
+                    <div class="hours-card">
+                        <h3><i class="fas fa-clock"></i> Horaires d'Ouverture</h3>
+                        <div class="hours-list">
+                            <div class="hour-item">
+                                <span class="day">Lundi - Samedi</span>
+                                <span class="time">10h00 - 19h00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Dimanche</span>
+                                <span class="time">Fermé</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Réseaux Sociaux -->
+                    <div class="social-card-contact">
+                        <h3><i class="fas fa-share-alt"></i> Suivez-nous</h3>
+                        <div class="social-links-contact">
+                            <a href="https://www.tiktok.com/@mboulhi.dz" target="_blank" class="social-link-item">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                            <a href="https://www.facebook.com/Mboulhi.DZ" target="_blank" class="social-link-item">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.youtube.com/@mboulhidz" target="_blank" class="social-link-item">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube</span>
+                            </a>
+                            <a href="https://www.instagram.com/mboulhi_dz/reels/" target="_blank" class="social-link-item">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section-contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Adresse</h2>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.3946280620135!2d4.990520076116287!3d45.66297757107791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4c5001a3b8251%3A0x8899650a018dd9a0!2sMBOULHI%20AUTO!5e0!3m2!1sfr!2sfr!4v1768473017017!5m2!1sfr!2sfr"
+                    width="100%"
+                    height="450"
+                    style="border:0; border-radius: 15px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="map-info">
+                    <div class="map-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Adresse</strong>
+                            <p>69 Chem. Neuf, 69780 Toussieu</p>
+                        </div>
+                    </div>
+                    <div class="map-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horaires</strong>
+                            <p>Lun-Sam: 10h-19h | Sur rendez-vous</p>
+                        </div>
+                    </div>
+                    <div class="map-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Téléphone</strong>
+                            <p><a href="tel:+33636121035">+33 6 36 12 10 35</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Besoin d'une Réponse Immédiate ?</h2>
+                <p>Contactez-nous directement via WhatsApp pour une réponse rapide</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/33636121035" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+                    </a>
+                    <a href="tel:+33636121035" class="btn btn-phone">
+                        <i class="fas fa-phone"></i> Appeler maintenant
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="images/logo.png" alt="MBOULHI AUTO" class="footer-logo">
+                    <p class="footer-description">
+                        Votre partenaire de confiance pour l'achat de véhicules neufs et d'occasion.
+                        Spécialistes de l'export France - Algérie - Europe.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@mboulhi.dz" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/Mboulhi.DZ" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@mboulhidz" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/mboulhi_dz/reels/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="vehicules-neufs.html">Véhicules Neufs</a></li>
+                        <li><a href="vehicules-occasion.html">Véhicules d'Occasion</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Nos Véhicules</h4>
+                    <ul class="footer-links">
+                        <li><a href="vehicules-neufs.html">Véhicules Neufs (Export)</a></li>
+                        <li><a href="vehicules-occasion.html">Véhicules d'Occasion</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+33636121035">+33 6 36 12 10 35</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:contact@mboulhiauto.fr">contact@mboulhiauto.fr</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>69 chem. Neuf, 69780 Toussieu</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Lun-Sam: 10h-19h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MBOULHI AUTO. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="mentions-legales.html">Mentions Légales</a>
+                    <a href="politique-confidentialite.html">Politique de Confidentialité</a>
+                    <a href="cgv.html">CGV</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton WhatsApp flottant -->
+    <a href="https://wa.me/33636121035" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bouton retour en haut -->
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+    <style>
+        /* Styles spécifiques pour la page Contact */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form-section h2,
+        .contact-info-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .form-intro {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .form-group label i {
+            color: var(--primary-color);
+        }
+
+        .required {
+            color: var(--primary-color);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-primary);
+            transition: var(--transition-fast);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .contact-method:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-white);
+            flex-shrink: 0;
+        }
+
+        .method-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .method-content a {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .method-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .hours-card,
+        .social-card-contact {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        .hours-card h3,
+        .social-card-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hours-card h3 i,
+        .social-card-contact h3 i {
+            color: var(--primary-color);
+        }
+
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: var(--bg-gray);
+            border-radius: 6px;
+        }
+
+        .hour-item .day {
+            font-weight: 600;
+        }
+
+        .hour-item .time {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .social-links-contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .social-link-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem;
+            background: var(--bg-gray);
+            border-radius: 8px;
+            transition: var(--transition-normal);
+            color: var(--text-dark);
+        }
+
+        .social-link-item:hover {
+            background: var(--primary-color);
+            color: var(--text-white);
+            transform: translateY(-2px);
+        }
+
+        .social-link-item i {
+            font-size: 1.3rem;
+        }
+
+        .map-section-contact {
+            background: var(--bg-gray);
+        }
+
+        @media (max-width: 992px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-form-section h2,
+            .contact-info-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-intro {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .form-group {
+                margin-bottom: 1.25rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-input {
+                padding: 0.75rem 0.875rem;
+                font-size: 0.95rem;
+            }
+
+            .contact-method {
+                gap: 1rem;
+                padding: 1.25rem;
+            }
+
+            .method-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .method-content h3 {
+                font-size: 1rem;
+            }
+
+            .hours-card,
+            .social-card-contact {
+                padding: 1.25rem;
+            }
+
+            .hours-card h3,
+            .social-card-contact h3 {
+                font-size: 1.1rem;
+            }
+
+            .hour-item {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .social-links-contact {
+                grid-template-columns: 1fr;
+            }
+
+            .social-link-item {
+                padding: 0.75rem;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+
+            .map-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .map-info-item {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-wrapper {
+                gap: 1.5rem;
+            }
+
+            .contact-form-section h2,
+            .contact-info-section h2 {
+                font-size: 1.35rem;
+            }
+
+            .contact-form {
+                padding: 1rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+            }
+
+            .form-input {
+                padding: 0.7rem 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            textarea.form-input {
+                min-height: 100px;
+            }
+
+            .btn-submit {
+                padding: 0.875rem;
+                font-size: 0.95rem;
+            }
+
+            .form-note {
+                font-size: 0.8rem;
+            }
+
+            .contact-method {
+                padding: 1rem;
+            }
+
+            .method-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .method-content h3 {
+                font-size: 0.95rem;
+            }
+
+            .method-content a,
+            .method-content p {
+                font-size: 0.85rem;
+            }
+
+            .hours-card,
+            .social-card-contact {
+                padding: 1rem;
+            }
+
+            .hours-card h3,
+            .social-card-contact h3 {
+                font-size: 1rem;
+            }
+
+            .map-container iframe {
+                height: 250px;
+                border-radius: 10px;
+            }
+        }
+    </style>
+</body>
+</html>

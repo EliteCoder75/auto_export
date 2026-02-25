@@ -1,0 +1,1156 @@
+/**
+ * MBOULHI AUTO - Styles pour la page Véhicules
+ */
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+    position: relative;
+    padding: 180px 0 60px;
+    background-image: url('../images/photo_de_couverture.png');
+    background-size: cover;
+    background-position: top center;
+    background-attachment: fixed;
+    text-align: center;
+    color: var(--text-white);
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.page-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(220, 20, 60, 0.2) 0%, transparent 70%);
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.page-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== SECTION FILTRES ===== */
+.filters-section {
+    background-color: var(--bg-gray);
+    padding: var(--spacing-md) 0;
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filters-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filters-header i {
+    color: var(--primary-color);
+}
+
+.btn-reset {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.btn-reset:hover {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group label i {
+    color: var(--primary-color);
+    width: 16px;
+}
+
+.filter-input {
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: var(--transition-fast);
+    background-color: var(--bg-light);
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+}
+
+.filter-input::placeholder {
+    color: var(--text-light);
+}
+
+/* ===== SECTION RÉSULTATS ===== */
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.results-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+.view-options {
+    display: flex;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.25rem;
+    border-radius: 8px;
+}
+
+.view-btn {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+}
+
+.view-btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+/* ===== VUE LISTE (Alternative) ===== */
+.vehicles-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.vehicles-grid.list-view .vehicle-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 0;
+}
+
+.vehicles-grid.list-view .vehicle-image {
+    height: 100%;
+    min-height: 200px;
+}
+
+.vehicles-grid.list-view .vehicle-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vehicle-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.vehicle-card:nth-child(1) { animation-delay: 0.1s; }
+.vehicle-card:nth-child(2) { animation-delay: 0.2s; }
+.vehicle-card:nth-child(3) { animation-delay: 0.3s; }
+.vehicle-card:nth-child(4) { animation-delay: 0.15s; }
+.vehicle-card:nth-child(5) { animation-delay: 0.25s; }
+.vehicle-card:nth-child(6) { animation-delay: 0.35s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .filters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 100px 0 40px;
+        margin-top: 0;
+        background-attachment: scroll;
+        background-position: top center;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .filters-section {
+        padding: 1.5rem 0;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .filters-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .filters-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .results-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .results-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .vehicles-grid.list-view .vehicle-card {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-reset {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 90px 0 30px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .filters-section {
+        padding: 1rem 0;
+    }
+
+    .filter-group label {
+        font-size: 0.85rem;
+    }
+
+    .filter-input {
+        padding: 0.7rem 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-reset {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ===== VEHICLE DETAIL PAGE ===== */
+.vehicle-detail-section {
+    padding: 100px 0 var(--spacing-xl);
+    background-color: var(--bg-gray);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.breadcrumb a {
+    color: var(--text-light);
+    transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumb span:not(#breadcrumbTitle) {
+    color: var(--text-light);
+}
+
+.vehicle-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Gallery Section */
+.vehicle-gallery {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+}
+
+.main-image {
+    width: 100%;
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.thumbnail:hover {
+    border-color: var(--primary-color);
+}
+
+.thumbnail.active {
+    border-color: var(--primary-color);
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Vehicle Info Section - Page Détail (compact) */
+.vehicle-detail-section .vehicle-info {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-detail-section .vehicle-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.vehicle-detail-section .vehicle-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.vehicle-detail-section .vehicle-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    position: static;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.btn-contact-info {
+    width: 100%;
+    padding: 0.75rem;
+    background: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-contact-info:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Description Card */
+.vehicle-description-card {
+    margin-bottom: 1rem;
+}
+
+.vehicle-description-card h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.description-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.desc-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.desc-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.desc-value {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Prix dans la description */
+.desc-price {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+.desc-price .desc-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+}
+
+.desc-price .desc-value {
+    color: var(--text-white);
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+/* Description Text */
+.vehicle-desc-text {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-gray);
+    border-radius: 8px;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+/* Features */
+.vehicle-features {
+    margin-bottom: 2rem;
+}
+
+.vehicle-features h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.vehicle-features ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.vehicle-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.vehicle-features li::before {
+    content: '\2713';
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* Contact Actions */
+.vehicle-contact-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.vehicle-contact-actions .btn {
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* ===== SIMILAR VEHICLES SECTION ===== */
+.similar-vehicles-section {
+    padding: 3rem 0;
+    background-color: var(--bg-light);
+}
+
+.similar-vehicles-section .section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.similar-vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .vehicle-detail-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .vehicle-gallery {
+        position: relative;
+        top: 0;
+    }
+
+    .description-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .vehicle-detail-section {
+        padding: 80px 0 2rem;
+    }
+
+    .breadcrumb {
+        margin-bottom: 1.25rem;
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+    }
+
+    .vehicle-detail-container {
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .main-image {
+        height: 280px;
+        margin-bottom: 1rem;
+    }
+
+    .thumbnail-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+
+    .thumbnail {
+        height: 60px;
+    }
+
+    .vehicle-detail-section .vehicle-info {
+        padding: 1rem;
+    }
+
+    .vehicle-detail-section .vehicle-title {
+        font-size: 1.3rem;
+    }
+
+    .vehicle-detail-section .vehicle-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .vehicle-detail-section .vehicle-price {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .btn-contact-info {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .vehicle-description-card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .description-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .vehicle-features h3 {
+        font-size: 1.1rem;
+    }
+
+    .vehicle-features ul {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .vehicle-features li {
+        font-size: 0.9rem;
+    }
+
+    .vehicle-contact-actions {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .vehicle-contact-actions .btn {
+        max-width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .desc-price .desc-value {
+        font-size: 1.1rem;
+    }
+
+    .similar-vehicles-section {
+        padding: 2rem 0;
+    }
+
+    .similar-vehicles-section .section-title {
+        font-size: 1.4rem;
+    }
+
+    .similar-vehicles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vehicle-detail-section {
+        padding: 70px 0 1.5rem;
+    }
+
+    .main-image {
+        height: 220px;
+        border-radius: 10px;
+    }
+
+    .thumbnail-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.4rem;
+    }
+
+    .thumbnail {
+        height: 50px;
+        border-radius: 6px;
+    }
+
+    .vehicle-detail-section .vehicle-info {
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .vehicle-detail-section .vehicle-title {
+        font-size: 1.2rem;
+    }
+
+    .vehicle-detail-section .vehicle-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .vehicle-detail-section .vehicle-price {
+        font-size: 1.15rem;
+    }
+
+    .vehicle-description-card h2 {
+        font-size: 1rem;
+        padding-bottom: 0.4rem;
+    }
+
+    .description-grid {
+        gap: 0.5rem;
+    }
+
+    .desc-label {
+        font-size: 0.7rem;
+    }
+
+    .desc-value {
+        font-size: 0.85rem;
+    }
+
+    .vehicle-desc-text {
+        padding: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .vehicle-features {
+        margin-bottom: 1.5rem;
+    }
+
+    .vehicle-contact-actions .btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .similar-vehicles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== CONTACT MODAL ===== */
+.contact-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.contact-modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--bg-gray);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.modal-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.modal-subtitle {
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Contact Options */
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+}
+
+.contact-option:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.option-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.whatsapp-option .option-icon {
+    background: #25D366;
+    color: white;
+}
+
+.email-option .option-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+.option-text h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.option-text p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.option-arrow {
+    margin-left: auto;
+    color: var(--text-light);
+    transition: var(--transition-fast);
+}
+
+.contact-option:hover .option-arrow {
+    color: var(--primary-color);
+    transform: translateX(3px);
+}
+
+/* Email Form Container */
+.email-form-container {
+    display: none;
+}
+
+.email-form-container.active {
+    display: block;
+}
+
+.contact-options.hidden {
+    display: none;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    transition: var(--transition-fast);
+}
+
+.back-btn:hover {
+    color: var(--accent-color);
+}
+
+.back-btn i {
+    transition: var(--transition-fast);
+}
+
+.back-btn:hover i {
+    transform: translateX(-3px);
+}
+
+/* Email Form */
+.email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.email-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.email-form label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.email-form input,
+.email-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition-fast);
+    background: var(--bg-gray);
+}
+
+.email-form input:focus,
+.email-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+}
+
+.email-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(220, 20, 60, 0.4);
+}
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 1.75rem;
+        margin: 0.5rem;
+        border-radius: 16px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-option {
+        padding: 1rem;
+    }
+
+    .option-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .option-text h3 {
+        font-size: 1rem;
+    }
+
+    .option-text p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem;
+        border-radius: 14px;
+    }
+
+    .modal-close {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .modal-title {
+        font-size: 1.35rem;
+        padding-right: 2rem;
+    }
+
+    .option-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+    }
+
+    .email-form input,
+    .email-form textarea {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-submit {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
