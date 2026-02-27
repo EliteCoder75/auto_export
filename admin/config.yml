@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master # Changez en 'master' si votre branche principale s'appelle master
+  branch: main
 
 media_folder: "images" # Dossier où les images seront stockées
 public_folder: "images" # Chemin public pour les images
@@ -25,10 +25,8 @@ collections:
       - label: "État"
         name: "condition"
         widget: "select"
-        multiple: true
         options:
           - {label: "Neuf", value: "neuf"}
-          - {label: "Occasion", value: "occasion"}
       - {label: "Kilométrage (km)", name: "mileage", widget: "number", value_type: "int", default: 0}
       - label: "Transmission"
         name: "transmission"
@@ -55,7 +53,6 @@ collections:
         options:
           - {label: "Neuf", value: "neuf"}
           - {label: "Moins de 3 ans", value: "recent"}
-          - {label: "Occasion", value: "occasion"}
         hint: "Sélectionnez un ou plusieurs types"
       - label: "Destination"
         name: "destination"
