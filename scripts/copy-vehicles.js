@@ -13,6 +13,12 @@ console.log('📋 Copie du dossier _vehicules vers la fonction...');
 console.log('Source:', source);
 console.log('Destination:', destination);
 
+// Si le dossier source n'existe pas, on quitte sans erreur
+if (!fs.existsSync(source)) {
+    console.log('⚠️  Dossier _vehicules introuvable - aucun véhicule à copier.');
+    process.exit(0);
+}
+
 // Créer le dossier de destination s'il n'existe pas
 if (!fs.existsSync(destination)) {
     fs.mkdirSync(destination, { recursive: true });
