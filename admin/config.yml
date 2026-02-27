@@ -17,7 +17,7 @@ collections:
     slug: "{{year}}-{{brand}}-{{model}}"
     summary: "{{brand}} {{model}} {{year}} — {{price}} €"
     fields:
-      - {label: "ID", name: "id", widget: "number", value_type: "int", hint: "Numéro unique du véhicule"}
+      - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique du véhicule (ex: 001, V-2026-01, CAPTURE-001)"}
       - {label: "Marque", name: "brand", widget: "string", hint: "Ex: Peugeot, Renault, Volkswagen..."}
       - {label: "Modèle", name: "model", widget: "string", hint: "Ex: 208, Clio, Golf..."}
       - {label: "Finition", name: "finition", widget: "string", required: false, hint: "Ex: RS Line, GT Line, Allure, Style..."}
