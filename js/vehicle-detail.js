@@ -1,5 +1,5 @@
 /**
- * MBOULHI AUTO - Vehicle Detail Page Script
+ * ACSONE AUTOMOBILES - Vehicle Detail Page Script
  * Displays detailed information about a specific vehicle
  */
 
@@ -99,7 +99,7 @@ function initContactModal() {
                 `Message:\n${message}`
             );
 
-            window.location.href = `mailto:contact@mboulhiauto.fr?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:fendriautomobiles@gmail.com?subject=${subject}&body=${body}`;
 
             // Close modal after a short delay
             setTimeout(closeModal, 500);
@@ -152,8 +152,8 @@ async function loadVehicleDetail() {
 function displayVehicleDetail(vehicle) {
     // Set page title
     const title = `${vehicle.brand} ${vehicle.model}`;
-    document.getElementById('pageTitle').textContent = `${title} - MBOULHI AUTO`;
-    document.title = `${title} - MBOULHI AUTO`;
+    document.getElementById('pageTitle').textContent = `${title} - ACSONE AUTOMOBILES`;
+    document.title = `${title} - ACSONE AUTOMOBILES`;
 
     // Set breadcrumb
     document.getElementById('breadcrumbTitle').textContent = title;

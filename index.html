@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <meta name="description" content="MBOULHI AUTO - Spécialiste en vente de véhicules neufs et d'occasion. Export France-Algérie. Votre partenaire de confiance pour l'achat automobile.">
-    <meta name="keywords" content="voiture neuve, voiture occasion, export algérie, garage automobile, MBOULHI AUTO">
-    <title>MBOULHI AUTO - Votre Expert Automobile | Neufs & Occasions</title>
+    <meta name="description" content="ACSONE AUTOMOBILES - Spécialiste export automobile Paris. Vente de véhicules neufs, export vers la Tunisie, l'Algérie et le Maroc.">
+    <meta name="keywords" content="voiture neuve, export Tunisie Algérie Maroc, automobile Paris, ACSONE AUTOMOBILES">
+    <title>ACSONE AUTOMOBILES - Expert Automobile | Export Tunisie, Algérie, Maroc</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -18,7 +21,7 @@
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="index.html" class="logo">
-                        <img src="images/logo.png" alt="MBOULHI AUTO Logo">
+                        <img src="images/logo.png" alt="ACSONE AUTOMOBILES Logo">
                     </a>
 
                     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -30,14 +33,14 @@
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link active">Accueil</a></li>
                         <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
-                        <li><a href="vehicules-occasion.html" class="nav-link">Véhicules d'Occasion</a></li>
                         <li><a href="about.html" class="nav-link">À Propos</a></li>
+                        <li><a href="services.html" class="nav-link">Services</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
 
                     <div class="nav-actions">
                         
-                        <a href="https://wa.me/33636121035" class="btn btn-call" target="_blank">
+                        <a href="https://wa.me/33609159046" class="btn btn-call" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                         
@@ -52,46 +55,45 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="container">
-                <h1 class="hero-title">
-                    <span class="hero-subtitle">Bienvenue chez</span>
-                    MBOULHI AUTO
-                </h1>
-                <p class="hero-description">
-                    Votre partenaire de confiance pour l'achat de véhicules neufs et d'occasion.<br>
-                    Spécialistes de l'export France - Algérie - Europe
-                </p>
-                <div class="hero-cta">
-                    <button class="btn btn-primary" onclick="openVehicleModal()">
-                        <i class="fas fa-car"></i> Découvrir nos véhicules
-                    </button>
-                    <a href="contact.html" class="btn btn-outline">
-                        <i class="fas fa-envelope"></i> Nous contacter
-                    </a>
-                </div>
+                <div class="hero-premium-wrapper">
 
-                <!-- Stats -->
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-car"></i>
-                        <div class="stat-content">
-                            <span class="stat-number">20+</span>
-                            <span class="stat-label">Véhicules disponibles</span>
+                    <!-- Centre : titre + déco -->
+                    <div class="hero-premium-center">
+                        <div class="hero-deco-line"></div>
+                        <h1 class="hero-premium-title">ACSONE<br>AUTOMOBILES</h1>
+                        <div class="hero-deco-line"></div>
+                        <p class="hero-premium-tagline">Expert Automobile · Paris · Depuis 2002</p>
+                        <p class="hero-premium-countries">
+                            <span>Tunisie</span><span class="hero-dot">·</span><span>Algérie</span><span class="hero-dot">·</span><span>Maroc</span>
+                        </p>
+                        <div class="hero-premium-cta">
+                            <a href="vehicules-neufs.html" class="btn btn-primary">
+                                <i class="fas fa-car"></i> Découvrir nos véhicules
+                            </a>
+                            <a href="contact.html" class="btn btn-outline">
+                                <i class="fas fa-envelope"></i> Nous contacter
+                            </a>
                         </div>
                     </div>
-                    <div class="stat-item">
-                        <i class="fas fa-users"></i>
-                        <div class="stat-content">
-                            <span class="stat-number">100+</span>
-                            <span class="stat-label">Clients satisfaits</span>
+
+                    <!-- Barre stats en bas -->
+                    <div class="hero-stats-bar">
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number">20+</span>
+                            <span class="hero-stat-label">Années d'expérience</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number">+1000</span>
+                            <span class="hero-stat-label">Clients satisfaits</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number">3</span>
+                            <span class="hero-stat-label">Pays desservis</span>
                         </div>
                     </div>
-                    <div class="stat-item">
-                        <i class="fas fa-globe"></i>
-                        <div class="stat-content">
-                            <span class="stat-number">3</span>
-                            <span class="stat-label">Continents</span>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -101,29 +103,41 @@
     <section class="concepts section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Nos Concepts de Vente</h2>
+                <h2 class="section-title">Nos Véhicules Neufs</h2>
+                <p class="section-subtitle">Spécialiste de la vente et de l'export de véhicules neufs vers la Tunisie, l'Algérie et le Maroc</p>
             </div>
-            <div class="concepts-grid">
-                <!-- Concept 1: Voitures Neuves -->
-                <a href="vehicules-neufs.html" class="concept-card-link">
-                    <div class="concept-card" style="background-image: url('images/neuf.png');">
-                        <div class="concept-overlay"></div>
-                        <div class="concept-content">
-                            <h3 class="concept-title">Véhicules Neufs</h3>
-                        </div>
-                    </div>
-                </a>
+            <div class="neufs-feature">
 
-                <!-- Concept 2: Véhicules d'Occasion -->
-                <a href="vehicules-occasion.html" class="concept-card-link">
-                    <div class="concept-card" style="background-image: url('images/occasion.png');">
-                        <div class="concept-overlay"></div>
-                        <div class="concept-content">
-                            <h3 class="concept-title">Véhicules d'Occasion</h3>
+                <div class="neufs-feature-img" style="background-image: url('images/neuf.png');"></div>
+
+                <div class="neufs-feature-info">
+                    <div class="neufs-feature-item">
+                        <div class="neufs-feature-icon"><i class="fas fa-car"></i></div>
+                        <div>
+                            <h4>Toutes Marques Disponibles</h4>
+                            <p>Accès à l'ensemble des constructeurs présents sur le marché français : Renault, Peugeot, Volkswagen, Toyota et bien d'autres.</p>
                         </div>
                     </div>
-                </a>
-            </div>    
+                    <div class="neufs-feature-item">
+                        <div class="neufs-feature-icon"><i class="fas fa-globe-europe"></i></div>
+                        <div>
+                            <h4>Export Tunisie · Algérie · Maroc</h4>
+                            <p>Formalités douanières et administratives prises en charge. Livraison organisée dans les 3 pays.</p>
+                        </div>
+                    </div>
+                    <div class="neufs-feature-item">
+                        <div class="neufs-feature-icon"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h4>Garantie Constructeur Incluse</h4>
+                            <p>Chaque véhicule livré avec sa garantie constructeur intégrale et ses documents officiels.</p>
+                        </div>
+                    </div>
+                    <a href="vehicules-neufs.html" class="btn btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">
+                        Voir nos véhicules neufs <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -139,10 +153,16 @@
                 <!-- Les véhicules seront chargés via JavaScript -->
             </div>
 
-            <div class="section-cta">
-                <button class="btn btn-primary" onclick="openVehicleModal()">
+            <div id="noVehiclesMsg" class="no-vehicles-msg" style="display:none;">
+                <i class="fas fa-car"></i>
+                <p>De nouveaux véhicules arrivent bientôt.<br>Contactez-nous pour connaître notre stock disponible.</p>
+                <a href="contact.html" class="btn btn-primary">Nous contacter</a>
+            </div>
+
+            <div class="section-cta" id="seeAllBtn">
+                <a href="vehicules-neufs.html" class="btn btn-outline-white">
                     Voir tous les véhicules <i class="fas fa-arrow-right"></i>
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -150,35 +170,72 @@
     <!-- Pourquoi nous choisir -->
     <section class="why-us section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Pourquoi Choisir MBOULHI AUTO ?</h2>
-            </div>
+            <div class="why-us-grid">
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Transparence Totale</h3>
-                    <p>Tous nos véhicules sont contrôlés et leur historique complet est disponible. Aucune surprise.</p>
+                <!-- (1,1) Texte gauche -->
+                <div class="why-us-left">
+                    <span class="why-us-tag">Notre Différence</span>
+                    <h2 class="why-us-title">Pourquoi Choisir<br><span class="text-accent">ACSONE AUTOMOBILES</span> ?</h2>
+                    <p class="why-us-intro">Depuis 2002, nous accompagnons particuliers et professionnels avec sérieux, transparence et efficacité dans tous leurs projets automobiles.</p>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;">
+                        <i class="fas fa-envelope"></i> Discutons de votre projet
+                    </a>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Accompagnement Personnalisé</h3>
-                    <p>De la recherche à la livraison, notre équipe vous accompagne à chaque étape de votre projet.</p>
-                </div>
+                <!-- (1,2) Image haut droite -->
+                <div class="why-us-img" style="background-image: url('images/Tiguan.webp'); min-height: 420px;"></div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Véhicules Certifiés</h3>
-                    <p>Contrôle rigoureux et certification de tous nos véhicules pour votre sécurité.</p>
-                </div>
+                <!-- (2,1) Image bas gauche -->
+                <div class="why-us-img" style="background-image: url('images/3008.jpg');"></div>
 
+                <!-- (2,2) Items numérotés -->
+                <div class="why-us-right">
+
+                    <div class="why-item">
+                        <div class="why-number">01</div>
+                        <div class="why-content">
+                            <div class="why-icon-box"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h4>Transparence Totale</h4>
+                                <p>Tous nos véhicules sont contrôlés et leur historique complet est disponible. Aucune surprise.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="why-item">
+                        <div class="why-number">02</div>
+                        <div class="why-content">
+                            <div class="why-icon-box"><i class="fas fa-handshake"></i></div>
+                            <div>
+                                <h4>Accompagnement Personnalisé</h4>
+                                <p>De la recherche à la livraison, notre équipe vous accompagne à chaque étape de votre projet.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="why-item">
+                        <div class="why-number">03</div>
+                        <div class="why-content">
+                            <div class="why-icon-box"><i class="fas fa-certificate"></i></div>
+                            <div>
+                                <h4>Véhicules Certifiés</h4>
+                                <p>Contrôle rigoureux et certification de tous nos véhicules pour votre sécurité absolue.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="why-item">
+                        <div class="why-number">04</div>
+                        <div class="why-content">
+                            <div class="why-icon-box"><i class="fas fa-globe-europe"></i></div>
+                            <div>
+                                <h4>Expert Export 3 Pays</h4>
+                                <p>Tunisie, Algérie, Maroc — nous maîtrisons toutes les formalités douanières et administratives.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
@@ -193,8 +250,8 @@
             <div class="testimonials-layout">
                 <!-- Google Badge à gauche -->
                 <div class="google-business-card">
-                    <img src="images/logo.png" alt="MBOULHI AUTO" class="business-logo">
-                    <h3 class="business-name">MBOULHI AUTO / EXPORT DE VOITURES - VENTE</h3>
+                    <img src="images/logo.png" alt="ACSONE AUTOMOBILES" class="business-logo">
+                    <h3 class="business-name">ACSONE AUTOMOBILES / EXPORT DE VOITURES - VENTE</h3>
                     <div class="business-rating">
                         <div class="stars">
                             <i class="fas fa-star"></i>
@@ -203,9 +260,9 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <span class="review-count">42 avis Google</span>
+                        <a href="https://share.google/lKhb8sWMI53k54HRV" target="_blank" class="review-count" style="color:inherit;text-decoration:underline;">Voir nos avis Google</a>
                     </div>
-                    <a href="https://www.google.com/maps/place/MBOULHI+AUTO/@45.6629776,4.9905201,17z/data=!4m8!3m7!1s0x47f4c5001a3b8251:0x8899650a018dd9a0!8m2!3d45.6629776!4d4.993095!9m1!1b1!16s%2Fg%2F11ytmfqd6f" target="_blank" class="write-review-btn">
+                    <a href="https://share.google/lKhb8sWMI53k54HRV" target="_blank" class="write-review-btn">
                         Écrire un avis
                     </a>
                 </div>
@@ -213,69 +270,61 @@
                 <!-- Carrousel d'avis à droite -->
                 <div class="reviews-carousel-container">
                     <div class="reviews-carousel" id="reviewsCarousel">
+
+                        <!-- Avis 1 -->
                         <div class="review-card">
                             <div class="review-header">
-                                <div class="reviewer-avatar" style="background-color: #9E9E9E;">M</div>
+                                <div class="reviewer-avatar" style="background-color: #8B4513;">W</div>
                                 <div class="reviewer-info">
-                                    <strong>Mohammed</strong>
-                                    <span>il y a 3 semaines</span>
+                                    <strong>Walid Saies</strong>
+                                    <span>3 avis Google</span>
                                 </div>
-                                <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon-small">
+                                <svg class="google-icon-small" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
                             <div class="review-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="review-badge">NOUVEAU</span>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span class="review-badge">GOOGLE</span>
                             </div>
-                            <p class="review-text">En tant que professionnel de l'automobile, je souligne le savoir-faire et l'honnêteté de MBOULHI AUTO</p>
-                            <span class="review-date">Visité en décembre 2025</span>
+                            <p class="review-text">Bidel est au top ! Super sympa et très pro. La vente du véhicule s'est passée nickel, surtout pour l'export vers la Tunisie. Franchement, vous pouvez y aller les yeux fermés, tout s'est déroulé sans aucun souci. Un vrai pro de confiance !</p>
+                            <span class="review-date">Il y a 4 mois</span>
                         </div>
 
+                        <!-- Avis 2 -->
                         <div class="review-card">
                             <div class="review-header">
-                                <div class="reviewer-avatar" style="background-color: #424242;">A</div>
+                                <div class="reviewer-avatar" style="background-color: #1a3a5c;">D</div>
                                 <div class="reviewer-info">
-                                    <strong>Ahmed Wafi</strong>
-                                    <span>il y a 6 jours</span>
+                                    <strong>Dali Louati</strong>
+                                    <span>1 avis Google</span>
                                 </div>
-                                <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon-small">
+                                <svg class="google-icon-small" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
                             <div class="review-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="review-badge">NOUVEAU</span>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span class="review-badge">GOOGLE</span>
                             </div>
-                            <p class="review-text">C'est un concessionnaire auto très sérieux. Le dirigeant M.Mboulhi est très professionnel, serviable, compétent et à l'écoute des clients. Très bonne expérience humaine avec un très bon accompagnement sur les procédures d'exportation</p>
-                            <span class="review-date">Visité en janvier</span>
+                            <p class="review-text">J'ai beaucoup apprécié votre sérieux et votre gentillesse tout au long du processus. C'est un plaisir de traiter avec une équipe aussi compétente et respectueuse.</p>
+                            <span class="review-date">Il y a 2 mois</span>
                         </div>
 
+                        <!-- Avis 3 -->
                         <div class="review-card">
                             <div class="review-header">
-                                                                <div class="reviewer-avatar" style="background-color: #424242;">A</div>
-
+                                <div class="reviewer-avatar" style="background-color: #0f2033;">N</div>
                                 <div class="reviewer-info">
-                                    <strong>Ali Ladjelat</strong>
-                                    <span>il y a 2 semaines</span>
+                                    <strong>Nordine Adda</strong>
+                                    <span>8 avis Google</span>
                                 </div>
-                                <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon-small">
+                                <svg class="google-icon-small" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
                             <div class="review-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="review-badge">NOUVEAU</span>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span class="review-badge">GOOGLE</span>
                             </div>
-                            <p class="review-text">Le meilleur concessionnaire automobile de toute la France. Confiance, traitement et conseils. Je ne peux rien dire. Merci, vous êtes des professionnels.</p>
-                            <span class="review-date">Visité en décembre 2025</span>
+                            <p class="review-text">Très satisfait de leur services. Ils m'ont très bien accueilli et très bien conseillé. Merci au responsable pour sa réactivité et son vendeur pour son accueil. 🙏</p>
+                            <span class="review-date">Il y a 5 mois</span>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -290,7 +339,7 @@
             </div>
             <div class="map-container">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.3946280620135!2d4.990520076116287!3d45.66297757107791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4c5001a3b8251%3A0x8899650a018dd9a0!2sMBOULHI%20AUTO!5e0!3m2!1sfr!2sfr!4v1768473017017!5m2!1sfr!2sfr"
+                    src="https://maps.google.com/maps?q=04+Rue+du+Dahomey,+75011+Paris&output=embed&hl=fr"
                     width="100%"
                     height="450"
                     style="border:0; border-radius: 15px;"
@@ -303,21 +352,21 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <strong>Adresse</strong>
-                            <p>69 Chem. Neuf, 69780 Toussieu</p>
+                            <p>04 Rue du Dahomey, 75011 Paris</p>
                         </div>
                     </div>
                     <div class="map-info-item">
                         <i class="fas fa-clock"></i>
                         <div>
                             <strong>Horaires</strong>
-                            <p>Lun-Sam: 10h-19h | Sur rendez-vous</p>
+                            <p>Lun-Ven: 10h-18h | Sur rendez-vous</p>
                         </div>
                     </div>
                     <div class="map-info-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <strong>Téléphone</strong>
-                            <p><a href="tel:+33636121035">+33 6 36 12 10 35</a></p>
+                            <p><a href="tel:+33609159046">+33 6 09 15 90 46</a></p>
                         </div>
                     </div>
                 </div>
@@ -332,10 +381,10 @@
                 <h2>Prêt à Trouver Votre Véhicule Idéal ?</h2>
                 <p>Contactez-nous dès maintenant et bénéficiez de notre expertise automobile</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/33636121035" class="btn btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/33609159046" class="btn btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="tel:+33636121035" class="btn btn-phone">
+                    <a href="tel:+33609159046" class="btn btn-phone">
                         <i class="fas fa-phone"></i> Appeler maintenant
                     </a>
                     <a href="contact.html" class="btn btn-outline-white">
@@ -346,27 +395,20 @@
         </div>
     </section>
 
-    <!-- Modal Choix Véhicules -->
+    <!-- Modal Véhicules Neufs -->
     <div id="vehicleModal" class="vehicle-modal">
         <div class="vehicle-modal-content">
             <button class="modal-close" onclick="closeVehicleModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <h2>Quel type de véhicule recherchez-vous ?</h2>
-            <div class="modal-options">
+            <h2>Découvrez nos véhicules neufs</h2>
+            <div class="modal-options modal-single">
                 <a href="vehicules-neufs.html" class="modal-option">
                     <div class="modal-option-icon">
                         <i class="fas fa-star"></i>
                     </div>
                     <h3>Véhicules Neufs</h3>
-                    <p>Pour l'export vers l'Algérie et autres destinations</p>
-                </a>
-                <a href="vehicules-occasion.html" class="modal-option">
-                    <div class="modal-option-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <h3>Véhicules d'Occasion</h3>
-                    <p>Véhicules récents pour l'Europe ou pour l'Algerie (moin de 3 ans)</p>
+                    <p>Export vers la Tunisie, l'Algérie et le Maroc</p>
                 </a>
             </div>
         </div>
@@ -378,16 +420,16 @@
             <div class="footer-grid">
                 <!-- À propos -->
                 <div class="footer-column">
-                    <img src="images/logo.png" alt="MBOULHI AUTO" class="footer-logo">
+                    <img src="images/logo.png" alt="ACSONE AUTOMOBILES" class="footer-logo">
                     <p class="footer-description">
-                        Votre partenaire de confiance pour l'achat de véhicules neufs et d'occasion.
-                        Spécialistes de l'export France - Algérie - Europe.
+                        Votre partenaire de confiance pour l'achat de véhicules neufs.
+                        Spécialistes de l'export vers la Tunisie, l'Algérie et le Maroc.
                     </p>
                     <div class="social-links">
-                        <a href="https://www.tiktok.com/@mboulhi.dz" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.facebook.com/Mboulhi.DZ" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.youtube.com/@mboulhidz" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/mboulhi_dz/reels/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@acsoneautomobiles" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://share.google/1gdyWXrAAycwrRvga" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.leboncoin.fr/boutique/77462/acsone_automobiles.htm" target="_blank" aria-label="LeBonCoin"><i class="fas fa-tag"></i></a>
+                        <a href="https://share.google/mV1AL5ez2uM6EcXAI" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
@@ -397,18 +439,17 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="vehicules-neufs.html">Véhicules Neufs</a></li>
-                        <li><a href="vehicules-occasion.html">Véhicules d'Occasion</a></li>
                         <li><a href="about.html">À Propos</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Nos services -->
+                <!-- Nos véhicules -->
                 <div class="footer-column">
                     <h4>Nos Véhicules</h4>
                     <ul class="footer-links">
-                        <li><a href="vehicules-neufs.html">Véhicules Neufs (Export)</a></li>
-                        <li><a href="vehicules-occasion.html">Véhicules d'Occasion</a></li>
+                        <li><a href="vehicules-neufs.html">Véhicules Neufs</a></li>
+                        <li><a href="services.html">Export Tunisie / Algérie / Maroc</a></li>
                     </ul>
                 </div>
 
@@ -418,26 +459,26 @@
                     <ul class="footer-contact">
                         <li>
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+33636121035">+33 6 36 12 10 35</a>
+                            <a href="tel:+33609159046">+33 6 09 15 90 46</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:contact@mboulhiauto.fr">contact@mboulhiauto.fr</a>
+                            <a href="mailto:fendriautomobiles@gmail.com">fendriautomobiles@gmail.com</a>
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>69 chem. Neuf, 69780 Toussieu</span>
+                            <span>04 Rue du Dahomey, 75011 Paris</span>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
-                            <span>Lun-Sam: 10h-19h</span>
+                            <span>Lun-Ven: 10h-18h</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2026 MBOULHI AUTO. Tous droits réservés.</p>
+                <p>&copy; 2026 ACSONE AUTOMOBILES. Tous droits réservés.</p>
                 <div class="footer-legal">
                     <a href="mentions-legales.html">Mentions Légales</a>
                     <a href="politique-confidentialite.html">Politique de Confidentialité</a>
@@ -448,7 +489,7 @@
     </footer>
 
     <!-- Bouton WhatsApp flottant -->
-    <a href="https://wa.me/33636121035" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <a href="https://wa.me/33609159046" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 

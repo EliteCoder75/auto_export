@@ -104,7 +104,7 @@ function mergeVehicles(baseVehicles, cmsVehicles) {
 // Générer le fichier data.js
 function generateDataJS(vehicles) {
     const template = `/**
- * MBOULHI AUTO - Données des véhicules
+ * ACSONE AUTOMOBILES - Données des véhicules
  * Généré automatiquement depuis les fichiers CMS
  *
  * SYSTÈME DE TAGS:

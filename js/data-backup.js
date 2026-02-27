@@ -1,5 +1,5 @@
 /**
- * MBOULHI AUTO - Données des véhicules
+ * ACSONE AUTOMOBILES - Données des véhicules
  * Généré automatiquement depuis les fichiers CMS
  *
  * SYSTÈME DE TAGS:

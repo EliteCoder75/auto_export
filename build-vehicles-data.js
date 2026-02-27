@@ -128,7 +128,7 @@ function buildVehiclesData() {
 
     // Générer le contenu du fichier
     const fileContent = `/**
- * MBOULHI AUTO - Données des véhicules
+ * ACSONE AUTOMOBILES - Données des véhicules
  * Généré automatiquement depuis les fichiers CMS
  * Dernière génération: ${new Date().toLocaleString('fr-FR')}
  *

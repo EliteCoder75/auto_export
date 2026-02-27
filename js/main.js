@@ -1,5 +1,5 @@
 /**
- * MBOULHI AUTO - Script principal
+ * ACSONE AUTOMOBILES - Script principal
  * Gestion des interactions et fonctionnalités du site
  */
 
@@ -109,13 +109,33 @@ function initNavigation() {
 function initScrollEffects() {
     const header = document.getElementById('header');
     const scrollTopBtn = document.getElementById('scrollTop');
+    const hasHero = document.querySelector('.hero, .page-header');
+    const logoImg = document.querySelector('.logo img');
+
+    function setLogoScrolled() {
+        if (logoImg) logoImg.src = 'images/logo_white_bg.png';
+    }
+
+    function setLogoTransparent() {
+        if (logoImg) logoImg.src = 'images/logo.png';
+    }
+
+    // Pages sans hero : header toujours blanc avec logo_white_bg
+    if (!hasHero) {
+        header.classList.add('scrolled');
+        setLogoScrolled();
+    }
 
     window.addEventListener('scroll', function() {
-        // Header au scroll
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        // Header au scroll (uniquement sur pages avec hero)
+        if (hasHero) {
+            if (window.scrollY > 80) {
+                header.classList.add('scrolled');
+                setLogoScrolled();
+            } else {
+                header.classList.remove('scrolled');
+                setLogoTransparent();
+            }
         }
 
         // Bouton retour en haut
@@ -526,39 +546,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ===== REVIEWS CAROUSEL =====
 function initReviewsCarousel() {
-    const reviewsCarousel = document.getElementById('reviewsCarousel');
-
-    if (!reviewsCarousel) return;
-
-    // Enable smooth horizontal scrolling
-    reviewsCarousel.style.cursor = 'grab';
-
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    reviewsCarousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        reviewsCarousel.style.cursor = 'grabbing';
-        startX = e.pageX - reviewsCarousel.offsetLeft;
-        scrollLeft = reviewsCarousel.scrollLeft;
-    });
-
-    reviewsCarousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        reviewsCarousel.style.cursor = 'grab';
-    });
-
-    reviewsCarousel.addEventListener('mouseup', () => {
-        isDown = false;
-        reviewsCarousel.style.cursor = 'grab';
-    });
-
-    reviewsCarousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - reviewsCarousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        reviewsCarousel.scrollLeft = scrollLeft - walk;
-    });
+    // Pas de défilement automatique — affichage statique des 3 avis
 }

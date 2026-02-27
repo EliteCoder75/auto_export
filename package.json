@@ -1,7 +1,7 @@
 {
-  "name": "mboulhi-auto",
+  "name": "acsone-automobiles",
   "version": "1.0.0",
-  "description": "Site web MBOULHI AUTO avec Netlify CMS",
+  "description": "Site web ACSONE AUTOMOBILES avec Netlify CMS",
   "scripts": {
     "sync": "node scripts/sync-vehicles.js",
     "build": "node scripts/copy-vehicles.js"
