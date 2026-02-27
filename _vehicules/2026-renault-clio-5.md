@@ -1,16 +1,16 @@
 ---
 id: 13
-brand: renault
-model: clio 5
-finition: techno
-year: 2025
+brand: dacia
+model: duster
+finition: extreme
+year: 2026
 transmission: Automatique
-motor: 1.0 tce 90 ch
+motor: 1.3 tce 150 ch
 fuel: Essence
-exterior_color: blanc
+exterior_color: gris shiste
 interior_color: noir
-price: 14899
+price: 17500
 disponibilite: stock
 destination: export
-image: images/Orange-Black-and-White-Photo-Cars-For-Men-Instagram-Post-2026-01-07T184958.719-876x535.jpg
+image: images/Design-sans-titre-876x535.png
 ---
