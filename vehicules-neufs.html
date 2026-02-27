@@ -345,10 +345,8 @@
             // Obtenir tous les véhicules
             const allVehicles = await getAllVehicles();
 
-            // Filtrer pour garder UNIQUEMENT les véhicules neufs
-            let vehicles = allVehicles.filter(vehicle => {
-                return vehicle.types && vehicle.types.includes('neuf');
-            });
+            // Tous les véhicules sont neufs
+            let vehicles = allVehicles;
 
             // Appliquer les autres filtres
             vehicles = vehicles.filter(vehicle => {
