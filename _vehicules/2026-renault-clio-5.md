@@ -1,5 +1,5 @@
 ---
-id: 13
+id: duster_gris_shiste
 brand: dacia
 model: duster
 finition: extreme
