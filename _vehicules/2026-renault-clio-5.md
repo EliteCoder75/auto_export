@@ -11,6 +11,7 @@ exterior_color: gris shiste
 interior_color: noir
 color_variants:
   - duster_noir
+  - duster_gris_shiste
 price: 17500
 disponibilite: stock
 destination: export
