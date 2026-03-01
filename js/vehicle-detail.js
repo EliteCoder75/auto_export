@@ -113,7 +113,7 @@ async function loadVehicleDetail() {
     const vehicleId = urlParams.get('id');
 
     if (!vehicleId) {
-        window.location.href = '/vehicules-occasion.html';
+        window.location.href = '/vehicules-neufs.html';
         return;
     }
 
@@ -122,15 +122,15 @@ async function loadVehicleDetail() {
         const vehicleData = localStorage.getItem('currentVehicle');
 
         if (!vehicleData) {
-            window.location.href = '/vehicules-occasion.html';
+            window.location.href = '/vehicules-neufs.html';
             return;
         }
 
         const vehicle = JSON.parse(vehicleData);
 
         // Verify the ID matches
-        if (vehicle.id != vehicleId) {
-            window.location.href = '/vehicules-occasion.html';
+        if (String(vehicle.id) !== String(vehicleId)) {
+            window.location.href = '/vehicules-neufs.html';
             return;
         }
 
@@ -146,7 +146,7 @@ async function loadVehicleDetail() {
 
     } catch (error) {
         alert('Erreur lors du chargement du véhicule. Redirection...');
-        window.location.href = '/vehicules-occasion.html';
+        window.location.href = '/vehicules-neufs.html';
     }
 }
 
