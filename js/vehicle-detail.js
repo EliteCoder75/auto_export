@@ -95,7 +95,7 @@ function initContactModal() {
 
             const formData = new FormData(contactForm);
 
-            fetch('/', {
+            fetch('/vehicule-detail.html', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams(formData).toString()

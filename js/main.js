@@ -464,44 +464,8 @@ async function viewVehicleDetails(vehicleId) {
 
 // ===== FORMULAIRE DE CONTACT =====
 function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-
-    if (!contactForm) return;
-
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Validation basique
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        if (!name || !email || !message) {
-            alert('Veuillez remplir tous les champs obligatoires');
-            return;
-        }
-
-        // Récupérer les données du formulaire pour Netlify
-        const formData = new FormData(contactForm);
-
-        // Envoyer à Netlify Forms
-        fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(formData).toString()
-        })
-        .then(response => {
-            if (response.ok) {
-                // Rediriger vers la page de confirmation
-                window.location.href = '/confirmation.html';
-            } else {
-                throw new Error('Erreur lors de l\'envoi');
-            }
-        })
-        .catch(() => {
-            alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par WhatsApp.');
-        });
-    });
+    // La soumission est gérée nativement par Netlify Forms via action="/confirmation.html"
+    // Pas besoin de JS ici
 }
 
 // ===== ANIMATIONS AU SCROLL =====
