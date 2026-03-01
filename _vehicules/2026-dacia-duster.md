@@ -1,5 +1,5 @@
 ---
-id: 13
+id: duster_noir
 brand: dacia
 model: duster
 finition: extreme
