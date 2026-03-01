@@ -257,7 +257,16 @@ async function loadSimilarVehicles(currentVehicle) {
 
 async function loadColorVariants(currentVehicle) {
     try {
-        const variants = currentVehicle.color_variants || [];
+        const allVehicles = await getAllVehicles();
+
+        // Détection auto : même marque + modèle + finition, couleur différente
+        const variants = allVehicles.filter(v =>
+            String(v.id) !== String(currentVehicle.id) &&
+            v.brand.toLowerCase() === currentVehicle.brand.toLowerCase() &&
+            v.model.toLowerCase() === currentVehicle.model.toLowerCase() &&
+            (v.finition || '').toLowerCase() === (currentVehicle.finition || '').toLowerCase()
+        );
+
         if (variants.length === 0) return;
 
         const picker = document.getElementById('colorVariantsPicker');
@@ -268,30 +277,16 @@ async function loadColorVariants(currentVehicle) {
         grid.innerHTML = '';
 
         // Vignette du véhicule courant (active)
-        const currentItem = buildVariantThumb(currentVehicle.image, currentVehicle.exterior_color, true);
-        grid.appendChild(currentItem);
+        grid.appendChild(buildVariantThumb(currentVehicle.image, currentVehicle.exterior_color, true));
 
         // Vignettes des autres couleurs
-        const allVehicles = await getAllVehicles();
-
-        variants.forEach(variant => {
-            const img = variant.image || '';
-            const targetId = String(variant.vehicle_id || '');
-            const targetVehicle = allVehicles.find(v => String(v.id) === targetId);
-            const colorLabel = targetVehicle ? targetVehicle.exterior_color : '';
-
-            const item = buildVariantThumb(img, colorLabel, false);
-
+        variants.forEach(v => {
+            const item = buildVariantThumb(v.image, v.exterior_color, false);
             item.addEventListener('click', () => {
-                // Change la photo principale immédiatement
-                document.getElementById('mainImage').src = img;
-                // Redirige vers l'annonce si elle existe
-                if (targetVehicle) {
-                    localStorage.setItem('currentVehicle', JSON.stringify(targetVehicle));
-                    window.location.href = `vehicule-detail.html?id=${targetVehicle.id}`;
-                }
+                document.getElementById('mainImage').src = v.image;
+                localStorage.setItem('currentVehicle', JSON.stringify(v));
+                window.location.href = `vehicule-detail.html?id=${v.id}`;
             });
-
             grid.appendChild(item);
         });
     } catch (error) {

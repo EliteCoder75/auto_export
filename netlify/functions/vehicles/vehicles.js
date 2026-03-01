@@ -91,7 +91,6 @@ function normalizeVehicle(data) {
         exterior_color: data.exterior_color || '',
         interior_color: data.interior_color || '',
         disponibilite: data.disponibilite || 'stock',
-        color_variants: Array.isArray(data.color_variants) ? data.color_variants : [],
         destination: data.destination || '',
         image: data.image || '',
         gallery: Array.isArray(data.gallery) ? data.gallery : [],
