@@ -108,7 +108,6 @@ function initContactModal() {
 }
 
 async function loadVehicleDetail() {
-    // Get vehicle ID from URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const vehicleId = urlParams.get('id');
 
@@ -118,34 +117,34 @@ async function loadVehicleDetail() {
     }
 
     try {
-        // Get vehicle from localStorage
+        let vehicle = null;
+
+        // Essayer localStorage d'abord (navigation rapide depuis catalogue)
         const vehicleData = localStorage.getItem('currentVehicle');
+        if (vehicleData) {
+            const cached = JSON.parse(vehicleData);
+            if (String(cached.id) === String(vehicleId)) {
+                vehicle = cached;
+            }
+        }
 
-        if (!vehicleData) {
+        // Fallback : charger depuis l'API si localStorage absent ou ID différent
+        if (!vehicle) {
+            vehicle = await getVehicleById(vehicleId);
+        }
+
+        if (!vehicle) {
             window.location.href = '/vehicules-neufs.html';
             return;
         }
 
-        const vehicle = JSON.parse(vehicleData);
+        localStorage.removeItem('currentVehicle');
 
-        // Verify the ID matches
-        if (String(vehicle.id) !== String(vehicleId)) {
-            window.location.href = '/vehicules-neufs.html';
-            return;
-        }
-
-        // Display vehicle details
         displayVehicleDetail(vehicle);
-
-        // Load color variants and similar vehicles
         loadColorVariants(vehicle);
         loadSimilarVehicles(vehicle);
 
-        // Clear localStorage after loading
-        localStorage.removeItem('currentVehicle');
-
     } catch (error) {
-        alert('Erreur lors du chargement du véhicule. Redirection...');
         window.location.href = '/vehicules-neufs.html';
     }
 }
