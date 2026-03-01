@@ -581,6 +581,46 @@
     font-weight: 600;
 }
 
+/* Options & équipements */
+.vehicle-options-section {
+    grid-column: 1 / -1;
+    padding: 0.5rem 0 0.75rem;
+    border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.vehicle-options-section .desc-label {
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.vehicle-options-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+}
+
+.vehicle-options-list li {
+    background: var(--bg-gray);
+    border: 1px solid rgba(26, 58, 92, 0.12);
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.vehicle-options-list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
 .desc-price {
     grid-column: 1 / -1;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));

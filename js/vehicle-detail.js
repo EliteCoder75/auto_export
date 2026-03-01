@@ -198,7 +198,15 @@ function displayVehicleDetail(vehicle) {
     document.getElementById('descExteriorColor').textContent = vehicle.exterior_color || '-';
     document.getElementById('descInteriorColor').textContent = vehicle.interior_color || '-';
 
-    // Note: Description text and features sections have been removed as per requirements
+    // Options & équipements depuis le champ description
+    const desc = vehicle.description || '';
+    if (desc.trim()) {
+        const lines = desc.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+        const section = document.getElementById('vehicleOptionsSection');
+        const list = document.getElementById('vehicleOptionsList');
+        list.innerHTML = lines.map(l => `<li>${l}</li>`).join('');
+        section.style.display = 'block';
+    }
 }
 
 function addThumbnail(imageSrc, index, isActive) {

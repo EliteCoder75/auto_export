@@ -194,8 +194,8 @@ function createVehicleCard(vehicle) {
             <p class="vehicle-subtitle">${vehicle.year} • ${getDestinationLabel(vehicle.destination)}</p>
             <div class="vehicle-specs">
                 <div class="spec-item">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>${formatMileage(vehicle.mileage)}</span>
+                    <i class="fas fa-wrench"></i>
+                    <span>${vehicle.motor || '-'}</span>
                 </div>
                 <div class="spec-item">
                     <i class="fas fa-gas-pump"></i>
