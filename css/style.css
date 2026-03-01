@@ -142,12 +142,16 @@ ul {
 .logo img {
     height: 90px;
     width: auto;
-    transition: height 0.3s ease, width 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .header.scrolled .logo img {
     height: 70px;
     width: auto;
+    opacity: 1;
+    visibility: visible;
 }
 
 .logo:hover img {
@@ -278,7 +282,9 @@ ul {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(160deg, rgba(0, 0, 0, 0.55) 0%, rgba(15, 32, 51, 0.50) 100%);
+    background: linear-gradient(160deg, rgba(0, 0, 0, 0.82) 0%, rgba(15, 32, 51, 0.82) 100%);
+    opacity: 0;
+    animation: heroDarken 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero-overlay {
@@ -2341,15 +2347,24 @@ ul {
     background: linear-gradient(to right, transparent, var(--accent-color), transparent);
 }
 
-.hero-premium-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    line-height: 1.0;
-    margin-bottom: 1.8rem;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+@keyframes heroLogoIn {
+    0%   { opacity: 0; transform: scale(0.82) translateY(-18px); filter: blur(8px); }
+    60%  { opacity: 1; filter: blur(0); }
+    100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+@keyframes heroDarken {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.hero-logo-anim {
+    display: block;
+    width: 320px;
+    max-width: 80vw;
+    margin: 0 auto 1.8rem;
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.55)) brightness(1.1);
+    animation: heroLogoIn 4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-premium-tagline {
@@ -2480,9 +2495,8 @@ ul {
 
 /* Responsive hero premium */
 @media (max-width: 900px) {
-    .hero-premium-title {
-        font-size: 2.8rem;
-        letter-spacing: 4px;
+    .hero-logo-anim {
+        width: 260px;
     }
     .hero-stat-item {
         padding: 0 2rem;
@@ -2490,9 +2504,8 @@ ul {
 }
 
 @media (max-width: 600px) {
-    .hero-premium-title {
-        font-size: 2rem;
-        letter-spacing: 2px;
+    .hero-logo-anim {
+        width: 200px;
     }
     .hero-deco-line {
         width: 200px;
