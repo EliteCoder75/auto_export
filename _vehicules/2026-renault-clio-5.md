@@ -1,5 +1,5 @@
 ---
-id: 13
+id: duster_gris_shiste
 brand: dacia
 model: duster
 finition: extreme
@@ -9,6 +9,8 @@ motor: 1.3 tce 150 ch
 fuel: Essence
 exterior_color: gris shiste
 interior_color: noir
+color_variants:
+  - duster_noir
 price: 17500
 disponibilite: stock
 destination: export
