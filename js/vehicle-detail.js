@@ -25,7 +25,13 @@ function initContactModal() {
         contactBtn.addEventListener('click', function() {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            // Reset to options view
+            // Reset form state
+            contactForm.reset();
+            contactForm.style.display = '';
+            document.getElementById('formSuccess').style.display = 'none';
+            document.getElementById('backToOptions').style.display = '';
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message'; }
             showOptions();
         });
     }
@@ -83,26 +89,31 @@ function initContactModal() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const name = document.getElementById('contactName').value;
-            const email = document.getElementById('contactEmail').value;
-            const phone = document.getElementById('contactPhone').value;
-            const message = document.getElementById('contactMessage').value;
-            const vehicleInfo = document.getElementById('vehicleInfo').value;
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
 
-            // Create mailto link
-            const subject = encodeURIComponent(`Demande d'information - ${vehicleInfo}`);
-            const body = encodeURIComponent(
-                `Nom: ${name}\n` +
-                `Email: ${email}\n` +
-                `Téléphone: ${phone || 'Non renseigné'}\n\n` +
-                `Véhicule: ${vehicleInfo}\n\n` +
-                `Message:\n${message}`
-            );
+            const formData = new FormData(contactForm);
 
-            window.location.href = `mailto:fendriautomobiles@gmail.com?subject=${subject}&body=${body}`;
-
-            // Close modal after a short delay
-            setTimeout(closeModal, 500);
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(response => {
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    document.getElementById('formSuccess').style.display = 'block';
+                    document.getElementById('backToOptions').style.display = 'none';
+                } else {
+                    throw new Error('Erreur');
+                }
+            })
+            .catch(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message';
+                alert('Une erreur est survenue. Veuillez nous contacter par WhatsApp.');
+            });
         });
     }
 }
