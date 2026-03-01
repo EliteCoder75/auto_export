@@ -516,6 +516,71 @@
 }
 
 /* Prix dans la description */
+/* Color variants picker */
+.color-variants-picker {
+    grid-column: 1 / -1;
+    padding: 0.5rem 0 0.75rem;
+    border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.color-variants-picker .desc-label {
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.color-variants-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.color-variant-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+.color-variant-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.color-variant-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.color-variant-item:hover .color-variant-thumb {
+    transform: scale(1.06);
+}
+
+.color-variant-item.active .color-variant-thumb {
+    border-color: var(--accent-color);
+}
+
+.color-variant-name {
+    font-size: 0.68rem;
+    color: var(--text-light);
+    text-align: center;
+    width: 64px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+
+.color-variant-item.active .color-variant-name {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
 .desc-price {
     grid-column: 1 / -1;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));

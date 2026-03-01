@@ -40,6 +40,12 @@ collections:
           - {label: "Hybride Rechargeable", value: "Hybride Rechargeable"}
       - {label: "Couleur extérieure", name: "exterior_color", widget: "string", hint: "Ex: Blanc Nacré, Noir Perla Nera..."}
       - {label: "Couleur intérieure", name: "interior_color", widget: "string", hint: "Ex: Noir, Beige, Rouge..."}
+      - label: "Couleurs disponibles (variantes)"
+        name: "color_variants"
+        widget: "list"
+        required: false
+        field: {label: "ID de l'annonce variante", name: "id", widget: "string"}
+        hint: "Ajoutez les IDs des autres annonces de ce même modèle en différentes couleurs"
       - {label: "Prix (€)", name: "price", widget: "number", value_type: "int", hint: "Prix TTC en euros"}
       - label: "Disponibilité"
         name: "disponibilite"

@@ -137,7 +137,8 @@ async function loadVehicleDetail() {
         // Display vehicle details
         displayVehicleDetail(vehicle);
 
-        // Load similar vehicles
+        // Load color variants and similar vehicles
+        loadColorVariants(vehicle);
         loadSimilarVehicles(vehicle);
 
         // Clear localStorage after loading
@@ -151,7 +152,7 @@ async function loadVehicleDetail() {
 
 function displayVehicleDetail(vehicle) {
     // Set page title
-    const title = `${vehicle.brand} ${vehicle.model}`;
+    const title = `${vehicle.brand} ${vehicle.model}${vehicle.finition ? ' ' + vehicle.finition : ''}`;
     document.getElementById('pageTitle').textContent = `${title} - ACSONE AUTOMOBILES`;
     document.title = `${title} - ACSONE AUTOMOBILES`;
 
@@ -189,7 +190,7 @@ function displayVehicleDetail(vehicle) {
     // Set vehicle info
     document.getElementById('vehicleTitle').textContent = title.toUpperCase();
     document.getElementById('vehicleSubtitle').textContent =
-        `${vehicle.year} • ${vehicle.brand.toUpperCase()} • ${vehicle.model.toUpperCase()}`;
+        `${vehicle.year} • ${vehicle.destination === 'export' ? 'Export' : 'Europe'}${vehicle.exterior_color ? ' • ' + vehicle.exterior_color : ''}`;
     document.getElementById('vehiclePrice').textContent = `€${Number(vehicle.price).toLocaleString('fr-FR')}.00`;
 
     // Set description fields
@@ -256,5 +257,72 @@ async function loadSimilarVehicles(currentVehicle) {
         section.style.display = '';
     } catch (error) {
         // Silently fail - similar vehicles is not critical
+    }
+}
+
+async function loadColorVariants(currentVehicle) {
+    try {
+        const vehicles = await getAllVehicles();
+        const currentId = String(currentVehicle.id);
+
+        // IDs explicitement listés dans color_variants du véhicule courant
+        const explicitIds = (currentVehicle.color_variants || []).map(v => String(v.id || v));
+
+        // IDs des véhicules qui référencent le véhicule courant (lien inverse)
+        const reverseIds = vehicles
+            .filter(v => {
+                if (String(v.id) === currentId) return false;
+                const vVariants = (v.color_variants || []).map(x => String(x.id || x));
+                return vVariants.includes(currentId);
+            })
+            .map(v => String(v.id));
+
+        // Fusionner sans doublons
+        const allIds = [...new Set([...explicitIds, ...reverseIds])];
+
+        const variantVehicles = allIds
+            .map(id => vehicles.find(v => String(v.id) === id))
+            .filter(Boolean);
+
+        if (variantVehicles.length === 0) return;
+
+        const picker = document.getElementById('colorVariantsPicker');
+        const grid = document.getElementById('colorVariantsGrid');
+        if (!picker || !grid) return;
+
+        picker.style.display = 'block';
+        grid.innerHTML = '';
+
+        // Current vehicle first (active), then variants
+        const allVariants = [currentVehicle, ...variantVehicles];
+
+        allVariants.forEach(v => {
+            const isCurrent = String(v.id) === String(currentVehicle.id);
+
+            const item = document.createElement('div');
+            item.className = `color-variant-item${isCurrent ? ' active' : ''}`;
+
+            const thumb = document.createElement('div');
+            thumb.className = 'color-variant-thumb';
+            thumb.innerHTML = `<img src="${v.image || ''}" alt="${v.exterior_color || ''}">`;
+
+            const label = document.createElement('div');
+            label.className = 'color-variant-name';
+            label.textContent = v.exterior_color || '';
+
+            item.appendChild(thumb);
+            item.appendChild(label);
+
+            if (!isCurrent) {
+                item.addEventListener('click', () => {
+                    localStorage.setItem('currentVehicle', JSON.stringify(v));
+                    window.location.href = `vehicule-detail.html?id=${v.id}`;
+                });
+            }
+
+            grid.appendChild(item);
+        });
+    } catch (error) {
+        // Silently fail
     }
 }
