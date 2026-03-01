@@ -40,12 +40,14 @@ collections:
           - {label: "Hybride Rechargeable", value: "Hybride Rechargeable"}
       - {label: "Couleur extérieure", name: "exterior_color", widget: "string", hint: "Ex: Blanc Nacré, Noir Perla Nera..."}
       - {label: "Couleur intérieure", name: "interior_color", widget: "string", hint: "Ex: Noir, Beige, Rouge..."}
-      - label: "Couleurs disponibles (variantes)"
+      - label: "Couleurs disponibles"
         name: "color_variants"
         widget: "list"
         required: false
-        field: {label: "ID de l'annonce variante", name: "id", widget: "string"}
-        hint: "Ajoutez les IDs des autres annonces de ce même modèle en différentes couleurs"
+        fields:
+          - {label: "Image de la couleur", name: "image", widget: "image", hint: "Photo principale du véhicule dans cette couleur"}
+          - {label: "ID de l'annonce", name: "vehicle_id", widget: "string", hint: "ID exact de l'annonce correspondante"}
+        hint: "Ajoutez une entrée par couleur disponible (autre que la couleur de cette annonce)"
       - {label: "Prix (€)", name: "price", widget: "number", value_type: "int", hint: "Prix TTC en euros"}
       - label: "Disponibilité"
         name: "disponibilite"

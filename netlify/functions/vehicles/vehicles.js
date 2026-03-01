@@ -79,24 +79,23 @@ function parseFrontMatter(content) {
  */
 function normalizeVehicle(data) {
     return {
-        id: data.id || 0,
+        id: data.id || '',
         brand: (data.brand || '').toUpperCase(),
         model: data.model || '',
+        finition: data.finition || '',
         year: data.year || new Date().getFullYear(),
         price: data.price || 0,
-        mileage: data.mileage || 0,
         fuel: data.fuel || '',
         transmission: data.transmission || '',
         motor: data.motor || data.power || '',
         exterior_color: data.exterior_color || '',
         interior_color: data.interior_color || '',
-        condition: data.condition || '',
-        types: Array.isArray(data.types) ? data.types : [],
+        disponibilite: data.disponibilite || 'stock',
+        color_variants: Array.isArray(data.color_variants) ? data.color_variants : [],
         destination: data.destination || '',
         image: data.image || '',
         gallery: Array.isArray(data.gallery) ? data.gallery : [],
-        description: data.description || data.desc || '',
-        features: Array.isArray(data.features) ? data.features : []
+        description: data.description || data.desc || ''
     };
 }
 

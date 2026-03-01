@@ -160,13 +160,8 @@ function displayVehicleDetail(vehicle) {
     document.getElementById('breadcrumbTitle').textContent = title;
 
     const typeLink = document.getElementById('breadcrumbType');
-    if (vehicle.types && vehicle.types.includes('neuf')) {
-        typeLink.textContent = 'Véhicules Neufs';
-        typeLink.href = 'vehicules-neufs.html';
-    } else {
-        typeLink.textContent = 'Véhicules d\'Occasion';
-        typeLink.href = 'vehicules-occasion.html';
-    }
+    typeLink.textContent = 'Véhicules Neufs';
+    typeLink.href = 'vehicules-neufs.html';
 
     // Set main image
     const mainImage = document.getElementById('mainImage');
@@ -262,29 +257,8 @@ async function loadSimilarVehicles(currentVehicle) {
 
 async function loadColorVariants(currentVehicle) {
     try {
-        const vehicles = await getAllVehicles();
-        const currentId = String(currentVehicle.id);
-
-        // IDs explicitement listés dans color_variants du véhicule courant
-        const explicitIds = (currentVehicle.color_variants || []).map(v => String(v.id || v));
-
-        // IDs des véhicules qui référencent le véhicule courant (lien inverse)
-        const reverseIds = vehicles
-            .filter(v => {
-                if (String(v.id) === currentId) return false;
-                const vVariants = (v.color_variants || []).map(x => String(x.id || x));
-                return vVariants.includes(currentId);
-            })
-            .map(v => String(v.id));
-
-        // Fusionner sans doublons
-        const allIds = [...new Set([...explicitIds, ...reverseIds])];
-
-        const variantVehicles = allIds
-            .map(id => vehicles.find(v => String(v.id) === id))
-            .filter(Boolean);
-
-        if (variantVehicles.length === 0) return;
+        const variants = currentVehicle.color_variants || [];
+        if (variants.length === 0) return;
 
         const picker = document.getElementById('colorVariantsPicker');
         const grid = document.getElementById('colorVariantsGrid');
@@ -293,36 +267,51 @@ async function loadColorVariants(currentVehicle) {
         picker.style.display = 'block';
         grid.innerHTML = '';
 
-        // Current vehicle first (active), then variants
-        const allVariants = [currentVehicle, ...variantVehicles];
+        // Vignette du véhicule courant (active)
+        const currentItem = buildVariantThumb(currentVehicle.image, currentVehicle.exterior_color, true);
+        grid.appendChild(currentItem);
 
-        allVariants.forEach(v => {
-            const isCurrent = String(v.id) === String(currentVehicle.id);
+        // Vignettes des autres couleurs
+        const allVehicles = await getAllVehicles();
 
-            const item = document.createElement('div');
-            item.className = `color-variant-item${isCurrent ? ' active' : ''}`;
+        variants.forEach(variant => {
+            const img = variant.image || '';
+            const targetId = String(variant.vehicle_id || '');
+            const targetVehicle = allVehicles.find(v => String(v.id) === targetId);
+            const colorLabel = targetVehicle ? targetVehicle.exterior_color : '';
 
-            const thumb = document.createElement('div');
-            thumb.className = 'color-variant-thumb';
-            thumb.innerHTML = `<img src="${v.image || ''}" alt="${v.exterior_color || ''}">`;
+            const item = buildVariantThumb(img, colorLabel, false);
 
-            const label = document.createElement('div');
-            label.className = 'color-variant-name';
-            label.textContent = v.exterior_color || '';
-
-            item.appendChild(thumb);
-            item.appendChild(label);
-
-            if (!isCurrent) {
-                item.addEventListener('click', () => {
-                    localStorage.setItem('currentVehicle', JSON.stringify(v));
-                    window.location.href = `vehicule-detail.html?id=${v.id}`;
-                });
-            }
+            item.addEventListener('click', () => {
+                // Change la photo principale immédiatement
+                document.getElementById('mainImage').src = img;
+                // Redirige vers l'annonce si elle existe
+                if (targetVehicle) {
+                    localStorage.setItem('currentVehicle', JSON.stringify(targetVehicle));
+                    window.location.href = `vehicule-detail.html?id=${targetVehicle.id}`;
+                }
+            });
 
             grid.appendChild(item);
         });
     } catch (error) {
         // Silently fail
     }
+}
+
+function buildVariantThumb(imgSrc, colorLabel, isActive) {
+    const item = document.createElement('div');
+    item.className = `color-variant-item${isActive ? ' active' : ''}`;
+
+    const thumb = document.createElement('div');
+    thumb.className = 'color-variant-thumb';
+    thumb.innerHTML = `<img src="${imgSrc || ''}" alt="${colorLabel || ''}">`;
+
+    const label = document.createElement('div');
+    label.className = 'color-variant-name';
+    label.textContent = colorLabel || '';
+
+    item.appendChild(thumb);
+    item.appendChild(label);
+    return item;
 }
