@@ -105,18 +105,18 @@ ul {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: transparent;
+    background-color: var(--secondary-color);
     box-shadow: none;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header.scrolled {
-    background-color: #ffffff;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.12);
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
 }
 
 .header.scrolled .nav-link {
-    color: var(--text-dark);
+    color: #ffffff;
 }
 
 .header.scrolled .nav-link:hover,
@@ -125,7 +125,12 @@ ul {
 }
 
 .header.scrolled .nav-toggle span {
-    background-color: var(--text-dark);
+    background-color: #ffffff;
+}
+
+/* Logo masqué dans la nav (logo uniquement dans le hero) */
+.logo {
+    display: none;
 }
 
 .navbar {
@@ -268,10 +273,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/photo_de_couverture.png');
-    background-size: cover;
-    background-position: left;
-    background-attachment: fixed;
+    background-color: var(--secondary-color);
     overflow: hidden;
 }
 
@@ -1497,7 +1499,7 @@ ul {
 
     .nav-menu {
         position: fixed;
-        top: 92px;
+        top: 50px;
         left: 0;
         width: 100%;
         background-color: var(--secondary-color);
@@ -1505,8 +1507,9 @@ ul {
         padding: 2rem 0;
         transform: translateX(-100%);
         transition: var(--transition-normal);
-        box-shadow: var(--shadow-lg);
+        box-shadow: none;
         z-index: 999; /* Menu au-dessus de tout sauf header */
+        border-top: 1px solid rgba(255,255,255,0.08);
     }
    
     .nav-menu.active {
@@ -1521,10 +1524,8 @@ ul {
     .hero {
         min-height: 100vh;
         height: auto;
-        background-image: url('../images/ab.png') !important;
-        background-attachment: scroll;
-        background-position: center;
-        background-size: cover;
+        background-image: none !important;
+        background-color: var(--secondary-color);
     }
 
     .hero-content {
@@ -2629,22 +2630,11 @@ ul {
     }
 }
 
-/* 6 - Nav mobile : header bleu + X blanc + liens blancs quand menu ouvert */
+/* 6 - Nav mobile : liens blancs, actif en doré */
 @media (max-width: 768px) {
-    /* Header prend la couleur bleue quand le menu est ouvert */
-    .header:has(.nav-toggle.active) {
-        background-color: var(--primary-color) !important;
-        box-shadow: none;
-    }
-    /* X toujours blanc (override du style scrolled) */
-    .header:has(.nav-toggle.active) .nav-toggle span {
-        background-color: #ffffff !important;
-    }
-    /* Liens toujours blancs dans le menu ouvert */
     .nav-menu.active .nav-link {
         color: #ffffff !important;
     }
-    /* Lien actif en doré */
     .nav-menu.active .nav-link.active {
         color: var(--accent-color) !important;
     }
