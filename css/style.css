@@ -273,9 +273,10 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/couv.jpg');
+    background-image: url('../images/photo_de_couverture.png');
     background-size: cover;
-    background-position: center;
+    background-position: left;
+    background-attachment: fixed;
     background-color: var(--secondary-color);
     overflow: hidden;
 }
@@ -1527,7 +1528,7 @@ ul {
     .hero {
         min-height: 100vh;
         height: auto;
-        background-image: url('../images/photo_de_couverture.png') !important;
+        background-image: url('../images/couv.jpg') !important;
         background-attachment: scroll;
         background-position: center;
         background-size: cover;
