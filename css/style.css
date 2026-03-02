@@ -273,7 +273,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/photo_de_couverture.png');
+    background-image: url('../images/couv.jpg');
     background-size: cover;
     background-position: center;
     background-color: var(--secondary-color);
@@ -402,7 +402,7 @@ ul {
 .page-header {
     position: relative;
     padding: 180px 0 60px;
-    background-image: url('../images/photo_de_couverture.png');
+    background-image: url('../images/couv.jpg');
     background-size: cover;
     background-position: left;
     background-attachment: fixed;
