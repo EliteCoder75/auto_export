@@ -2486,7 +2486,7 @@ ul {
 
 .hero-stat-label {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.85);
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-top: 0.4rem;
@@ -2512,15 +2512,19 @@ ul {
     }
     .hero-stats-bar {
         gap: 0;
+        padding: 1rem 0 0;
+        margin-top: 1.5rem;
     }
     .hero-stat-item {
-        padding: 0 1.2rem;
+        padding: 0 0.9rem;
     }
     .hero-stat-number {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
     .hero-stat-label {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 0.5px;
     }
 }
 
@@ -2584,13 +2588,10 @@ ul {
         max-width: 300px;
     }
 
-    /* 3 - Google business card : logo compatible bg blanc */
+    /* 3 - Google business card : logo_white_bg (fond blanc natif) */
     .business-logo {
-        background-color: var(--primary-color);
-        border-radius: 10px;
-        padding: 10px;
-        width: 80px;
-        height: 70px;
+        width: 100px;
+        height: auto;
         object-fit: contain;
     }
 
@@ -2625,5 +2626,26 @@ ul {
     .testimonials-layout {
         margin-top: 1.5rem;
         gap: 1.25rem;
+    }
+}
+
+/* 6 - Nav mobile : header bleu + X blanc + liens blancs quand menu ouvert */
+@media (max-width: 768px) {
+    /* Header prend la couleur bleue quand le menu est ouvert */
+    .header:has(.nav-toggle.active) {
+        background-color: var(--primary-color) !important;
+        box-shadow: none;
+    }
+    /* X toujours blanc (override du style scrolled) */
+    .header:has(.nav-toggle.active) .nav-toggle span {
+        background-color: #ffffff !important;
+    }
+    /* Liens toujours blancs dans le menu ouvert */
+    .nav-menu.active .nav-link {
+        color: #ffffff !important;
+    }
+    /* Lien actif en doré */
+    .nav-menu.active .nav-link.active {
+        color: var(--accent-color) !important;
     }
 }
