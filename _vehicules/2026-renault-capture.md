@@ -7,7 +7,7 @@ year: 2026
 transmission: Automatique
 motor: 1.3 tce 140 ch
 fuel: Essence
-exterior_color: gris metalisé
+exterior_color: noir
 interior_color: noir
 price: 19499
 disponibilite: stock
