@@ -303,7 +303,7 @@ ul {
     text-align: center;
     color: var(--text-white);
     padding: var(--spacing-md);
-    margin-top: 80px;
+    margin-top: 50px;
     width: 100%;
 }
 
@@ -2478,9 +2478,9 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 0;
-    padding: 2rem 0 0;
+    padding: 1rem 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
-    margin-top: 3rem;
+    margin-top: 1.5rem;
     width: 100%;
     max-width: 700px;
 }
