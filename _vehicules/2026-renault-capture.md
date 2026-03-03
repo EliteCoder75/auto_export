@@ -1,5 +1,5 @@
 ---
-id: 14
+id: capture_noir
 brand: renault
 model: capture
 finition: techno
@@ -12,5 +12,8 @@ interior_color: noir
 price: 19499
 disponibilite: stock
 destination: export
-image: images/photo-catalogue-site-internet-2.png
+image: images/capture_noir.webp
+desc: |-
+  climatisation auto
+  led d'ambiance
 ---
