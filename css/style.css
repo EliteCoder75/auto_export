@@ -2359,6 +2359,7 @@ ul {
 .hero-premium-center {
     text-align: center;
     padding: 2rem 0;
+    width: 100%;
 }
 
 .hero-deco-line {
