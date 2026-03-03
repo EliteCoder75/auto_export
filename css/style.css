@@ -154,6 +154,15 @@ ul {
     visibility: visible;
 }
 
+/* Desktop : logo caché sur index, toujours visible sur les autres pages */
+.page-index .logo {
+    display: none;
+}
+body:not(.page-index) .logo img {
+    opacity: 1;
+    visibility: visible;
+}
+
 .logo:hover img {
     transform: scale(1.05);
 }
@@ -1506,9 +1515,15 @@ ul {
     .header.scrolled .nav-toggle span {
         background-color: #ffffff;
     }
-    /* Logo masqué sur mobile (logo uniquement dans le hero) */
-    .logo {
+    /* Logo masqué sur index mobile (logo dans le hero) */
+    .page-index .logo {
         display: none;
+    }
+    /* Logo toujours visible sur les autres pages en mobile */
+    body:not(.page-index) .logo img {
+        opacity: 1;
+        visibility: visible;
+        height: 55px;
     }
 
     .nav-toggle {
