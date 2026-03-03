@@ -154,8 +154,8 @@ ul {
     visibility: visible;
 }
 
-/* Desktop : logo caché sur index, toujours visible sur les autres pages */
-.page-index .logo {
+/* Desktop : logo caché sur index quand header transparent, visible au scroll */
+.page-index .header:not(.scrolled) .logo {
     display: none;
 }
 body:not(.page-index) .logo img {
