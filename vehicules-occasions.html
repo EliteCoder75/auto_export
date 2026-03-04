@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <meta name="description" content="Véhicules neufs AUTO EXPORT — Export vers la Tunisie, l'Algérie et le Maroc. Toutes marques. Garage à Vaulx-en-Velin, Lyon.">
-    <title>Véhicules Neufs — Export | AUTO EXPORT</title>
+    <meta name="description" content="Véhicules d'occasion AUTO EXPORT — Moins de 3 ans pour l'export et occasions classiques pour la France. Vaulx-en-Velin, Lyon.">
+    <title>Véhicules d'Occasion | AUTO EXPORT</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/vehicules.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -27,8 +27,8 @@
                     </button>
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
-                        <li><a href="vehicules-neufs.html" class="nav-link active">Véhicules Neufs</a></li>
-                        <li><a href="vehicules-occasions.html" class="nav-link">Occasions</a></li>
+                        <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
+                        <li><a href="vehicules-occasions.html" class="nav-link active">Occasions</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
                         <li><a href="about.html" class="nav-link">À Propos</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -44,13 +44,31 @@
     </header>
 
     <!-- Page Header -->
-    <section class="page-header" style="background-image: url('images/neuf_couverture.png'); background-position: bottom;">
+    <section class="page-header" style="background-image: url('images/photo_de_couverture.png');">
         <div class="page-header-overlay"></div>
         <div class="container" style="position:relative;z-index:1;">
-            <h1 class="page-title">Véhicules Neufs</h1>
-            <p class="page-subtitle">Export vers la Tunisie · Algérie · Maroc — Toutes marques disponibles</p>
+            <h1 class="page-title">Véhicules d'Occasion</h1>
+            <p class="page-subtitle">Export Maghreb · Moins de 3 ans &nbsp;|&nbsp; Occasion Classique · France</p>
         </div>
     </section>
+
+    <!-- Onglets -->
+    <div class="tabs-section">
+        <div class="container">
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="export" id="tab-export">
+                    <i class="fas fa-globe-africa"></i>
+                    Moins de 3 ans — Export
+                    <span class="tab-count" id="count-export">0</span>
+                </button>
+                <button class="tab-btn" data-tab="france" id="tab-france">
+                    <i class="fas fa-flag"></i>
+                    Occasion Classique — France
+                    <span class="tab-count" id="count-france">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Filtres -->
     <div class="filters-section">
@@ -64,7 +82,11 @@
             <div class="filters-grid">
                 <div class="filter-group">
                     <label for="filterBrand"><i class="fas fa-car"></i> Marque</label>
-                    <input type="text" id="filterBrand" class="filter-input" placeholder="Ex : Peugeot">
+                    <input type="text" id="filterBrand" class="filter-input" placeholder="Ex : Renault">
+                </div>
+                <div class="filter-group">
+                    <label for="filterMaxKm"><i class="fas fa-tachometer-alt"></i> Km max</label>
+                    <input type="number" id="filterMaxKm" class="filter-input" placeholder="Ex : 100 000" min="0" step="5000">
                 </div>
                 <div class="filter-group">
                     <label for="filterMinPrice"><i class="fas fa-euro-sign"></i> Prix min</label>
@@ -72,7 +94,7 @@
                 </div>
                 <div class="filter-group">
                     <label for="filterMaxPrice"><i class="fas fa-euro-sign"></i> Prix max</label>
-                    <input type="number" id="filterMaxPrice" class="filter-input" placeholder="50 000 €" min="0" step="500">
+                    <input type="number" id="filterMaxPrice" class="filter-input" placeholder="40 000 €" min="0" step="500">
                 </div>
                 <div class="filter-group">
                     <label for="filterFuel"><i class="fas fa-gas-pump"></i> Carburant</label>
@@ -82,15 +104,6 @@
                         <option value="Diesel">Diesel</option>
                         <option value="Électrique">Électrique</option>
                         <option value="Hybride">Hybride</option>
-                        <option value="Hybride Rechargeable">Hybride Rechargeable</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filterTransmission"><i class="fas fa-cog"></i> Boîte</label>
-                    <select id="filterTransmission" class="filter-input">
-                        <option value="">Toutes</option>
-                        <option value="Manuelle">Manuelle</option>
-                        <option value="Automatique">Automatique</option>
                     </select>
                 </div>
             </div>
@@ -101,12 +114,39 @@
     <!-- Catalogue -->
     <section class="vehicles-section">
         <div class="container">
-            <div class="catalogue-grid" id="vehiclesGrid">
-                <div class="loading-spinner">
-                    <div class="spinner"></div>
-                    <p>Chargement des véhicules...</p>
+
+            <!-- Tab Export -->
+            <div class="tab-content active" id="tab-content-export">
+                <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem; padding:1rem 1.25rem; background:var(--accent-light); border:1px solid var(--accent-border); border-radius:10px;">
+                    <i class="fas fa-info-circle" style="color:var(--accent-color);font-size:1.1rem;"></i>
+                    <p style="font-size:0.88rem; color:var(--text-light); margin:0;">
+                        Véhicules de moins de 3 ans, éligibles à l'export vers la <strong style="color:var(--text-white);">Tunisie, l'Algérie et le Maroc</strong>. Formalités douanières prises en charge.
+                    </p>
+                </div>
+                <div class="catalogue-grid" id="vehiclesGridExport">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Chargement...</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Tab France -->
+            <div class="tab-content" id="tab-content-france">
+                <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem; padding:1rem 1.25rem; background:rgba(46,95,163,0.12); border:1px solid rgba(46,95,163,0.3); border-radius:10px;">
+                    <i class="fas fa-info-circle" style="color:#4a90e2;font-size:1.1rem;"></i>
+                    <p style="font-size:0.88rem; color:var(--text-light); margin:0;">
+                        Occasions classiques pour le marché <strong style="color:var(--text-white);">France</strong>. Véhicules contrôlés, avec historique d'entretien.
+                    </p>
+                </div>
+                <div class="catalogue-grid" id="vehiclesGridFrance">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Chargement...</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -114,8 +154,8 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Vous ne trouvez pas votre véhicule ?</h2>
-                <p>Contactez-nous, nous pouvons rechercher n'importe quel modèle sur commande.</p>
+                <h2>Vous avez un véhicule à vendre ?</h2>
+                <p>Achat au comptant, reprise ou dépôt-vente — obtenez une estimation gratuite.</p>
                 <div class="cta-buttons">
                     <a href="https://wa.me/33602159385" class="btn btn-whatsapp" target="_blank" rel="noopener">
                         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -133,7 +173,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <img src="images/logo.png" alt="AUTO EXPORT" class="footer-logo">
-                    <p class="footer-description">Spécialiste export automobile à Vaulx-en-Velin. Achat, vente, reprise, dépôt-vente.</p>
+                    <p class="footer-description">Spécialiste automobile à Vaulx-en-Velin. Achat, vente, reprise, dépôt-vente, export.</p>
                     <div class="social-links">
                         <a href="https://www.tiktok.com/@autoexportithri" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://wa.me/33602159385" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>

@@ -8,27 +8,30 @@ public_folder: "images"
 locale: 'fr'
 
 collections:
-  # Collection pour les véhicules neufs
-  - name: "vehicules"
+
+  # =============================
+  # Véhicules Neufs
+  # =============================
+  - name: "vehicules-neufs"
     label: "Véhicules Neufs"
     label_singular: "Véhicule Neuf"
-    folder: "_vehicules"
+    folder: "_vehicules-neufs"
     create: true
-    slug: "{{year}}-{{brand}}-{{model}}"
-    summary: "{{brand}} {{model}} {{year}} — {{price}} €"
+    slug: "{{year}}-{{fields.brand}}-{{fields.model}}"
+    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.price}} €"
     fields:
-      - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique du véhicule (ex: 001, V-2026-01, CAPTURE-001)"}
-      - {label: "Marque", name: "brand", widget: "string", hint: "Ex: Peugeot, Renault, Volkswagen..."}
+      - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VN-001)"}
+      - {label: "Marque", name: "brand", widget: "string", hint: "Ex: Peugeot, Renault..."}
       - {label: "Modèle", name: "model", widget: "string", hint: "Ex: 208, Clio, Golf..."}
-      - {label: "Finition", name: "finition", widget: "string", required: false, hint: "Ex: RS Line, GT Line, Allure, Style..."}
-      - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2020, max: 2027}
+      - {label: "Finition", name: "finition", widget: "string", required: false, hint: "Ex: Allure, GT Line..."}
+      - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2020, max: 2028}
       - label: "Transmission"
         name: "transmission"
         widget: "select"
         options:
           - {label: "Manuelle", value: "Manuelle"}
           - {label: "Automatique", value: "Automatique"}
-      - {label: "Moteur", name: "motor", widget: "string", hint: "Ex: 1.2 PureTech 130 CH"}
+      - {label: "Moteur", name: "motor", widget: "string", required: false, hint: "Ex: 1.2 PureTech 130 CH"}
       - label: "Carburant"
         name: "fuel"
         widget: "select"
@@ -38,9 +41,9 @@ collections:
           - {label: "Électrique", value: "Électrique"}
           - {label: "Hybride", value: "Hybride"}
           - {label: "Hybride Rechargeable", value: "Hybride Rechargeable"}
-      - {label: "Couleur extérieure", name: "exterior_color", widget: "string", hint: "Ex: Blanc Nacré, Noir Perla Nera..."}
-      - {label: "Couleur intérieure", name: "interior_color", widget: "string", hint: "Ex: Noir, Beige, Rouge..."}
-      - {label: "Prix (€)", name: "price", widget: "number", value_type: "int", hint: "Prix TTC en euros"}
+      - {label: "Couleur extérieure", name: "exterior_color", widget: "string", required: false}
+      - {label: "Couleur intérieure", name: "interior_color", widget: "string", required: false}
+      - {label: "Prix (€)", name: "price", widget: "number", value_type: "int"}
       - label: "Disponibilité"
         name: "disponibilite"
         widget: "select"
@@ -48,41 +51,83 @@ collections:
         options:
           - {label: "En stock", value: "stock"}
           - {label: "Sur commande", value: "commande"}
-      - label: "Destination"
-        name: "destination"
-        widget: "select"
-        options:
-          - {label: "Export (Tunisie / Algérie / Maroc)", value: "export"}
-          - {label: "Europe", value: "europe"}
-      - {label: "Image principale", name: "image", widget: "image", hint: "Photo principale affichée dans le catalogue"}
-      - label: "Galerie d'images"
+      - {label: "Image principale", name: "image", widget: "image"}
+      - label: "Galerie (max 20 photos)"
         name: "gallery"
         widget: "list"
         required: false
-        field: {label: "Image", name: "image", widget: "image"}
         max: 20
-        hint: "Ajoutez jusqu'à 20 photos supplémentaires"
-      - {label: "Description", name: "desc", widget: "text", required: false, hint: "Informations complémentaires, options, équipements..."}
+        field: {label: "Photo", name: "image", widget: "image"}
+      - {label: "Description", name: "desc", widget: "text", required: false}
 
-  # Collection pour les paramètres du site
+  # =============================
+  # Véhicules d'Occasion
+  # =============================
+  - name: "vehicules-occasions"
+    label: "Véhicules d'Occasion"
+    label_singular: "Véhicule d'Occasion"
+    folder: "_vehicules-occasions"
+    create: true
+    slug: "{{year}}-{{fields.brand}}-{{fields.model}}"
+    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.kilometrage}} km — {{fields.price}} €"
+    fields:
+      - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VO-001)"}
+      - {label: "Marque", name: "brand", widget: "string"}
+      - {label: "Modèle", name: "model", widget: "string"}
+      - {label: "Finition", name: "finition", widget: "string", required: false}
+      - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2010, max: 2026}
+      - {label: "Kilométrage", name: "kilometrage", widget: "number", value_type: "int", hint: "En km"}
+      - label: "Type de véhicule"
+        name: "type"
+        widget: "select"
+        hint: "Export = moins de 3 ans pour Maghreb | France = occasion classique marché FR"
+        options:
+          - {label: "Export — Moins de 3 ans (Tunisie / Algérie / Maroc)", value: "export"}
+          - {label: "Occasion Classique — France", value: "france"}
+      - label: "Transmission"
+        name: "transmission"
+        widget: "select"
+        options:
+          - {label: "Manuelle", value: "Manuelle"}
+          - {label: "Automatique", value: "Automatique"}
+      - {label: "Moteur", name: "motor", widget: "string", required: false}
+      - label: "Carburant"
+        name: "fuel"
+        widget: "select"
+        options:
+          - {label: "Essence", value: "Essence"}
+          - {label: "Diesel", value: "Diesel"}
+          - {label: "Électrique", value: "Électrique"}
+          - {label: "Hybride", value: "Hybride"}
+      - {label: "Couleur extérieure", name: "exterior_color", widget: "string", required: false}
+      - {label: "Prix (€)", name: "price", widget: "number", value_type: "int"}
+      - label: "Disponibilité"
+        name: "disponibilite"
+        widget: "select"
+        default: "stock"
+        options:
+          - {label: "En stock", value: "stock"}
+          - {label: "Vendu", value: "vendu"}
+      - {label: "Image principale", name: "image", widget: "image"}
+      - label: "Galerie (max 20 photos)"
+        name: "gallery"
+        widget: "list"
+        required: false
+        max: 20
+        field: {label: "Photo", name: "image", widget: "image"}
+      - {label: "Description", name: "desc", widget: "text", required: false}
+
+  # =============================
+  # Paramètres du site
+  # =============================
   - name: "settings"
-    label: "Paramètres"
+    label: "Paramètres du site"
     files:
       - label: "Informations de contact"
         name: "contact"
         file: "_settings/contact.json"
         fields:
-          - {label: "Téléphone", name: "phone", widget: "string", pattern: ['^\+\d{10,15}$', "Format: +33123456789"]}
-          - {label: "WhatsApp", name: "whatsapp", widget: "string", pattern: ['^\+\d{10,15}$', "Format: +33123456789"]}
-          - {label: "Email", name: "email", widget: "string", pattern: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', "Email invalide"]}
-          - {label: "Adresse", name: "address", widget: "string"}
-          - {label: "Horaires", name: "hours", widget: "string", default: "Lun-Ven: 10h-18h"}
-
-      - label: "Réseaux sociaux"
-        name: "social"
-        file: "_settings/social.json"
-        fields:
-          - {label: "TikTok URL", name: "tiktok", widget: "string", required: false}
-          - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
-          - {label: "YouTube URL", name: "youtube", widget: "string", required: false}
-          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+          - {label: "Téléphone", name: "phone", widget: "string", default: "+33602159385"}
+          - {label: "WhatsApp", name: "whatsapp", widget: "string", default: "+33602159385"}
+          - {label: "Adresse garage", name: "address", widget: "string", default: "87 Route de Genas, 69120 Vaulx-en-Velin"}
+          - {label: "Horaires", name: "hours", widget: "string", default: "Lun–Sam : 9h00 – 13h00"}

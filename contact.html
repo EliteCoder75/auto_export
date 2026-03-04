@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <meta name="description" content="Contactez ACSONE AUTOMOBILES pour toute question sur nos véhicules et services. Nous sommes à votre écoute.">
-    <title>Contact - ACSONE AUTOMOBILES</title>
+    <meta name="description" content="Contactez AUTO EXPORT — 87 Route de Genas, 69120 Vaulx-en-Velin. Tél : 06 02 15 93 85. Lundi–Samedi 9h–13h.">
+    <title>Contact | AUTO EXPORT</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,31 +13,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header / Navigation -->
+
     <header class="header" id="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="index.html" class="logo">
-                        <img src="images/logo.png" alt="ACSONE AUTOMOBILES Logo">
+                        <img src="images/logo.png" alt="AUTO EXPORT Logo">
                     </a>
-
-                    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                        <span></span><span></span><span></span>
                     </button>
-
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
                         <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
-                        <li><a href="about.html" class="nav-link">À Propos</a></li>
+                        <li><a href="vehicules-occasions.html" class="nav-link">Occasions</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="about.html" class="nav-link">À Propos</a></li>
                         <li><a href="contact.html" class="nav-link active">Contact</a></li>
                     </ul>
-
                     <div class="nav-actions">
-                        <a href="https://wa.me/33609159046" class="btn btn-call" target="_blank">
+                        <a href="https://wa.me/33602159385" class="btn btn-call" target="_blank" rel="noopener">
                             <i class="fab fa-whatsapp"></i> WhatsApp
                         </a>
                     </div>
@@ -46,706 +42,179 @@
         </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header" style="background-image: url('images/contact.png'); background-size: cover; background-position: center 40%;">
+    <section class="page-header">
         <div class="page-header-overlay"></div>
-        <div class="container" style="position: relative; z-index: 1;">
-            <h1 class="page-title">Contactez-Nous</h1>
-            <p class="page-subtitle">Notre équipe est à votre disposition pour répondre à toutes vos questions</p>
+        <div class="container" style="position:relative;z-index:1;">
+            <h1 class="page-title">Contact</h1>
+            <p class="page-subtitle">Nous sommes disponibles du lundi au samedi, de 9h à 13h</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="section">
         <div class="container">
-            <div class="contact-wrapper">
-                <!-- Formulaire de Contact -->
-                <div class="contact-form-section">
-                    <h2>Envoyez-nous un Message</h2>
-                    <p class="form-intro">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+            <div class="contact-grid">
 
-                    <form id="contactForm" class="contact-form" name="contact" method="POST" action="/confirmation.html" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contact">
-                        <p class="hidden" style="display:none;">
-                            <label>Ne pas remplir si vous êtes humain: <input name="bot-field"></label>
-                        </p>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">
-                                    <i class="fas fa-user"></i> Nom complet <span class="required">*</span>
-                                </label>
-                                <input type="text" id="name" name="name" class="form-input" placeholder="Votre nom" required>
-                            </div>
+                <!-- Infos -->
+                <div class="contact-info">
+                    <h2 style="font-size:1.6rem; font-weight:700; color:var(--text-white); margin-bottom:0.5rem;">
+                        Nous trouver &amp; nous contacter
+                    </h2>
+                    <p style="color:var(--text-light); margin-bottom:1.5rem; line-height:1.7;">
+                        N'hésitez pas à nous contacter par téléphone, WhatsApp ou via le formulaire ci-contre.
+                        Nous répondons rapidement à toutes vos demandes.
+                    </p>
 
-                            <div class="form-group">
-                                <label for="email">
-                                    <i class="fas fa-envelope"></i> Email <span class="required">*</span>
-                                </label>
-                                <input type="email" id="email" name="email" class="form-input" placeholder="votre@email.com" required>
-                            </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Adresse du garage</h4>
+                            <p>87 Route de Genas<br>69120 Vaulx-en-Velin</p>
                         </div>
+                    </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="phone">
-                                    <i class="fas fa-phone"></i> Téléphone
-                                </label>
-                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+33 6 12 34 56 78">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="subject">
-                                    <i class="fas fa-tag"></i> Sujet
-                                </label>
-                                <select id="subject" name="subject" class="form-input">
-                                    <option value="">Sélectionnez un sujet</option>
-                                    <option value="achat">Achat d'un véhicule</option>
-                                    <option value="vente">Vente/Reprise</option>
-                                    <option value="export">Export international</option>
-                                    <option value="financement">Financement</option>
-                                    <option value="autre">Autre demande</option>
-                                </select>
-                            </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p><a href="tel:+33602159385">06 02 15 93 85</a></p>
                         </div>
+                    </div>
 
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/33602159385" target="_blank" rel="noopener">Écrire sur WhatsApp</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Horaires d'ouverture</h4>
+                            <p>
+                                Lundi – Samedi : 9h00 – 13h00<br>
+                                <span style="color:var(--text-muted); font-size:0.82rem;">Dimanche : fermé</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Carte -->
+                    <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border-accent); margin-top:0.5rem;">
+                        <iframe
+                            src="https://maps.google.com/maps?q=87+Route+de+Genas,+69120+Vaulx-en-Velin&output=embed&hl=fr"
+                            width="100%"
+                            height="260"
+                            style="border:0; display:block;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Formulaire -->
+                <div class="contact-form-wrapper">
+                    <h3>Envoyer un message</h3>
+                    <form id="contactForm" action="#" method="POST">
                         <div class="form-group">
-                            <label for="message">
-                                <i class="fas fa-comment-alt"></i> Message <span class="required">*</span>
-                            </label>
-                            <textarea id="message" name="message" class="form-input" rows="6" placeholder="Décrivez votre projet ou posez votre question..." required></textarea>
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required>
                         </div>
-
-                        <button type="submit" class="btn btn-primary btn-submit">
+                        <div class="form-group">
+                            <label for="phone">Téléphone *</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="06 XX XX XX XX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="votre@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="" disabled selected>Choisir un sujet</option>
+                                <option value="achat">Achat de véhicule</option>
+                                <option value="vente">Vente / Reprise</option>
+                                <option value="depot">Dépôt-Vente</option>
+                                <option value="export">Export Maghreb</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Décrivez votre projet..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
                             <i class="fas fa-paper-plane"></i> Envoyer le message
                         </button>
-
-                        <p class="form-note">
-                            <i class="fas fa-info-circle"></i> Les champs marqués d'un <span class="required">*</span> sont obligatoires
-                        </p>
                     </form>
-                </div>
 
-                <!-- Informations de Contact -->
-                <div class="contact-info-section">
-                    <h2>Nos Coordonnées</h2>
-
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="method-content">
-                                <h3>Téléphone</h3>
-                                <a href="tel:+33953273556">+33 9 53 27 35 56</a>
-                                <a href="tel:+33609159046">+33 6 09 15 90 46</a>
-                                <p>Lun-Ven: 10h-18h</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="method-content">
-                                <h3>WhatsApp</h3>
-                                <a href="https://wa.me/33609159046" target="_blank">+33 6 09 15 90 46</a>
-                                <a href="https://wa.me/33782227510" target="_blank">+33 7 82 22 75 10</a>
-                                <p>Réponse rapide 24/7</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-content">
-                                <h3>Email</h3>
-                                <a href="mailto:fendriautomobiles@gmail.com">fendriautomobiles@gmail.com</a>
-                                <p>Réponse sous 24h</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="method-content">
-                                <h3>Adresse</h3>
-                                <p><strong>Bureau :</strong> 04 Rue du Dahomey, 75011 Paris</p>
-                                <p><strong>Garage :</strong> 2 Rue Marie Curie, 77290 Mitry-Mory</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Horaires -->
-                    <div class="hours-card">
-                        <h3><i class="fas fa-clock"></i> Horaires d'Ouverture</h3>
-                        <div class="hours-list">
-                            <div class="hour-item">
-                                <span class="day">Lundi - Vendredi</span>
-                                <span class="time">10h00 - 18h00</span>
-                            </div>
-                            <div class="hour-item">
-                                <span class="day">Samedi - Dimanche</span>
-                                <span class="time">Fermé</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Réseaux Sociaux -->
-                    <div class="social-card-contact">
-                        <h3><i class="fas fa-share-alt"></i> Suivez-nous</h3>
-                        <div class="social-links-contact">
-                            <a href="https://www.tiktok.com/@acsoneautomobiles" target="_blank" class="social-link-item">
-                                <i class="fab fa-tiktok"></i>
-                                <span>TikTok</span>
-                            </a>
-                            <a href="https://share.google/1gdyWXrAAycwrRvga" target="_blank" class="social-link-item">
-                                <i class="fab fa-facebook"></i>
-                                <span>Facebook</span>
-                            </a>
-                            <a href="https://www.leboncoin.fr/boutique/77462/acsone_automobiles.htm" target="_blank" class="social-link-item">
-                                <i class="fas fa-tag"></i>
-                                <span>LeBonCoin</span>
-                            </a>
-                            <a href="https://share.google/mV1AL5ez2uM6EcXAI" target="_blank" class="social-link-item">
-                                <i class="fab fa-instagram"></i>
-                                <span>Instagram</span>
-                            </a>
-                        </div>
+                    <div style="margin-top:1.5rem; padding:1rem; background:var(--accent-light); border:1px solid var(--accent-border); border-radius:8px; text-align:center;">
+                        <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:0.5rem;">Préférez une réponse immédiate ?</p>
+                        <a href="https://wa.me/33602159385" class="btn btn-whatsapp" target="_blank" rel="noopener" style="width:100%; justify-content:center;">
+                            <i class="fab fa-whatsapp"></i> Écrire directement sur WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-section-contact section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Adresse</h2>
-            </div>
-            <div class="map-container">
-                <iframe
-                    src="https://maps.google.com/maps?q=2+Rue+Marie+Curie,+77290+Mitry-Mory&output=embed&hl=fr"
-                    width="100%"
-                    height="450"
-                    style="border:0; border-radius: 15px;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-                <div class="map-info">
-                    <div class="map-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Adresse</strong>
-                            <p>2 Rue Marie Curie, 77290 Mitry-Mory</p>
-                        </div>
-                    </div>
-                    <div class="map-info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <strong>Horaires</strong>
-                            <p>Lun-Ven: 10h-18h</p>
-                        </div>
-                    </div>
-                    <div class="map-info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Téléphone</strong>
-                            <p><a href="tel:+33609159046">+33 6 09 15 90 46</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Besoin d'une Réponse Immédiate ?</h2>
-                <p>Contactez-nous directement via WhatsApp pour une réponse rapide</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/33609159046" class="btn btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
-                    </a>
-                    <a href="tel:+33609159046" class="btn btn-phone">
-                        <i class="fas fa-phone"></i> Appeler maintenant
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <img src="images/logo.png" alt="ACSONE AUTOMOBILES" class="footer-logo">
-                    <p class="footer-description">
-                        Votre partenaire de confiance pour l'achat de véhicules neufs.
-                        Spécialistes de l'export vers la Tunisie, l'Algérie et le Maroc.
-                    </p>
+                    <img src="images/logo.png" alt="AUTO EXPORT" class="footer-logo">
+                    <p class="footer-description">Spécialiste automobile à Vaulx-en-Velin. Achat, vente, reprise, dépôt-vente, export.</p>
                     <div class="social-links">
-                        <a href="https://www.tiktok.com/@acsoneautomobiles" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://share.google/1gdyWXrAAycwrRvga" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.leboncoin.fr/boutique/77462/acsone_automobiles.htm" target="_blank" aria-label="LeBonCoin"><i class="fas fa-tag"></i></a>
-                        <a href="https://share.google/mV1AL5ez2uM6EcXAI" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@autoexportithri" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/33602159385" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-
                 <div class="footer-column">
-                    <h4>Liens Rapides</h4>
+                    <h4>Navigation</h4>
                     <ul class="footer-links">
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="vehicules-neufs.html">Véhicules Neufs</a></li>
-                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="vehicules-occasions.html">Occasions</a></li>
+                        <li><a href="services.html">Services</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
-                    <h4>Nos Véhicules</h4>
+                    <h4>Nos Services</h4>
                     <ul class="footer-links">
-                        <li><a href="vehicules-neufs.html">Véhicules Neufs</a></li>
-                        <li><a href="services.html">Export Tunisie / Algérie / Maroc</a></li>
+                        <li><a href="services.html">Achat</a></li>
+                        <li><a href="services.html">Vente</a></li>
+                        <li><a href="services.html">Reprise</a></li>
+                        <li><a href="services.html">Dépôt-Vente</a></li>
+                        <li><a href="services.html">Export Maghreb</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+33609159046">+33 6 09 15 90 46</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:fendriautomobiles@gmail.com">fendriautomobiles@gmail.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>2 Rue Marie Curie, 77290 Mitry-Mory</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Lun-Ven: 10h-18h</span>
-                        </li>
+                        <li><i class="fas fa-phone"></i><a href="tel:+33602159385">06 02 15 93 85</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>87 Route de Genas, 69120 Vaulx-en-Velin</span></li>
+                        <li><i class="fas fa-clock"></i><span>Lun–Sam : 9h–13h</span></li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 ACSONE AUTOMOBILES. Tous droits réservés.</p>
+                <p>&copy; 2026 AUTO EXPORT — RCS Lyon 993 604 081. Tous droits réservés.</p>
                 <div class="footer-legal">
                     <a href="mentions-legales.html">Mentions Légales</a>
-                    <a href="politique-confidentialite.html">Politique de Confidentialité</a>
+                    <a href="politique-confidentialite.html">Confidentialité</a>
                     <a href="cgv.html">CGV</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bouton WhatsApp flottant -->
-    <a href="https://wa.me/33609159046" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <a href="https://wa.me/33602159385" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <!-- Bouton retour en haut -->
-    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut"><i class="fas fa-arrow-up"></i></button>
     <script src="js/main.js"></script>
-    <style>
-        /* Styles spécifiques pour la page Contact */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-form-section h2,
-        .contact-info-section h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .form-intro {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .contact-form {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .form-group label i {
-            color: var(--primary-color);
-        }
-
-        .required {
-            color: var(--primary-color);
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: var(--font-primary);
-            transition: var(--transition-fast);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
-        }
-
-        textarea.form-input {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn-submit {
-            width: 100%;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .form-note {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-normal);
-        }
-
-        .contact-method:hover {
-            transform: translateX(5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .method-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--text-white);
-            flex-shrink: 0;
-        }
-
-        .method-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .method-content a {
-            color: var(--primary-color);
-            font-weight: 600;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        .method-content p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .hours-card,
-        .social-card-contact {
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 1.5rem;
-        }
-
-        .hours-card h3,
-        .social-card-contact h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .hours-card h3 i,
-        .social-card-contact h3 i {
-            color: var(--primary-color);
-        }
-
-        .hours-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .hour-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem;
-            background: var(--bg-gray);
-            border-radius: 6px;
-        }
-
-        .hour-item .day {
-            font-weight: 600;
-        }
-
-        .hour-item .time {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .social-links-contact {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-
-        .social-link-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem;
-            background: var(--bg-gray);
-            border-radius: 8px;
-            transition: var(--transition-normal);
-            color: var(--text-dark);
-        }
-
-        .social-link-item:hover {
-            background: var(--primary-color);
-            color: var(--text-white);
-            transform: translateY(-2px);
-        }
-
-        .social-link-item i {
-            font-size: 1.3rem;
-        }
-
-        .map-section-contact {
-            background: var(--bg-gray);
-        }
-
-        @media (max-width: 992px) {
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .contact-form-section h2,
-            .contact-info-section h2 {
-                font-size: 1.5rem;
-            }
-
-            .form-intro {
-                font-size: 0.95rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .contact-form {
-                padding: 1.25rem;
-                border-radius: 12px;
-            }
-
-            .form-group {
-                margin-bottom: 1.25rem;
-            }
-
-            .form-group label {
-                font-size: 0.9rem;
-            }
-
-            .form-input {
-                padding: 0.75rem 0.875rem;
-                font-size: 0.95rem;
-            }
-
-            .contact-method {
-                gap: 1rem;
-                padding: 1.25rem;
-            }
-
-            .method-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.25rem;
-            }
-
-            .method-content h3 {
-                font-size: 1rem;
-            }
-
-            .hours-card,
-            .social-card-contact {
-                padding: 1.25rem;
-            }
-
-            .hours-card h3,
-            .social-card-contact h3 {
-                font-size: 1.1rem;
-            }
-
-            .hour-item {
-                padding: 0.6rem;
-                font-size: 0.9rem;
-            }
-
-            .social-links-contact {
-                grid-template-columns: 1fr;
-            }
-
-            .social-link-item {
-                padding: 0.75rem;
-            }
-
-            .map-container iframe {
-                height: 300px;
-            }
-
-            .map-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .map-info-item {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contact-wrapper {
-                gap: 1.5rem;
-            }
-
-            .contact-form-section h2,
-            .contact-info-section h2 {
-                font-size: 1.35rem;
-            }
-
-            .contact-form {
-                padding: 1rem;
-            }
-
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            .form-group label {
-                font-size: 0.85rem;
-            }
-
-            .form-input {
-                padding: 0.7rem 0.75rem;
-                font-size: 0.9rem;
-            }
-
-            textarea.form-input {
-                min-height: 100px;
-            }
-
-            .btn-submit {
-                padding: 0.875rem;
-                font-size: 0.95rem;
-            }
-
-            .form-note {
-                font-size: 0.8rem;
-            }
-
-            .contact-method {
-                padding: 1rem;
-            }
-
-            .method-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
-
-            .method-content h3 {
-                font-size: 0.95rem;
-            }
-
-            .method-content a,
-            .method-content p {
-                font-size: 0.85rem;
-            }
-
-            .hours-card,
-            .social-card-contact {
-                padding: 1rem;
-            }
-
-            .hours-card h3,
-            .social-card-contact h3 {
-                font-size: 1rem;
-            }
-
-            .map-container iframe {
-                height: 250px;
-                border-radius: 10px;
-            }
-        }
-    </style>
 </body>
 </html>

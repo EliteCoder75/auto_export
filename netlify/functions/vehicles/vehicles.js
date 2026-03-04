@@ -1,149 +1,94 @@
 /**
- * Netlify Function - API pour charger les véhicules depuis le CMS
- * Endpoint: /.netlify/functions/vehicles
+ * AUTO EXPORT — Netlify Function
+ * Endpoint : /.netlify/functions/vehicles?collection=neufs|occasions
  *
- * Note: Le dossier _vehicules doit être inclus dans le bundle de cette fonction
+ * Lit les fichiers markdown dans _vehicules-neufs/ ou _vehicules-occasions/
+ * (copiés par le script de build)
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs     = require('fs');
+const path   = require('path');
 const matter = require('gray-matter');
 
-/**
- * Parse le front matter YAML d'un fichier markdown
- */
-function parseFrontMatter(content) {
-    try {
-        const { data } = matter(content);
-        return data;
-    } catch (e) {
-        return null;
-    }
-}
+const HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json'
+};
 
-/**
- * Normaliser les données d'un véhicule
- */
-function normalizeVehicle(data) {
-    return {
-        id: data.id || '',
-        brand: (data.brand || '').toUpperCase(),
-        model: data.model || '',
-        finition: data.finition || '',
-        year: data.year || new Date().getFullYear(),
-        price: data.price || 0,
-        fuel: data.fuel || '',
-        transmission: data.transmission || '',
-        motor: data.motor || data.power || '',
+function normalizeVehicle(data, collection) {
+    const base = {
+        id:             data.id || '',
+        brand:          (data.brand || '').toUpperCase(),
+        model:          data.model || '',
+        finition:       data.finition || '',
+        year:           data.year || '',
+        price:          data.price || 0,
+        fuel:           data.fuel || '',
+        transmission:   data.transmission || '',
+        motor:          data.motor || '',
         exterior_color: data.exterior_color || '',
         interior_color: data.interior_color || '',
-        disponibilite: data.disponibilite || 'stock',
-        destination: data.destination || '',
-        image: data.image || '',
-        gallery: Array.isArray(data.gallery) ? data.gallery : [],
-        description: data.description || data.desc || ''
+        disponibilite:  data.disponibilite || 'stock',
+        image:          data.image || '',
+        gallery:        Array.isArray(data.gallery) ? data.gallery : [],
+        desc:           data.desc || data.description || '',
+        collection
     };
+    if (collection === 'occasions') {
+        base.kilometrage = data.kilometrage || 0;
+        base.type        = data.type || 'france';
+    }
+    return base;
 }
 
-/**
- * Handler principal de la fonction
- */
-exports.handler = async (event, context) => {
-    try {
-        // Autoriser CORS
-        const headers = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Content-Type': 'application/json'
-        };
+exports.handler = async (event) => {
+    if (event.httpMethod === 'OPTIONS') {
+        return { statusCode: 200, headers: HEADERS, body: '' };
+    }
 
-        // Gérer les requêtes OPTIONS (preflight)
-        if (event.httpMethod === 'OPTIONS') {
+    try {
+        const params     = new URLSearchParams(event.queryStringParameters || {});
+        const collection = params.get('collection') || 'neufs';
+        const dirName    = collection === 'occasions' ? '_vehicules-occasions' : '_vehicules-neufs';
+        const vehiclesDir = path.join(__dirname, dirName);
+
+        if (!fs.existsSync(vehiclesDir)) {
             return {
                 statusCode: 200,
-                headers,
-                body: ''
+                headers: HEADERS,
+                body: JSON.stringify({ success: true, count: 0, vehicles: [] })
             };
         }
 
-        // Le dossier _vehicules est maintenant dans le même dossier que cette fonction
-        const vehiclesDir = path.join(__dirname, '_vehicules');
-
-        console.log('📂 Chemin recherché:', vehiclesDir);
-
-        // Vérifier que le dossier existe
-        if (!fs.existsSync(vehiclesDir)) {
-            console.error('❌ Dossier _vehicules introuvable');
-            console.error('__dirname:', __dirname);
-            console.error('Contenu du dossier:', fs.readdirSync(__dirname));
-
-            return {
-                statusCode: 404,
-                headers,
-                body: JSON.stringify({
-                    error: 'Dossier _vehicules introuvable',
-                    __dirname: __dirname,
-                    content: fs.readdirSync(__dirname)
-                })
-            };
-        }
-
-        // Lire tous les fichiers .md
-        const files = fs.readdirSync(vehiclesDir)
-            .filter(file => file.endsWith('.md'));
-
-        console.log(`📂 ${files.length} fichiers markdown trouvés`);
-
+        const files = fs.readdirSync(vehiclesDir).filter(f => f.endsWith('.md'));
         const vehicles = [];
 
-        // Parser chaque fichier
         for (const file of files) {
             try {
-                const filePath = path.join(vehiclesDir, file);
-                const content = fs.readFileSync(filePath, 'utf8');
-                const data = parseFrontMatter(content);
-
-                if (data) {
-                    const vehicle = normalizeVehicle(data);
-                    vehicles.push(vehicle);
-                    console.log(`✅ ${vehicle.brand} ${vehicle.model} (ID: ${vehicle.id})`);
-                } else {
-                    console.log(`⚠️ Impossible de parser: ${file}`);
+                const content = fs.readFileSync(path.join(vehiclesDir, file), 'utf8');
+                const { data } = matter(content);
+                if (data && data.id) {
+                    vehicles.push(normalizeVehicle(data, collection));
                 }
-            } catch (error) {
-                console.error(`❌ Erreur lecture fichier ${file}:`, error.message);
+            } catch (e) {
+                console.error(`Erreur lecture ${file}:`, e.message);
             }
         }
 
-        // Trier par ID
-        vehicles.sort((a, b) => a.id - b.id);
+        vehicles.sort((a, b) => String(a.id).localeCompare(String(b.id)));
 
-        console.log(`✨ ${vehicles.length} véhicules chargés avec succès`);
-
-        // Retourner les véhicules
         return {
             statusCode: 200,
-            headers,
-            body: JSON.stringify({
-                success: true,
-                count: vehicles.length,
-                vehicles: vehicles
-            })
+            headers: HEADERS,
+            body: JSON.stringify({ success: true, count: vehicles.length, vehicles })
         };
 
-    } catch (error) {
-        console.error('❌ Erreur serveur:', error);
-
+    } catch (err) {
         return {
             statusCode: 500,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify({
-                success: false,
-                error: error.message
-            })
+            headers: HEADERS,
+            body: JSON.stringify({ success: false, error: err.message })
         };
     }
 };

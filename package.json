@@ -1,15 +1,12 @@
 {
-  "name": "acsone-automobiles",
+  "name": "auto-export",
   "version": "1.0.0",
-  "description": "Site web ACSONE AUTOMOBILES avec Netlify CMS",
+  "description": "Site web AUTO EXPORT — Achat, Vente, Reprise, Dépôt-Vente, Export Maghreb",
   "scripts": {
-    "sync": "node scripts/sync-vehicles.js",
-    "build": "node scripts/copy-vehicles.js"
+    "build": "node scripts/copy-vehicles.js",
+    "sync": "node scripts/sync-vehicles.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3"
-  },
-  "devDependencies": {
-    "sharp": "^0.34.5"
   }
 }

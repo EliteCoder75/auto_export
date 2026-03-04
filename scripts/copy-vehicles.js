@@ -1,40 +1,40 @@
 /**
- * Script pour copier le dossier _vehicules dans la fonction Netlify
- * Exécuté pendant le build Netlify
+ * AUTO EXPORT — Script de build
+ * Copie _vehicules-neufs/ et _vehicules-occasions/ dans la fonction Netlify
  */
 
-const fs = require('fs');
+const fs   = require('fs');
 const path = require('path');
 
-const source = path.join(__dirname, '../_vehicules');
-const destination = path.join(__dirname, '../netlify/functions/vehicles/_vehicules');
+const FUNCTION_DIR = path.join(__dirname, '../netlify/functions/vehicles');
+const COLLECTIONS  = ['_vehicules-neufs', '_vehicules-occasions'];
 
-console.log('📋 Copie du dossier _vehicules vers la fonction...');
-console.log('Source:', source);
-console.log('Destination:', destination);
+console.log('📋 AUTO EXPORT — Copie des véhicules vers la fonction Netlify...\n');
 
-// Si le dossier source n'existe pas, on quitte sans erreur
-if (!fs.existsSync(source)) {
-    console.log('⚠️  Dossier _vehicules introuvable - aucun véhicule à copier.');
-    process.exit(0);
-}
+let total = 0;
 
-// Créer le dossier de destination s'il n'existe pas
-if (!fs.existsSync(destination)) {
-    fs.mkdirSync(destination, { recursive: true });
-}
+COLLECTIONS.forEach(collectionDir => {
+    const source      = path.join(__dirname, '..', collectionDir);
+    const destination = path.join(FUNCTION_DIR, collectionDir);
 
-// Lire tous les fichiers .md
-const files = fs.readdirSync(source).filter(f => f.endsWith('.md'));
+    if (!fs.existsSync(source)) {
+        console.log(`⚠️  ${collectionDir} introuvable — ignoré.`);
+        return;
+    }
 
-console.log(`📂 ${files.length} fichiers à copier`);
+    if (!fs.existsSync(destination)) {
+        fs.mkdirSync(destination, { recursive: true });
+    }
 
-// Copier chaque fichier
-files.forEach(file => {
-    const srcPath = path.join(source, file);
-    const destPath = path.join(destination, file);
-    fs.copyFileSync(srcPath, destPath);
-    console.log(`✅ ${file}`);
+    const files = fs.readdirSync(source).filter(f => f.endsWith('.md'));
+    console.log(`📂 ${collectionDir} — ${files.length} fichier(s):`);
+
+    files.forEach(file => {
+        fs.copyFileSync(path.join(source, file), path.join(destination, file));
+        console.log(`   ✅ ${file}`);
+        total++;
+    });
+    console.log('');
 });
 
-console.log('✨ Copie terminée!');
+console.log(`✨ Build terminé — ${total} véhicule(s) copié(s).`);

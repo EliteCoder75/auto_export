@@ -1,70 +1,48 @@
 /**
- * ACSONE AUTOMOBILES - Script principal
- * Gestion des interactions et fonctionnalités du site
+ * AUTO EXPORT — Script principal
  */
 
-// ===== VARIABLES GLOBALES =====
-let currentFilters = {};
-
-// ===== MODAL VÉHICULES =====
+// ===== MODAL (index) =====
 function openVehicleModal() {
     const modal = document.getElementById('vehicleModal');
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
+    if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
 }
-
 function closeVehicleModal() {
     const modal = document.getElementById('vehicleModal');
-    if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+    if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
 }
-
-// Fermer le modal en cliquant en dehors
-document.addEventListener('click', function(e) {
+document.addEventListener('click', e => {
     const modal = document.getElementById('vehicleModal');
-    if (modal && e.target === modal) {
-        closeVehicleModal();
-    }
+    if (modal && e.target === modal) closeVehicleModal();
 });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVehicleModal(); });
 
-// Fermer le modal avec Escape
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeVehicleModal();
-    }
-});
-
-// ===== INITIALISATION AU CHARGEMENT DU DOM =====
-document.addEventListener('DOMContentLoaded', function() {
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initScrollEffects();
     initFeaturedVehicles();
     initVehiclesPage();
-    initContactForm();
+    initOccasionsPage();
+    initVehicleDetailPage();
     initReviewsCarousel();
 });
 
 // ===== NAVIGATION =====
 function initNavigation() {
     const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navMenu   = document.getElementById('navMenu');
+    const navLinks  = document.querySelectorAll('.nav-link');
 
-    // Toggle mobile menu
     if (navToggle) {
-        navToggle.addEventListener('click', function() {
+        navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
     }
 
-    // Fermer le menu mobile au clic sur un lien
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', () => {
             if (navToggle && navToggle.classList.contains('active')) {
                 navToggle.classList.remove('active');
                 navMenu.classList.remove('active');
@@ -72,443 +50,435 @@ function initNavigation() {
         });
     });
 
-    // Activer le lien correspondant à la page actuelle
+    // Activer le lien courant
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage) {
+        if (link.getAttribute('href') === currentPage) {
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
         }
     });
-
-    // Gestion du smooth scroll pour les ancres
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-
-            e.preventDefault();
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
 }
 
-// ===== EFFETS AU SCROLL =====
+// ===== SCROLL =====
 function initScrollEffects() {
-    const header = document.getElementById('header');
-    const scrollTopBtn = document.getElementById('scrollTop');
-    const hasHero = document.querySelector('.hero, .page-header');
-    const logoImg = document.querySelector('.logo img');
+    const header    = document.getElementById('header');
+    const scrollTop = document.getElementById('scrollTop');
 
-    function setLogoScrolled() {
-        if (logoImg) logoImg.src = 'images/logo_white_bg.png';
-    }
-
-    function setLogoTransparent() {
-        if (logoImg) logoImg.src = 'images/logo.png';
-    }
-
-    // Pages sans hero : header toujours blanc avec logo_white_bg
-    if (!hasHero) {
-        header.classList.add('scrolled');
-        setLogoScrolled();
-    }
-
-    window.addEventListener('scroll', function() {
-        // Header au scroll (uniquement sur pages avec hero)
-        if (hasHero) {
-            if (window.scrollY > 80) {
-                header.classList.add('scrolled');
-                setLogoScrolled();
-            } else {
-                header.classList.remove('scrolled');
-                setLogoTransparent();
-            }
+    const onScroll = () => {
+        if (!header) return;
+        if (window.scrollY > 80) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
-
-        // Bouton retour en haut
-        if (scrollTopBtn) {
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
+        if (scrollTop) {
+            if (window.scrollY > 400) scrollTop.classList.add('visible');
+            else scrollTop.classList.remove('visible');
         }
-    });
-
-    // Retour en haut au clic
-    if (scrollTopBtn) {
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-}
-
-// ===== CHARGEMENT DES VÉHICULES EN VEDETTE (Page d'accueil) =====
-async function initFeaturedVehicles() {
-    const featuredContainer = document.getElementById('featuredVehicles');
-
-    if (!featuredContainer) return;
-
-    // Afficher un loader
-    featuredContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i></div>';
-
-    const featured = await getFeaturedVehicles(6);
-    featuredContainer.innerHTML = '';
-
-    featured.forEach(vehicle => {
-        const card = createVehicleCard(vehicle);
-        featuredContainer.appendChild(card);
-    });
-}
-
-// ===== CRÉATION D'UNE CARTE VÉHICULE =====
-function createVehicleCard(vehicle) {
-    const card = document.createElement('div');
-    card.className = 'vehicle-card';
-    card.onclick = () => viewVehicleDetails(vehicle.id);
-
-    card.innerHTML = `
-        <div class="vehicle-image">
-            <img src="${vehicle.image}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
-            <div class="vehicle-badge">${getVehicleTypeBadge(vehicle.types)}</div>
-            <div class="vehicle-price">${formatPrice(vehicle.price)}</div>
-        </div>
-        <div class="vehicle-info">
-            <h3 class="vehicle-title">${vehicle.brand.toUpperCase()} ${vehicle.model.toUpperCase()}${vehicle.finition ? ' ' + vehicle.finition : ''}</h3>
-            <p class="vehicle-subtitle">${vehicle.year} • ${getDestinationLabel(vehicle.destination)}</p>
-            <div class="vehicle-specs">
-                <div class="spec-item">
-                    <i class="fas fa-wrench"></i>
-                    <span>${vehicle.motor || '-'}</span>
-                </div>
-                <div class="spec-item">
-                    <i class="fas fa-gas-pump"></i>
-                    <span>${vehicle.fuel}</span>
-                </div>
-                <div class="spec-item">
-                    <i class="fas fa-cog"></i>
-                    <span>${vehicle.transmission}</span>
-                </div>
-            </div>
-        </div>
-    `;
-
-    return card;
-}
-
-// ===== PAGE VÉHICULES =====
-function initVehiclesPage() {
-    const vehiclesContainer = document.getElementById('vehiclesContainer');
-
-    if (!vehiclesContainer) return;
-
-    // Charger les filtres depuis l'URL
-    loadFiltersFromURL();
-
-    // Initialiser les filtres
-    initFilters();
-
-    // Afficher les véhicules
-    displayVehicles();
-}
-
-// ===== CHARGER LES FILTRES DEPUIS L'URL =====
-function loadFiltersFromURL() {
-    const params = new URLSearchParams(window.location.search);
-
-    if (params.get('type')) {
-        currentFilters.type = params.get('type');
-        const typeSelect = document.getElementById('filterType');
-        if (typeSelect) typeSelect.value = params.get('type');
-    }
-
-    if (params.get('destination')) {
-        currentFilters.destination = params.get('destination');
-    }
-}
-
-// ===== INITIALISER LES FILTRES =====
-function initFilters() {
-    const filterType = document.getElementById('filterType');
-    const filterDestination = document.getElementById('filterDestination');
-    const filterBrand = document.getElementById('filterBrand');
-    const filterMinPrice = document.getElementById('filterMinPrice');
-    const filterMaxPrice = document.getElementById('filterMaxPrice');
-    const filterFuel = document.getElementById('filterFuel');
-    const filterTransmission = document.getElementById('filterTransmission');
-    const resetBtn = document.getElementById('resetFilters');
-
-    // Écouteurs d'événements pour les filtres
-    if (filterType) {
-        filterType.addEventListener('change', function() {
-            currentFilters.type = this.value || null;
-            displayVehicles();
-        });
-    }
-
-    if (filterDestination) {
-        filterDestination.addEventListener('change', function() {
-            currentFilters.destination = this.value || null;
-            displayVehicles();
-        });
-    }
-
-    if (filterBrand) {
-        filterBrand.addEventListener('input', function() {
-            currentFilters.brand = this.value || null;
-            displayVehicles();
-        });
-    }
-
-    if (filterMinPrice) {
-        filterMinPrice.addEventListener('input', function() {
-            currentFilters.minPrice = this.value || null;
-            displayVehicles();
-        });
-    }
-
-    if (filterMaxPrice) {
-        filterMaxPrice.addEventListener('input', function() {
-            currentFilters.maxPrice = this.value || null;
-            displayVehicles();
-        });
-    }
-
-    if (filterFuel) {
-        filterFuel.addEventListener('change', function() {
-            currentFilters.fuel = this.value || null;
-            displayVehicles();
-        });
-    }
-
-    if (filterTransmission) {
-        filterTransmission.addEventListener('change', function() {
-            currentFilters.transmission = this.value || null;
-            displayVehicles();
-        });
-    }
-
-    // Bouton de réinitialisation
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function() {
-            currentFilters = {};
-
-            // Réinitialiser les champs
-            if (filterType) filterType.value = '';
-            if (filterDestination) filterDestination.value = '';
-            if (filterBrand) filterBrand.value = '';
-            if (filterMinPrice) filterMinPrice.value = '';
-            if (filterMaxPrice) filterMaxPrice.value = '';
-            if (filterFuel) filterFuel.value = '';
-            if (filterTransmission) filterTransmission.value = '';
-
-            displayVehicles();
-        });
-    }
-}
-
-// ===== AFFICHER LES VÉHICULES =====
-async function displayVehicles() {
-    const vehiclesContainer = document.getElementById('vehiclesContainer');
-    const resultsCount = document.getElementById('resultsCount');
-
-    if (!vehiclesContainer) return;
-
-    // Afficher un loader
-    vehiclesContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i></div>';
-
-    // Nettoyer les filtres vides
-    const cleanFilters = {};
-    for (let key in currentFilters) {
-        if (currentFilters[key]) {
-            cleanFilters[key] = currentFilters[key];
-        }
-    }
-
-    // Obtenir les véhicules filtrés
-    const vehicles = await filterVehicles(cleanFilters);
-
-    // Afficher le nombre de résultats
-    if (resultsCount) {
-        resultsCount.textContent = `${vehicles.length} véhicule${vehicles.length > 1 ? 's' : ''} trouvé${vehicles.length > 1 ? 's' : ''}`;
-    }
-
-    // Afficher les véhicules
-    vehiclesContainer.innerHTML = '';
-
-    if (vehicles.length === 0) {
-        vehiclesContainer.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                <i class="fas fa-search" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
-                <h3>Aucun véhicule trouvé</h3>
-                <p style="color: var(--text-light);">Essayez de modifier vos critères de recherche</p>
-            </div>
-        `;
-        return;
-    }
-
-    vehicles.forEach(vehicle => {
-        const card = createVehicleCard(vehicle);
-        vehiclesContainer.appendChild(card);
-    });
-}
-
-// ===== AFFICHER LES VÉHICULES D'OCCASION =====
-async function displayVehiclesOccasion() {
-    const vehiclesContainer = document.getElementById('vehiclesContainer');
-    const resultsCount = document.getElementById('resultsCount');
-
-    if (!vehiclesContainer) return;
-
-    // Afficher un loader
-    vehiclesContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i></div>';
-
-    // Obtenir tous les véhicules
-    const allVehicles = await getAllVehicles();
-
-    // Filtrer pour exclure les neufs (garder recent et occasion)
-    const vehicles = allVehicles.filter(vehicle => {
-        return vehicle.types && !vehicle.types.includes('neuf');
-    });
-
-    // Appliquer les autres filtres si présents
-    const filtered = vehicles.filter(vehicle => {
-        // Filtre par destination
-        if (currentFilters.destination && vehicle.destination !== currentFilters.destination) {
-            return false;
-        }
-
-        // Filtre par marque
-        if (currentFilters.brand) {
-            const searchBrand = currentFilters.brand.toLowerCase();
-            if (!vehicle.brand.toLowerCase().includes(searchBrand)) {
-                return false;
-            }
-        }
-
-        // Filtre par prix
-        if (currentFilters.minPrice && vehicle.price < Number(currentFilters.minPrice)) {
-            return false;
-        }
-        if (currentFilters.maxPrice && vehicle.price > Number(currentFilters.maxPrice)) {
-            return false;
-        }
-
-        // Filtre par carburant
-        if (currentFilters.fuel && vehicle.fuel !== currentFilters.fuel) {
-            return false;
-        }
-
-        // Filtre par transmission
-        if (currentFilters.transmission && vehicle.transmission !== currentFilters.transmission) {
-            return false;
-        }
-
-        return true;
-    });
-
-    // Afficher le nombre de résultats
-    if (resultsCount) {
-        resultsCount.textContent = `${filtered.length} véhicule${filtered.length > 1 ? 's' : ''} trouvé${filtered.length > 1 ? 's' : ''}`;
-    }
-
-    // Afficher les véhicules
-    vehiclesContainer.innerHTML = '';
-
-    if (filtered.length === 0) {
-        vehiclesContainer.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                <i class="fas fa-search" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
-                <h3>Aucun véhicule trouvé</h3>
-                <p style="color: var(--text-light);">Essayez de modifier vos critères de recherche</p>
-            </div>
-        `;
-        return;
-    }
-
-    filtered.forEach(vehicle => {
-        const card = createVehicleCard(vehicle);
-        vehiclesContainer.appendChild(card);
-    });
-}
-
-// ===== VOIR LES DÉTAILS D'UN VÉHICULE =====
-async function viewVehicleDetails(vehicleId) {
-    // Find the vehicle data
-    const vehicle = await getVehicleById(vehicleId);
-
-    if (!vehicle) return;
-
-    // Store vehicle data in localStorage for the detail page
-    localStorage.setItem('currentVehicle', JSON.stringify(vehicle));
-
-    // Redirect to detail page
-    window.location.href = `/vehicule-detail.html?id=${vehicleId}`;
-}
-
-// ===== FORMULAIRE DE CONTACT =====
-function initContactForm() {
-    // La soumission est gérée nativement par Netlify Forms via action="/confirmation.html"
-    // Pas besoin de JS ici
-}
-
-// ===== ANIMATIONS AU SCROLL =====
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-    // Observer les éléments à animer
-    const animatedElements = document.querySelectorAll('.concept-card, .vehicle-card, .feature-card, .testimonial-card');
-    animatedElements.forEach(el => observer.observe(el));
+    if (scrollTop) {
+        scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
 }
 
-// Initialiser les animations au chargement
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScrollAnimations);
-} else {
-    initScrollAnimations();
+// ===== VÉHICULES EN VEDETTE (index) =====
+async function initFeaturedVehicles() {
+    const grid   = document.getElementById('featuredVehicles');
+    const noMsg  = document.getElementById('noVehiclesMsg');
+    const seeAll = document.getElementById('seeAllBtn');
+    if (!grid) return;
+
+    try {
+        const vehicles = await getFeaturedVehicles(6);
+        if (!vehicles || vehicles.length === 0) {
+            grid.style.display = 'none';
+            if (noMsg) noMsg.style.display = 'block';
+            if (seeAll) seeAll.style.display = 'none';
+            return;
+        }
+        grid.innerHTML = vehicles.map(v => buildVehicleCard(v)).join('');
+    } catch {
+        grid.style.display = 'none';
+        if (noMsg) noMsg.style.display = 'block';
+        if (seeAll) seeAll.style.display = 'none';
+    }
 }
 
-// ===== GESTION DES ERREURS D'IMAGES =====
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('img');
+function buildVehicleCard(v) {
+    const imgHtml = v.image
+        ? `<img src="${v.image}" alt="${v.brand} ${v.model}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
+        : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#555;font-size:2.5rem;"><i class="fas fa-car"></i></div>`;
 
-    images.forEach(img => {
-        img.addEventListener('error', function() {
-            // Image de remplacement en cas d'erreur
-            this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f0f0f0" width="400" height="300"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23999" font-family="Arial" font-size="18"%3EImage non disponible%3C/text%3E%3C/svg%3E';
+    const badgeClass = v.collection === 'occasions'
+        ? (v.type === 'export' ? 'badge-export' : 'badge-france')
+        : 'badge-neuf';
+    const badgeLabel = v.collection === 'occasions'
+        ? (v.type === 'export' ? 'Export' : 'France')
+        : 'Neuf';
+
+    const kmSpec = v.kilometrage
+        ? `<span class="vehicle-card-spec"><i class="fas fa-tachometer-alt"></i> ${Number(v.kilometrage).toLocaleString('fr-FR')} km</span>`
+        : '';
+
+    const detailUrl = `vehicule-detail.html?id=${v.id}&type=${v.collection || 'neufs'}`;
+    const waText = encodeURIComponent(`Bonjour, je suis intéressé(e) par le véhicule ${v.brand} ${v.model} ${v.year || ''} — réf. ${v.id}`);
+
+    return `
+    <div class="vehicle-card">
+        <div class="vehicle-card-img">
+            ${imgHtml}
+            <span class="vehicle-card-badge ${badgeClass}">${badgeLabel}</span>
+        </div>
+        <div class="vehicle-card-body">
+            <div class="vehicle-card-title">${v.brand} ${v.model}</div>
+            <div class="vehicle-card-sub">${v.year || ''} ${v.finition ? '· ' + v.finition : ''}</div>
+            <div class="vehicle-card-specs">
+                ${v.fuel ? `<span class="vehicle-card-spec"><i class="fas fa-gas-pump"></i> ${v.fuel}</span>` : ''}
+                ${v.transmission ? `<span class="vehicle-card-spec"><i class="fas fa-cog"></i> ${v.transmission}</span>` : ''}
+                ${kmSpec}
+            </div>
+            <div class="vehicle-card-price">${v.price ? Number(v.price).toLocaleString('fr-FR') + ' €' : 'Prix sur demande'}</div>
+            <div class="vehicle-card-actions">
+                <a href="${detailUrl}" class="btn btn-outline-gold">Voir détail</a>
+                <a href="https://wa.me/33602159385?text=${waText}" class="btn btn-wa" target="_blank" rel="noopener" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>`;
+}
+
+// ===== PAGE VÉHICULES NEUFS =====
+async function initVehiclesPage() {
+    const grid = document.getElementById('vehiclesGrid');
+    if (!grid) return;
+
+    let allVehicles = [];
+    try {
+        allVehicles = await getAllVehicles('neufs');
+    } catch { allVehicles = []; }
+
+    renderVehicleGrid(grid, allVehicles, 'neufs');
+    initFilters(allVehicles, grid, 'neufs');
+}
+
+// ===== PAGE OCCASIONS =====
+async function initOccasionsPage() {
+    const gridExport = document.getElementById('vehiclesGridExport');
+    const gridFrance = document.getElementById('vehiclesGridFrance');
+    if (!gridExport && !gridFrance) return;
+
+    let allVehicles = [];
+    try {
+        allVehicles = await getAllVehicles('occasions');
+    } catch { allVehicles = []; }
+
+    const exportVehicles = allVehicles.filter(v => v.type === 'export');
+    const franceVehicles = allVehicles.filter(v => v.type === 'france');
+
+    // Mettre à jour les compteurs
+    const countExport = document.getElementById('count-export');
+    const countFrance = document.getElementById('count-france');
+    if (countExport) countExport.textContent = exportVehicles.length;
+    if (countFrance) countFrance.textContent = franceVehicles.length;
+
+    if (gridExport) renderVehicleGrid(gridExport, exportVehicles, 'occasions');
+    if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles, 'occasions');
+
+    // Onglets
+    initTabs();
+
+    // Filtres sur le tab actif
+    initFiltersOccasions(allVehicles, gridExport, gridFrance);
+}
+
+function initTabs() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const tab = btn.dataset.tab;
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            const content = document.getElementById(`tab-content-${tab}`);
+            if (content) content.classList.add('active');
         });
     });
-});
+}
 
-// ===== REVIEWS CAROUSEL =====
+function renderVehicleGrid(grid, vehicles, collection) {
+    if (!vehicles || vehicles.length === 0) {
+        grid.innerHTML = `
+        <div class="no-vehicles">
+            <i class="fas fa-car"></i>
+            <h3>Aucun véhicule disponible</h3>
+            <p>De nouveaux véhicules arrivent bientôt.<br>Contactez-nous pour connaître notre stock.</p>
+            <a href="https://wa.me/33602159385" class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> Nous contacter
+            </a>
+        </div>`;
+        return;
+    }
+    grid.innerHTML = vehicles.map(v => buildCatalogueCard(v, collection)).join('');
+}
+
+function buildCatalogueCard(v, collection) {
+    const imgHtml = v.image
+        ? `<img src="${v.image}" alt="${v.brand} ${v.model}" loading="lazy">`
+        : `<div class="vc-img-placeholder"><i class="fas fa-car"></i></div>`;
+
+    let badgeClass = 'neuf', badgeLabel = 'Neuf';
+    if (collection === 'occasions') {
+        badgeClass = v.type === 'export' ? 'export' : 'france';
+        badgeLabel = v.type === 'export' ? 'Export' : 'France';
+    }
+
+    const dispoClass = v.disponibilite === 'vendu' ? 'vendu' : (v.disponibilite === 'commande' ? 'commande' : 'stock');
+    const dispoLabel = v.disponibilite === 'vendu' ? 'Vendu' : (v.disponibilite === 'commande' ? 'Sur commande' : 'En stock');
+
+    const kmSpec = v.kilometrage
+        ? `<span class="vc-spec"><i class="fas fa-tachometer-alt"></i> ${Number(v.kilometrage).toLocaleString('fr-FR')} km</span>`
+        : '';
+
+    const detailUrl = `vehicule-detail.html?id=${v.id}&type=${collection}`;
+    const waText = encodeURIComponent(`Bonjour AUTO EXPORT, je suis intéressé(e) par le véhicule :\n${v.brand} ${v.model} ${v.year || ''} (réf. ${v.id})\n\nPouvez-vous me donner plus d'informations ?`);
+
+    return `
+    <div class="vc">
+        <div class="vc-img">
+            ${imgHtml}
+            <span class="vc-badge ${badgeClass}">${badgeLabel}</span>
+            <span class="vc-dispo ${dispoClass}">${dispoLabel}</span>
+        </div>
+        <div class="vc-body">
+            <div class="vc-title">${v.brand} ${v.model}</div>
+            <div class="vc-sub">${v.year || ''} ${v.finition ? '· ' + v.finition : ''}</div>
+            <div class="vc-specs">
+                ${v.fuel ? `<span class="vc-spec"><i class="fas fa-gas-pump"></i> ${v.fuel}</span>` : ''}
+                ${v.transmission ? `<span class="vc-spec"><i class="fas fa-cog"></i> ${v.transmission}</span>` : ''}
+                ${kmSpec}
+                ${v.motor ? `<span class="vc-spec"><i class="fas fa-engine"></i> ${v.motor}</span>` : ''}
+            </div>
+            <div class="vc-price">${v.price ? Number(v.price).toLocaleString('fr-FR') + ' €' : 'Prix sur demande'}</div>
+            <div class="vc-actions">
+                <a href="${detailUrl}" class="btn btn-outline-gold">Voir détail</a>
+                <a href="https://wa.me/33602159385?text=${waText}" class="btn-wa" target="_blank" rel="noopener" title="Contacter sur WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>`;
+}
+
+// ===== FILTRES NEUFS =====
+function initFilters(allVehicles, grid, collection) {
+    const brandInput = document.getElementById('filterBrand');
+    const minPrice   = document.getElementById('filterMinPrice');
+    const maxPrice   = document.getElementById('filterMaxPrice');
+    const fuelSelect = document.getElementById('filterFuel');
+    const transSelect= document.getElementById('filterTransmission');
+    const resetBtn   = document.getElementById('resetFilters');
+    const countEl    = document.getElementById('resultsCount');
+
+    const applyFilters = () => {
+        let filtered = [...allVehicles];
+        if (brandInput && brandInput.value.trim()) {
+            const q = brandInput.value.trim().toLowerCase();
+            filtered = filtered.filter(v =>
+                (v.brand || '').toLowerCase().includes(q) || (v.model || '').toLowerCase().includes(q)
+            );
+        }
+        if (minPrice && minPrice.value) filtered = filtered.filter(v => (v.price || 0) >= Number(minPrice.value));
+        if (maxPrice && maxPrice.value) filtered = filtered.filter(v => (v.price || 0) <= Number(maxPrice.value));
+        if (fuelSelect && fuelSelect.value) filtered = filtered.filter(v => v.fuel === fuelSelect.value);
+        if (transSelect && transSelect.value) filtered = filtered.filter(v => v.transmission === transSelect.value);
+
+        renderVehicleGrid(grid, filtered, collection);
+        if (countEl) {
+            countEl.innerHTML = `<span class="results-count-number">${filtered.length}</span><span class="results-count-text"> véhicule${filtered.length > 1 ? 's' : ''} trouvé${filtered.length > 1 ? 's' : ''}</span>`;
+        }
+    };
+
+    [brandInput, minPrice, maxPrice, fuelSelect, transSelect].forEach(el => {
+        if (el) el.addEventListener('input', applyFilters);
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            [brandInput, minPrice, maxPrice, fuelSelect, transSelect].forEach(el => { if (el) el.value = ''; });
+            applyFilters();
+        });
+    }
+
+    applyFilters();
+}
+
+// ===== FILTRES OCCASIONS =====
+function initFiltersOccasions(allVehicles, gridExport, gridFrance) {
+    const brandInput = document.getElementById('filterBrand');
+    const maxKm      = document.getElementById('filterMaxKm');
+    const minPrice   = document.getElementById('filterMinPrice');
+    const maxPrice   = document.getElementById('filterMaxPrice');
+    const fuelSelect = document.getElementById('filterFuel');
+    const resetBtn   = document.getElementById('resetFilters');
+    const countEl    = document.getElementById('resultsCount');
+
+    const applyFilters = () => {
+        let filtered = [...allVehicles];
+        if (brandInput && brandInput.value.trim()) {
+            const q = brandInput.value.trim().toLowerCase();
+            filtered = filtered.filter(v =>
+                (v.brand || '').toLowerCase().includes(q) || (v.model || '').toLowerCase().includes(q)
+            );
+        }
+        if (maxKm && maxKm.value) filtered = filtered.filter(v => (v.kilometrage || 0) <= Number(maxKm.value));
+        if (minPrice && minPrice.value) filtered = filtered.filter(v => (v.price || 0) >= Number(minPrice.value));
+        if (maxPrice && maxPrice.value) filtered = filtered.filter(v => (v.price || 0) <= Number(maxPrice.value));
+        if (fuelSelect && fuelSelect.value) filtered = filtered.filter(v => v.fuel === fuelSelect.value);
+
+        const exportVehicles = filtered.filter(v => v.type === 'export');
+        const franceVehicles = filtered.filter(v => v.type === 'france');
+
+        const countExport = document.getElementById('count-export');
+        const countFrance = document.getElementById('count-france');
+        if (countExport) countExport.textContent = exportVehicles.length;
+        if (countFrance) countFrance.textContent = franceVehicles.length;
+
+        if (gridExport) renderVehicleGrid(gridExport, exportVehicles, 'occasions');
+        if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles, 'occasions');
+
+        if (countEl) {
+            const total = filtered.length;
+            countEl.innerHTML = `<span class="results-count-number">${total}</span><span class="results-count-text"> véhicule${total > 1 ? 's' : ''} trouvé${total > 1 ? 's' : ''}</span>`;
+        }
+    };
+
+    [brandInput, maxKm, minPrice, maxPrice, fuelSelect].forEach(el => {
+        if (el) el.addEventListener('input', applyFilters);
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            [brandInput, maxKm, minPrice, maxPrice, fuelSelect].forEach(el => { if (el) el.value = ''; });
+            applyFilters();
+        });
+    }
+
+    applyFilters();
+}
+
+// ===== PAGE DÉTAIL VÉHICULE =====
+async function initVehicleDetailPage() {
+    const infoCard = document.getElementById('vehicleInfoCard');
+    if (!infoCard) return;
+
+    const params     = new URLSearchParams(window.location.search);
+    const vehicleId  = params.get('id');
+    const collection = params.get('type') || 'neufs';
+
+    if (!vehicleId) {
+        infoCard.innerHTML = '<p style="color:var(--text-light);padding:2rem;">Véhicule introuvable.</p>';
+        return;
+    }
+
+    try {
+        const vehicles = await getAllVehicles(collection);
+        const vehicle  = vehicles.find(v => String(v.id) === String(vehicleId));
+
+        if (!vehicle) {
+            infoCard.innerHTML = '<p style="color:var(--text-light);padding:2rem;">Véhicule introuvable.</p>';
+            return;
+        }
+
+        document.title = `${vehicle.brand} ${vehicle.model} — AUTO EXPORT`;
+        const breadcrumbTitle = document.getElementById('breadcrumbTitle');
+        const breadcrumbType  = document.getElementById('breadcrumbType');
+        if (breadcrumbTitle) breadcrumbTitle.textContent = `${vehicle.brand} ${vehicle.model}`;
+        if (breadcrumbType) {
+            breadcrumbType.textContent = collection === 'occasions' ? "Véhicules d'Occasion" : "Véhicules Neufs";
+            breadcrumbType.href = collection === 'occasions' ? 'vehicules-occasions.html' : 'vehicules-neufs.html';
+        }
+
+        // Galerie
+        const mainImg = document.getElementById('mainImage');
+        const thumbGallery = document.getElementById('thumbnailGallery');
+        const images = [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
+
+        if (mainImg && images.length > 0) {
+            mainImg.src = images[0];
+            mainImg.alt = `${vehicle.brand} ${vehicle.model}`;
+        }
+        if (thumbGallery && images.length > 1) {
+            thumbGallery.innerHTML = images.map((img, i) => `
+                <div class="thumb ${i === 0 ? 'active' : ''}" onclick="switchImage('${img}', this)">
+                    <img src="${img}" alt="Photo ${i+1}">
+                </div>`).join('');
+        }
+
+        // CTA WhatsApp dynamic
+        const ctaWa = document.getElementById('ctaWhatsapp');
+        const waText = encodeURIComponent(`Bonjour AUTO EXPORT, je suis intéressé(e) par le véhicule :\n${vehicle.brand} ${vehicle.model} ${vehicle.year || ''} (réf. ${vehicle.id})\n\nPouvez-vous me donner plus d'informations ?`);
+        if (ctaWa) ctaWa.href = `https://wa.me/33602159385?text=${waText}`;
+
+        // Info card
+        let badgeClass = 'neuf', badgeLabel = 'Neuf';
+        if (collection === 'occasions') {
+            badgeClass = vehicle.type === 'export' ? 'export' : 'france';
+            badgeLabel = vehicle.type === 'export' ? 'Export Maghreb' : 'Occasion France';
+        }
+
+        const dispoClass = vehicle.disponibilite === 'vendu' ? 'vendu' : (vehicle.disponibilite === 'commande' ? 'commande' : 'stock');
+        const dispoLabel = vehicle.disponibilite === 'vendu' ? 'Vendu' : (vehicle.disponibilite === 'commande' ? 'Sur commande' : 'En stock');
+
+        const kmRow = vehicle.kilometrage
+            ? `<div class="vd-spec-item"><label>Kilométrage</label><span>${Number(vehicle.kilometrage).toLocaleString('fr-FR')} km</span></div>`
+            : '';
+
+        infoCard.innerHTML = `
+        <div class="vd-badge-row">
+            <span class="vd-badge ${badgeClass}">${badgeLabel}</span>
+            <span class="vd-badge ${dispoClass}">${dispoLabel}</span>
+        </div>
+        <div class="vd-title">${vehicle.brand} ${vehicle.model}</div>
+        ${vehicle.finition ? `<div class="vd-sub">${vehicle.finition}</div>` : ''}
+        <div class="vd-price">${vehicle.price ? Number(vehicle.price).toLocaleString('fr-FR') + ' €' : 'Prix sur demande'}</div>
+        <div class="vd-specs">
+            ${vehicle.year ? `<div class="vd-spec-item"><label>Année</label><span>${vehicle.year}</span></div>` : ''}
+            ${vehicle.fuel ? `<div class="vd-spec-item"><label>Carburant</label><span>${vehicle.fuel}</span></div>` : ''}
+            ${vehicle.transmission ? `<div class="vd-spec-item"><label>Boîte</label><span>${vehicle.transmission}</span></div>` : ''}
+            ${vehicle.motor ? `<div class="vd-spec-item"><label>Moteur</label><span>${vehicle.motor}</span></div>` : ''}
+            ${vehicle.exterior_color ? `<div class="vd-spec-item"><label>Couleur ext.</label><span>${vehicle.exterior_color}</span></div>` : ''}
+            ${vehicle.interior_color ? `<div class="vd-spec-item"><label>Couleur int.</label><span>${vehicle.interior_color}</span></div>` : ''}
+            ${kmRow}
+        </div>
+        <div class="vd-actions">
+            <a href="https://wa.me/33602159385?text=${waText}" class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> Demander par WhatsApp
+            </a>
+            <a href="tel:+33602159385" class="btn btn-phone">
+                <i class="fas fa-phone"></i> 06 02 15 93 85
+            </a>
+        </div>
+        ${vehicle.desc ? `<div class="vd-desc"><h4>Description</h4><p>${vehicle.desc}</p></div>` : ''}`;
+
+    } catch (err) {
+        infoCard.innerHTML = '<p style="color:var(--text-light);padding:2rem;">Impossible de charger ce véhicule.</p>';
+    }
+}
+
+function switchImage(src, el) {
+    const mainImg = document.getElementById('mainImage');
+    if (mainImg) mainImg.src = src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    if (el) el.classList.add('active');
+}
+
+// ===== CARROUSEL AVIS =====
 function initReviewsCarousel() {
-    // Pas de défilement automatique — affichage statique des 3 avis
+    // Simple — juste affichage statique, pas de JS requis pour 3 cards
 }

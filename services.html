@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <meta name="description" content="ACSONE AUTOMOBILES - Nos services : import/export de véhicule, transit international, formalités d'export, carte grise, assurance temporaire, Ex1 de douane.">
-    <title>Nos Services - ACSONE AUTOMOBILES</title>
+    <meta name="description" content="AUTO EXPORT — Nos services : Achat, Vente, Reprise, Dépôt-Vente, Export Maghreb, Transit international. Vaulx-en-Velin, Lyon.">
+    <title>Nos Services | AUTO EXPORT</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,31 +13,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header / Navigation -->
+
     <header class="header" id="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="index.html" class="logo">
-                        <img src="images/logo.png" alt="ACSONE AUTOMOBILES Logo">
+                        <img src="images/logo.png" alt="AUTO EXPORT Logo">
                     </a>
-
-                    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                        <span></span><span></span><span></span>
                     </button>
-
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
                         <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
-                        <li><a href="about.html" class="nav-link">À Propos</a></li>
+                        <li><a href="vehicules-occasions.html" class="nav-link">Occasions</a></li>
                         <li><a href="services.html" class="nav-link active">Services</a></li>
+                        <li><a href="about.html" class="nav-link">À Propos</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
-
                     <div class="nav-actions">
-                        <a href="https://wa.me/33609159046" class="btn btn-call" target="_blank">
+                        <a href="https://wa.me/33602159385" class="btn btn-call" target="_blank" rel="noopener">
                             <i class="fab fa-whatsapp"></i> WhatsApp
                         </a>
                     </div>
@@ -46,110 +42,96 @@
         </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header" style="background-image: url('images/service.jpg'); background-size: cover; background-position: center;">
+    <section class="page-header" style="background-image: url('images/service.jpg');">
         <div class="page-header-overlay"></div>
-        <div class="container" style="position: relative; z-index: 1;">
+        <div class="container" style="position:relative;z-index:1;">
             <h1 class="page-title">Nos Services</h1>
-            <p class="page-subtitle">Une expertise complète pour tous vos projets automobiles</p>
+            <p class="page-subtitle">Un accompagnement complet pour tous vos projets automobiles</p>
         </div>
     </section>
 
-    <!-- Introduction -->
-    <section class="section">
+    <!-- Intro -->
+    <section class="section section-gray">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Ce que nous proposons</h2>
                 <p class="section-subtitle">
-                    ACSONE AUTOMOBILES vous accompagne à chaque étape de votre projet, de l'achat à la livraison,
+                    AUTO EXPORT vous accompagne à chaque étape de votre projet, de l'achat à la livraison,
                     en France comme à l'export vers la Tunisie, l'Algérie et le Maroc.
                 </p>
             </div>
 
-            <!-- Grille des services -->
             <div class="services-grid">
 
                 <div class="service-card">
-                    <div class="service-photo" style="background-image: url('images/service-export.webp');">
+                    <div class="service-photo" style="background-image: url('images/service-achat.webp'); background-color:#1a1a1a;">
                         <div class="service-photo-overlay"></div>
-                        <div class="service-icon-badge"><i class="fas fa-globe-europe"></i></div>
+                        <div class="service-icon-badge"><i class="fas fa-shopping-cart"></i></div>
                     </div>
                     <div class="service-body">
-                        <h3>Import / Export de Véhicule</h3>
-                        <p>Nous gérons l'intégralité de vos opérations d'import/export automobile. Achat en France, exportation vers la Tunisie, l'Algérie ou le Maroc : toutes les étapes prises en charge.</p>
-                        <a href="contact.html" class="service-link">Nous contacter <i class="fas fa-arrow-right"></i></a>
+                        <h3>Achat de Véhicule</h3>
+                        <p>Nous achetons votre véhicule d'occasion au meilleur prix du marché. Estimation gratuite, paiement rapide et sans démarches compliquées.</p>
+                        <a href="contact.html" class="service-link">Obtenir une estimation <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-photo" style="background-image: url('images/service-transit.webp');">
-                        <div class="service-photo-overlay"></div>
-                        <div class="service-icon-badge"><i class="fas fa-ship"></i></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Transit International</h3>
-                        <p>Nous organisons le transit de vos véhicules à travers les frontières. Coordination transporteurs, suivi de l'acheminement et gestion des formalités douanières.</p>
-                        <a href="contact.html" class="service-link">Nous contacter <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-photo" style="background-image: url('images/service-vente.webp');">
+                    <div class="service-photo" style="background-image: url('images/service-vente.webp'); background-color:#1a1a1a;">
                         <div class="service-photo-overlay"></div>
                         <div class="service-icon-badge"><i class="fas fa-car"></i></div>
                     </div>
                     <div class="service-body">
-                        <h3>Vente de Véhicules Neufs</h3>
-                        <p>Un stock sélectionné de véhicules neufs, contrôlés et garantis. Toutes marques. Nous vous conseillons pour trouver le véhicule qui correspond à votre projet.</p>
+                        <h3>Vente de Véhicules</h3>
+                        <p>Un stock sélectionné de véhicules neufs et d'occasion. Toutes marques disponibles, pour la France ou à l'export. Conseil personnalisé inclus.</p>
                         <a href="vehicules-neufs.html" class="service-link">Voir nos véhicules <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-photo" style="background-image: url('images/service-formalites.webp');">
+                    <div class="service-photo" style="background-image: url('images/service-reprise.webp'); background-color:#1a1a1a;">
                         <div class="service-photo-overlay"></div>
-                        <div class="service-icon-badge"><i class="fas fa-file-alt"></i></div>
+                        <div class="service-icon-badge"><i class="fas fa-sync-alt"></i></div>
                     </div>
                     <div class="service-body">
-                        <h3>Formalités d'Export</h3>
-                        <p>Certificats, dossiers douaniers, homologation dans le pays de destination. Nous prenons en charge toutes les démarches administratives — vous n'avez rien à faire.</p>
-                        <a href="contact.html" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-photo" style="background-image: url('images/service-cartegrise.webp');">
-                        <div class="service-photo-overlay"></div>
-                        <div class="service-icon-badge"><i class="fas fa-id-card"></i></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Carte Grise</h3>
-                        <p>Besoin d'immatriculer votre véhicule en France ? Nous gérons votre demande de carte grise rapidement et sans déplacement, pour les achats effectués chez nous.</p>
+                        <h3>Reprise</h3>
+                        <p>Reprise de votre ancien véhicule lors de l'achat d'un nouveau chez nous. Démarches administratives simplifiées et gain de temps assuré.</p>
                         <a href="contact.html" class="service-link">Nous contacter <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-photo" style="background-image: url('images/service-assurance.webp');">
+                    <div class="service-photo" style="background-image: url('images/service-depot.webp'); background-color:#1a1a1a;">
                         <div class="service-photo-overlay"></div>
-                        <div class="service-icon-badge"><i class="fas fa-shield-alt"></i></div>
+                        <div class="service-icon-badge"><i class="fas fa-handshake"></i></div>
                     </div>
                     <div class="service-body">
-                        <h3>Assurance Temporaire</h3>
-                        <p>Pour les véhicules en attente d'immatriculation ou en transit, nous proposons une assurance temporaire adaptée. Vous roulez en toute légalité.</p>
+                        <h3>Dépôt-Vente</h3>
+                        <p>Confiez-nous votre véhicule en dépôt-vente. Nous nous occupons de la mise en valeur, de la commercialisation et des démarches — vous touchez le prix convenu à la vente.</p>
+                        <a href="contact.html" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-photo" style="background-image: url('images/service-export.webp'); background-color:#1a1a1a;">
+                        <div class="service-photo-overlay"></div>
+                        <div class="service-icon-badge"><i class="fas fa-globe-africa"></i></div>
+                    </div>
+                    <div class="service-body">
+                        <h3>Export Maghreb</h3>
+                        <p>Spécialiste de l'export vers la Tunisie, l'Algérie et le Maroc. Nous gérons l'intégralité des formalités douanières, certificats et dossiers administratifs.</p>
                         <a href="contact.html" class="service-link">Nous contacter <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-photo" style="background-image: url('images/service-ex1.webp');">
+                    <div class="service-photo" style="background-image: url('images/service-transit.webp'); background-color:#1a1a1a;">
                         <div class="service-photo-overlay"></div>
-                        <div class="service-icon-badge"><i class="fas fa-stamp"></i></div>
+                        <div class="service-icon-badge"><i class="fas fa-ship"></i></div>
                     </div>
                     <div class="service-body">
-                        <h3>Ex1 de Douane Transit</h3>
-                        <p>Document indispensable pour exporter un véhicule hors UE. Nous constituons ce dossier douanier pour vous, en conformité avec la réglementation en vigueur.</p>
-                        <a href="contact.html" class="service-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                        <h3>Transit International</h3>
+                        <p>Organisation du transit de vos véhicules à travers les frontières. Coordination des transporteurs, suivi de l'acheminement, gestion des formalités de passage.</p>
+                        <a href="contact.html" class="service-link">Nous contacter <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -157,34 +139,34 @@
         </div>
     </section>
 
-    <!-- Section Comment ça marche -->
-    <section class="section section-dark">
+    <!-- Comment ça marche -->
+    <section class="section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Comment ça marche ?</h2>
-                <p class="section-subtitle">Un processus simple et transparent, étape par étape</p>
+                <p class="section-subtitle">Un processus simple et transparent en 3 étapes</p>
             </div>
-            <div class="steps-grid">
-                <div class="step-item">
-                    <div class="step-number">1</div>
-                    <h4>Contactez-nous</h4>
-                    <p>Décrivez votre projet par téléphone, WhatsApp ou email. Nous vous répondons rapidement.</p>
+
+            <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:2rem;">
+
+                <div style="text-align:center; padding:2.5rem 1.5rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:14px; position:relative;">
+                    <div style="width:60px;height:60px;border-radius:50%;background:var(--accent-color);color:#0a0a0a;font-size:1.5rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">1</div>
+                    <h3 style="color:var(--text-white);font-size:1.1rem;margin-bottom:0.75rem;">Contactez-nous</h3>
+                    <p style="color:var(--text-light);font-size:0.88rem;line-height:1.6;">Par téléphone, WhatsApp ou via notre formulaire. Expliquez-nous votre projet.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">2</div>
-                    <h4>Devis personnalisé</h4>
-                    <p>Nous vous proposons une offre adaptée à votre besoin avec des tarifs transparents.</p>
+
+                <div style="text-align:center; padding:2.5rem 1.5rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:14px; position:relative;">
+                    <div style="width:60px;height:60px;border-radius:50%;background:var(--accent-color);color:#0a0a0a;font-size:1.5rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">2</div>
+                    <h3 style="color:var(--text-white);font-size:1.1rem;margin-bottom:0.75rem;">On s'occupe de tout</h3>
+                    <p style="color:var(--text-light);font-size:0.88rem;line-height:1.6;">Estimation, démarches administratives, douanes — nous prenons en charge chaque étape.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">3</div>
-                    <h4>Prise en charge</h4>
-                    <p>Notre équipe gère toutes les démarches administratives et logistiques à votre place.</p>
+
+                <div style="text-align:center; padding:2.5rem 1.5rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:14px; position:relative;">
+                    <div style="width:60px;height:60px;border-radius:50%;background:var(--accent-color);color:#0a0a0a;font-size:1.5rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">3</div>
+                    <h3 style="color:var(--text-white);font-size:1.1rem;margin-bottom:0.75rem;">Livraison &amp; satisfaction</h3>
+                    <p style="color:var(--text-light);font-size:0.88rem;line-height:1.6;">Votre véhicule livré, votre vente conclue. Simplicité et transparence garanties.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-number">4</div>
-                    <h4>Livraison</h4>
-                    <p>Votre véhicule est livré à destination dans les délais convenus, en parfait état.</p>
-                </div>
+
             </div>
         </div>
     </section>
@@ -193,260 +175,78 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Un projet ? Parlons-en !</h2>
-                <p>Notre équipe est disponible du lundi au vendredi de 10h à 18h</p>
+                <h2>Prêt à démarrer votre projet ?</h2>
+                <p>Contactez AUTO EXPORT pour une réponse rapide et un accompagnement personnalisé.</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/33609159046" class="btn btn-primary" target="_blank">
+                    <a href="https://wa.me/33602159385" class="btn btn-whatsapp" target="_blank" rel="noopener">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
+                    <a href="tel:+33602159385" class="btn btn-phone">
+                        <i class="fas fa-phone"></i> 06 02 15 93 85
+                    </a>
                     <a href="contact.html" class="btn btn-outline-white">
-                        <i class="fas fa-envelope"></i> Nous contacter
+                        <i class="fas fa-envelope"></i> Formulaire
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <img src="images/logo.png" alt="ACSONE AUTOMOBILES" class="footer-logo">
-                    <p class="footer-description">
-                        Votre partenaire de confiance pour l'achat de véhicules neufs.
-                        Spécialistes de l'export vers la Tunisie, l'Algérie et le Maroc.
-                    </p>
+                    <img src="images/logo.png" alt="AUTO EXPORT" class="footer-logo">
+                    <p class="footer-description">Spécialiste automobile à Vaulx-en-Velin. Achat, vente, reprise, dépôt-vente, export.</p>
                     <div class="social-links">
-                        <a href="https://www.tiktok.com/@acsoneautomobiles" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://share.google/1gdyWXrAAycwrRvga" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.leboncoin.fr/boutique/77462/acsone_automobiles.htm" target="_blank" aria-label="LeBonCoin"><i class="fas fa-tag"></i></a>
-                        <a href="https://share.google/mV1AL5ez2uM6EcXAI" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@autoexportithri" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/33602159385" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-
                 <div class="footer-column">
-                    <h4>Liens Rapides</h4>
+                    <h4>Navigation</h4>
                     <ul class="footer-links">
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="vehicules-neufs.html">Véhicules Neufs</a></li>
+                        <li><a href="vehicules-occasions.html">Occasions</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">À Propos</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h4>Nos Services</h4>
                     <ul class="footer-links">
-                        <li><a href="services.html">Import / Export de Véhicule</a></li>
-                        <li><a href="services.html">Transit International</a></li>
-                        <li><a href="services.html">Formalités d'Export</a></li>
-                        <li><a href="services.html">Carte Grise</a></li>
-                        <li><a href="services.html">Assurance Temporaire</a></li>
-                        <li><a href="services.html">Ex1 de Douane Transit</a></li>
+                        <li><a href="services.html">Achat</a></li>
+                        <li><a href="services.html">Vente</a></li>
+                        <li><a href="services.html">Reprise</a></li>
+                        <li><a href="services.html">Dépôt-Vente</a></li>
+                        <li><a href="services.html">Export Maghreb</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+33609159046">+33 6 09 15 90 46</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:fendriautomobiles@gmail.com">fendriautomobiles@gmail.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>2 Rue Marie Curie, 77290 Mitry-Mory</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>Lun-Ven: 10h-18h</span>
-                        </li>
+                        <li><i class="fas fa-phone"></i><a href="tel:+33602159385">06 02 15 93 85</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>87 Route de Genas, 69120 Vaulx-en-Velin</span></li>
+                        <li><i class="fas fa-clock"></i><span>Lun–Sam : 9h–13h</span></li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 ACSONE AUTOMOBILES. Tous droits réservés.</p>
+                <p>&copy; 2026 AUTO EXPORT — RCS Lyon 993 604 081. Tous droits réservés.</p>
                 <div class="footer-legal">
                     <a href="mentions-legales.html">Mentions Légales</a>
-                    <a href="politique-confidentialite.html">Politique de Confidentialité</a>
+                    <a href="politique-confidentialite.html">Confidentialité</a>
                     <a href="cgv.html">CGV</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bouton WhatsApp flottant -->
-    <a href="https://wa.me/33609159046" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <a href="https://wa.me/33602159385" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <!-- Bouton retour en haut -->
-    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
+    <button class="scroll-top" id="scrollTop" aria-label="Retour en haut"><i class="fas fa-arrow-up"></i></button>
     <script src="js/main.js"></script>
-    <style>
-        /* ===== SERVICES PAGE STYLES ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: #fff;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.09);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(26,58,92,0.16);
-        }
-
-        .service-photo {
-            position: relative;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .service-photo-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(160deg, rgba(15,32,51,0.45) 0%, rgba(26,58,92,0.3) 100%);
-        }
-
-        .service-icon-badge {
-            position: absolute;
-            bottom: -22px;
-            left: 1.5rem;
-            width: 48px;
-            height: 48px;
-            background: var(--accent-color);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            box-shadow: 0 4px 14px rgba(200,169,81,0.4);
-        }
-
-        .service-body {
-            padding: 2.2rem 1.5rem 1.8rem;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .service-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 0.8rem;
-            margin-top: 0.5rem;
-        }
-
-        .service-card p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            line-height: 1.7;
-            flex: 1;
-            margin-bottom: 1.2rem;
-        }
-
-        .service-link {
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: gap 0.2s ease, color 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .service-link:hover {
-            color: var(--accent-color);
-            gap: 0.7rem;
-        }
-
-        /* Steps */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.25rem;
-            margin-top: 1.5rem;
-        }
-
-        .step-item {
-            text-align: center;
-            padding: 1.25rem 1rem;
-        }
-
-        .step-number {
-            width: 52px;
-            height: 52px;
-            background: var(--accent-color);
-            color: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin: 0 auto 0.75rem;
-        }
-
-        .step-item h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.75rem;
-        }
-
-        .step-item p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin-top: 2rem;
-            }
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-            .service-card {
-                padding: 1.5rem;
-            }
-        }
-    </style>
 </body>
 </html>
