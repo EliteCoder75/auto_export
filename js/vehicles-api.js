@@ -33,7 +33,7 @@ async function getFeaturedVehicles(limit = 6) {
     const occasions = await getAllVehicles('occasions');
 
     const all = [
-        ...neufs.map(v => ({ ...v, collection: 'neufs' })),
+        ...neufs.filter(v => v.disponibilite !== 'vendu').map(v => ({ ...v, collection: 'neufs' })),
         ...occasions.filter(v => v.disponibilite !== 'vendu').map(v => ({ ...v, collection: 'occasions' }))
     ];
 

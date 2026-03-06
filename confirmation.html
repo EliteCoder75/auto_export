@@ -4,89 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <title>Message envoyé - ACSONE AUTOMOBILES</title>
+    <title>Message envoyé | AUTO EXPORT</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-    <!-- Header / Navigation -->
-    <header class="header" id="header">
+
+    <header class="header scrolled" id="header">
         <nav class="navbar">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="index.html" class="logo">
-                        <img src="images/logo.png" alt="ACSONE AUTOMOBILES Logo">
-                    </a>
-
-                    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-
+                    <a href="index.html" class="logo"><img src="images/logo.webp" alt="AUTO EXPORT Logo"></a>
+                    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
                         <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
-                        <li><a href="about.html" class="nav-link">À Propos</a></li>
+                        <li><a href="vehicules-occasions.html" class="nav-link">Véhicules d'Occasion</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
                         <li><a href="contact.html" class="nav-link">Contact</a></li>
                     </ul>
-
                     <div class="nav-actions">
-                        <a href="https://wa.me/33609159046" class="btn btn-call" target="_blank">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
+                        <a href="https://wa.me/33602159385" class="btn btn-call" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Confirmation Section -->
-    <section class="confirmation-section">
-        <div class="container">
-            <div class="confirmation-content">
-                <div class="confirmation-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <h1>Message envoyé avec succès !</h1>
-                <p>Merci de nous avoir contactés. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.</p>
-                <div class="confirmation-actions">
-                    <a href="index.html" class="btn btn-primary">
-                        <i class="fas fa-home"></i> Retour à l'accueil
-                    </a>
-                    <a href="vehicules-neufs.html" class="btn btn-outline-dark">
-                        <i class="fas fa-car"></i> Voir nos véhicules
-                    </a>
-                </div>
+    <div style="height:80px;"></div>
+
+    <section class="section" style="min-height:60vh; display:flex; align-items:center;">
+        <div class="container" style="text-align:center;">
+            <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; border-radius:50%; background:rgba(200,138,26,0.15); border:2px solid var(--primary-color); margin-bottom:1.5rem;">
+                <i class="fas fa-check" style="font-size:2rem; color:var(--primary-color);"></i>
+            </div>
+            <h1 style="font-size:2.2rem; font-weight:800; color:var(--text-white); margin-bottom:1rem;">Message envoyé !</h1>
+            <p style="color:var(--text-light); font-size:1.1rem; max-width:500px; margin:0 auto 2rem;">
+                Merci pour votre message. Nous vous répondrons dans les plus brefs délais.<br>
+                Vous pouvez aussi nous joindre directement sur WhatsApp.
+            </p>
+            <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Retour à l'accueil</a>
+                <a href="https://wa.me/33602159385" class="btn btn-whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 ACSONE AUTOMOBILES. Tous droits réservés.</p>
+            <div class="footer-bottom" style="padding:1.5rem 0;">
+                <p>&copy; 2026 AUTO EXPORT — RCS Lyon 993 604 081. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="mentions-legales.html">Mentions Légales</a>
+                    <a href="politique-confidentialite.html">Confidentialité</a>
+                    <a href="cgv.html">CGV</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
 </body>
 </html>

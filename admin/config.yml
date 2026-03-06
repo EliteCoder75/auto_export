@@ -18,7 +18,7 @@ collections:
     folder: "_vehicules-neufs"
     create: true
     slug: "{{year}}-{{fields.brand}}-{{fields.model}}"
-    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.price}} €"
+    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.price}} € {{#if fields.disponibilite}}[{{fields.disponibilite}}]{{/if}}"
     fields:
       - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VN-001)"}
       - {label: "Marque", name: "brand", widget: "string", hint: "Ex: Peugeot, Renault..."}
@@ -51,6 +51,7 @@ collections:
         options:
           - {label: "En stock", value: "stock"}
           - {label: "Sur commande", value: "commande"}
+          - {label: "Vendu", value: "vendu"}
       - {label: "Image principale", name: "image", widget: "image"}
       - label: "Galerie (max 20 photos)"
         name: "gallery"
@@ -69,7 +70,7 @@ collections:
     folder: "_vehicules-occasions"
     create: true
     slug: "{{year}}-{{fields.brand}}-{{fields.model}}"
-    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.kilometrage}} km — {{fields.price}} €"
+    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.kilometrage}} km — {{fields.price}} € {{#if fields.disponibilite}}[{{fields.disponibilite}}]{{/if}}"
     fields:
       - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VO-001)"}
       - {label: "Marque", name: "brand", widget: "string"}

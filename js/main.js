@@ -228,6 +228,8 @@ function renderVehicleGrid(grid, vehicles, collection) {
 }
 
 function buildCatalogueCard(v, collection) {
+    const isVendu = v.disponibilite === 'vendu';
+
     const imgHtml = v.image
         ? `<img src="${v.image}" alt="${v.brand} ${v.model}" loading="lazy">`
         : `<div class="vc-img-placeholder"><i class="fas fa-car"></i></div>`;
@@ -238,8 +240,12 @@ function buildCatalogueCard(v, collection) {
         badgeLabel = v.type === 'export' ? 'Export' : 'France';
     }
 
-    const dispoClass = v.disponibilite === 'vendu' ? 'vendu' : (v.disponibilite === 'commande' ? 'commande' : 'stock');
-    const dispoLabel = v.disponibilite === 'vendu' ? 'Vendu' : (v.disponibilite === 'commande' ? 'Sur commande' : 'En stock');
+    const dispoClass = isVendu ? 'vendu' : (v.disponibilite === 'commande' ? 'commande' : 'stock');
+    const dispoLabel = isVendu ? 'Vendu' : (v.disponibilite === 'commande' ? 'Sur commande' : 'En stock');
+
+    const soldOverlay = isVendu
+        ? `<div class="vc-sold-overlay"><span>Vendu</span></div>`
+        : '';
 
     const kmSpec = v.kilometrage
         ? `<span class="vc-spec"><i class="fas fa-tachometer-alt"></i> ${Number(v.kilometrage).toLocaleString('fr-FR')} km</span>`
@@ -248,10 +254,16 @@ function buildCatalogueCard(v, collection) {
     const detailUrl = `vehicule-detail.html?id=${v.id}&type=${collection}`;
     const waText = encodeURIComponent(`Bonjour AUTO EXPORT, je suis intéressé(e) par le véhicule :\n${v.brand} ${v.model} ${v.year || ''} (réf. ${v.id})\n\nPouvez-vous me donner plus d'informations ?`);
 
+    const actions = isVendu
+        ? `<span class="btn btn-outline-gold" style="opacity:.4;cursor:default;pointer-events:none;flex:1;justify-content:center;text-align:center;">Non disponible</span>`
+        : `<a href="${detailUrl}" class="btn btn-outline-gold">Voir détail</a>
+           <a href="https://wa.me/33602159385?text=${waText}" class="btn-wa" target="_blank" rel="noopener" title="Contacter sur WhatsApp"><i class="fab fa-whatsapp"></i></a>`;
+
     return `
-    <div class="vc">
+    <div class="vc${isVendu ? ' vc--vendu' : ''}">
         <div class="vc-img">
             ${imgHtml}
+            ${soldOverlay}
             <span class="vc-badge ${badgeClass}">${badgeLabel}</span>
             <span class="vc-dispo ${dispoClass}">${dispoLabel}</span>
         </div>
@@ -265,12 +277,7 @@ function buildCatalogueCard(v, collection) {
                 ${v.motor ? `<span class="vc-spec"><i class="fas fa-engine"></i> ${v.motor}</span>` : ''}
             </div>
             <div class="vc-price">${v.price ? Number(v.price).toLocaleString('fr-FR') + ' €' : 'Prix sur demande'}</div>
-            <div class="vc-actions">
-                <a href="${detailUrl}" class="btn btn-outline-gold">Voir détail</a>
-                <a href="https://wa.me/33602159385?text=${waText}" class="btn-wa" target="_blank" rel="noopener" title="Contacter sur WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
+            <div class="vc-actions">${actions}</div>
         </div>
     </div>`;
 }
@@ -425,6 +432,8 @@ async function initVehicleDetailPage() {
         const waText = encodeURIComponent(`Bonjour AUTO EXPORT, je suis intéressé(e) par le véhicule :\n${vehicle.brand} ${vehicle.model} ${vehicle.year || ''} (réf. ${vehicle.id})\n\nPouvez-vous me donner plus d'informations ?`);
         if (ctaWa) ctaWa.href = `https://wa.me/33602159385?text=${waText}`;
 
+        const isVendu = vehicle.disponibilite === 'vendu';
+
         // Info card
         let badgeClass = 'neuf', badgeLabel = 'Neuf';
         if (collection === 'occasions') {
@@ -439,14 +448,36 @@ async function initVehicleDetailPage() {
             ? `<div class="vd-spec-item"><label>Kilométrage</label><span>${Number(vehicle.kilometrage).toLocaleString('fr-FR')} km</span></div>`
             : '';
 
+        const soldBanner = isVendu ? `
+        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.9rem 1.1rem;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.35);border-radius:8px;margin-bottom:0.25rem;">
+            <i class="fas fa-times-circle" style="color:#ef4444;font-size:1.1rem;flex-shrink:0;"></i>
+            <p style="margin:0;font-size:0.88rem;color:#f87171;font-weight:600;">Ce véhicule a été vendu. Contactez-nous pour voir les véhicules similaires disponibles.</p>
+        </div>` : '';
+
+        const detailActions = isVendu ? `
+        <div class="vd-actions">
+            <a href="https://wa.me/33602159385?text=${encodeURIComponent('Bonjour AUTO EXPORT, le véhicule ' + vehicle.brand + ' ' + vehicle.model + ' ' + (vehicle.year || '') + ' est vendu. Avez-vous un modèle similaire disponible ?')}" class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> Voir les véhicules similaires
+            </a>
+        </div>` : `
+        <div class="vd-actions">
+            <a href="https://wa.me/33602159385?text=${waText}" class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> Demander par WhatsApp
+            </a>
+            <a href="tel:+33602159385" class="btn btn-phone">
+                <i class="fas fa-phone"></i> 06 02 15 93 85
+            </a>
+        </div>`;
+
         infoCard.innerHTML = `
+        ${soldBanner}
         <div class="vd-badge-row">
             <span class="vd-badge ${badgeClass}">${badgeLabel}</span>
             <span class="vd-badge ${dispoClass}">${dispoLabel}</span>
         </div>
-        <div class="vd-title">${vehicle.brand} ${vehicle.model}</div>
+        <div class="vd-title"${isVendu ? ' style="opacity:.6"' : ''}>${vehicle.brand} ${vehicle.model}</div>
         ${vehicle.finition ? `<div class="vd-sub">${vehicle.finition}</div>` : ''}
-        <div class="vd-price">${vehicle.price ? Number(vehicle.price).toLocaleString('fr-FR') + ' €' : 'Prix sur demande'}</div>
+        <div class="vd-price"${isVendu ? ' style="color:var(--text-muted);text-decoration:line-through;"' : ''}>${vehicle.price ? Number(vehicle.price).toLocaleString('fr-FR') + ' €' : 'Prix sur demande'}</div>
         <div class="vd-specs">
             ${vehicle.year ? `<div class="vd-spec-item"><label>Année</label><span>${vehicle.year}</span></div>` : ''}
             ${vehicle.fuel ? `<div class="vd-spec-item"><label>Carburant</label><span>${vehicle.fuel}</span></div>` : ''}
@@ -456,14 +487,7 @@ async function initVehicleDetailPage() {
             ${vehicle.interior_color ? `<div class="vd-spec-item"><label>Couleur int.</label><span>${vehicle.interior_color}</span></div>` : ''}
             ${kmRow}
         </div>
-        <div class="vd-actions">
-            <a href="https://wa.me/33602159385?text=${waText}" class="btn btn-whatsapp" target="_blank" rel="noopener">
-                <i class="fab fa-whatsapp"></i> Demander par WhatsApp
-            </a>
-            <a href="tel:+33602159385" class="btn btn-phone">
-                <i class="fas fa-phone"></i> 06 02 15 93 85
-            </a>
-        </div>
+        ${detailActions}
         ${vehicle.desc ? `<div class="vd-desc"><h4>Description</h4><p>${vehicle.desc}</p></div>` : ''}`;
 
     } catch (err) {

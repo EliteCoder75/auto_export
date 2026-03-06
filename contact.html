@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="index.html" class="logo">
-                        <img src="images/logo.png" alt="AUTO EXPORT Logo">
+                        <img src="images/logo.webp" alt="AUTO EXPORT Logo">
                     </a>
                     <button class="nav-toggle" id="navToggle" aria-label="Menu">
                         <span></span><span></span><span></span>
@@ -27,7 +27,7 @@
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
                         <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
-                        <li><a href="vehicules-occasions.html" class="nav-link">Occasions</a></li>
+                        <li><a href="vehicules-occasions.html" class="nav-link">Véhicules d'Occasion</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
                         <li><a href="about.html" class="nav-link">À Propos</a></li>
                         <li><a href="contact.html" class="nav-link active">Contact</a></li>
@@ -42,7 +42,7 @@
         </nav>
     </header>
 
-    <section class="page-header">
+    <section class="page-header" style="background-image: url('images/contact.webp');">
         <div class="page-header-overlay"></div>
         <div class="container" style="position:relative;z-index:1;">
             <h1 class="page-title">Contact</h1>
@@ -116,7 +116,8 @@
                 <!-- Formulaire -->
                 <div class="contact-form-wrapper">
                     <h3>Envoyer un message</h3>
-                    <form id="contactForm" action="#" method="POST">
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/confirmation.html">
+                        <input type="hidden" name="bot-field">
                         <div class="form-group">
                             <label for="name">Nom complet *</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required>
@@ -164,7 +165,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <img src="images/logo.png" alt="AUTO EXPORT" class="footer-logo">
+                    <img src="images/logo.webp" alt="AUTO EXPORT" class="footer-logo">
                     <p class="footer-description">Spécialiste automobile à Vaulx-en-Velin. Achat, vente, reprise, dépôt-vente, export.</p>
                     <div class="social-links">
                         <a href="https://www.tiktok.com/@autoexportithri" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
