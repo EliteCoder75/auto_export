@@ -15,7 +15,7 @@ color_variants:
   - duster_gris_shiste
 destination: export
 interior_color: noir
-disponibilite: stock
+disponibilite: vendu
 image: images/duster_noir.webp
 desc: |-
   climatisation automatique
