@@ -1,4 +1,5 @@
 ---
+categorie: neuf
 id: 15
 brand: dacia
 model: logan
@@ -7,10 +8,10 @@ transmission: Manuelle
 motor: 1.0 tce 90 ch
 fuel: Diesel
 exterior_color: gris foncé
-interior_color: noir
 price: 11799
-disponibilite: stock
 destination: export
+interior_color: noir
+disponibilite: stock
 image: images/whatsapp-image-2025-10-06-a-12.32.56_b367e1d0.jpg
 gallery: []
 ---
