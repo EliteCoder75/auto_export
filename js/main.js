@@ -270,9 +270,8 @@ function buildCatalogueCard(v) {
     const waText = encodeURIComponent(`Bonjour AUTO EXPORT, je suis intéressé(e) par le véhicule :\n${v.brand} ${v.model} ${v.year || ''} (réf. ${v.id})\n\nPouvez-vous me donner plus d'informations ?`);
 
     const actions = isVendu
-        ? `<span class="btn btn-outline-gold" style="opacity:.4;cursor:default;pointer-events:none;flex:1;justify-content:center;text-align:center;">Non disponible</span>`
-        : `<a href="${detailUrl}" class="btn btn-outline-gold">Voir détail</a>
-           <a href="https://wa.me/33602159385?text=${waText}" class="btn-wa" target="_blank" rel="noopener" title="Contacter sur WhatsApp"><i class="fab fa-whatsapp"></i></a>`;
+        ? `<span class="btn btn-outline-gold" style="opacity:.4;cursor:default;pointer-events:none;width:100%;justify-content:center;text-align:center;">Non disponible</span>`
+        : `<a href="${detailUrl}" class="btn btn-outline-gold" style="width:100%;justify-content:center;">Voir détail</a>`;
 
     return `
     <div class="vc${isVendu ? ' vc--vendu' : ''}">
