@@ -1,13 +1,16 @@
 /**
  * AUTO EXPORT — API véhicules
  * Charge les véhicules depuis Netlify Functions
+ * Endpoint : /.netlify/functions/vehicles?categorie=neuf|export|france
  */
 
 const _cache = {};
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
 
-async function loadFromAPI(collection) {
-    const url = `/.netlify/functions/vehicles?collection=${collection}`;
+async function loadFromAPI(categorie) {
+    const url = categorie
+        ? `/.netlify/functions/vehicles?categorie=${categorie}`
+        : `/.netlify/functions/vehicles`;
     try {
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -18,25 +21,22 @@ async function loadFromAPI(collection) {
     }
 }
 
-async function getAllVehicles(collection = 'neufs') {
+// categorie = 'neuf' | 'export' | 'france' | null (tous)
+async function getAllVehicles(categorie) {
+    const key = categorie || '_all';
     const now = Date.now();
-    if (_cache[collection] && (now - _cache[collection].ts < CACHE_TTL)) {
-        return _cache[collection].data;
+    if (_cache[key] && (now - _cache[key].ts < CACHE_TTL)) {
+        return _cache[key].data;
     }
-    const vehicles = await loadFromAPI(collection);
-    _cache[collection] = { data: vehicles, ts: now };
+    const vehicles = await loadFromAPI(categorie);
+    _cache[key] = { data: vehicles, ts: now };
     return vehicles;
 }
 
 async function getFeaturedVehicles(limit = 6) {
-    const neufs     = await getAllVehicles('neufs');
-    const occasions = await getAllVehicles('occasions');
-
-    const all = [
-        ...neufs.filter(v => v.disponibilite !== 'vendu').map(v => ({ ...v, collection: 'neufs' })),
-        ...occasions.filter(v => v.disponibilite !== 'vendu').map(v => ({ ...v, collection: 'occasions' }))
-    ];
-
-    // Mélanger et limiter
-    return all.sort(() => Math.random() - 0.5).slice(0, limit);
+    const all = await getAllVehicles(null);
+    return all
+        .filter(v => v.disponibilite !== 'vendu')
+        .sort(() => Math.random() - 0.5)
+        .slice(0, limit);
 }

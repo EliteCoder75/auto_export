@@ -1,40 +1,32 @@
 /**
  * AUTO EXPORT — Script de build
- * Copie _vehicules-neufs/ et _vehicules-occasions/ dans la fonction Netlify
+ * Copie _vehicules/ dans la fonction Netlify
  */
 
 const fs   = require('fs');
 const path = require('path');
 
 const FUNCTION_DIR = path.join(__dirname, '../netlify/functions/vehicles');
-const COLLECTIONS  = ['_vehicules-neufs', '_vehicules-occasions'];
+const SOURCE_DIR   = path.join(__dirname, '../_vehicules');
+const DEST_DIR     = path.join(FUNCTION_DIR, '_vehicules');
 
 console.log('📋 AUTO EXPORT — Copie des véhicules vers la fonction Netlify...\n');
 
-let total = 0;
+if (!fs.existsSync(SOURCE_DIR)) {
+    console.log('⚠️  _vehicules/ introuvable — ignoré.');
+    process.exit(0);
+}
 
-COLLECTIONS.forEach(collectionDir => {
-    const source      = path.join(__dirname, '..', collectionDir);
-    const destination = path.join(FUNCTION_DIR, collectionDir);
+if (!fs.existsSync(DEST_DIR)) {
+    fs.mkdirSync(DEST_DIR, { recursive: true });
+}
 
-    if (!fs.existsSync(source)) {
-        console.log(`⚠️  ${collectionDir} introuvable — ignoré.`);
-        return;
-    }
+const files = fs.readdirSync(SOURCE_DIR).filter(f => f.endsWith('.md'));
+console.log(`📂 _vehicules — ${files.length} fichier(s):`);
 
-    if (!fs.existsSync(destination)) {
-        fs.mkdirSync(destination, { recursive: true });
-    }
-
-    const files = fs.readdirSync(source).filter(f => f.endsWith('.md'));
-    console.log(`📂 ${collectionDir} — ${files.length} fichier(s):`);
-
-    files.forEach(file => {
-        fs.copyFileSync(path.join(source, file), path.join(destination, file));
-        console.log(`   ✅ ${file}`);
-        total++;
-    });
-    console.log('');
+files.forEach(file => {
+    fs.copyFileSync(path.join(SOURCE_DIR, file), path.join(DEST_DIR, file));
+    console.log(`   ✅ ${file}`);
 });
 
-console.log(`✨ Build terminé — ${total} véhicule(s) copié(s).`);
+console.log(`\n✨ Build terminé — ${files.length} véhicule(s) copié(s).`);

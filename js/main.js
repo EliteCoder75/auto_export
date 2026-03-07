@@ -114,18 +114,15 @@ function buildVehicleCard(v) {
         ? `<img src="${v.image}" alt="${v.brand} ${v.model}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
         : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#555;font-size:2.5rem;"><i class="fas fa-car"></i></div>`;
 
-    const badgeClass = v.collection === 'occasions'
-        ? (v.type === 'export' ? 'badge-export' : 'badge-france')
-        : 'badge-neuf';
-    const badgeLabel = v.collection === 'occasions'
-        ? (v.type === 'export' ? 'Export' : 'France')
-        : 'Neuf';
+    let badgeClass = 'badge-neuf', badgeLabel = 'Neuf';
+    if (v.categorie === 'export') { badgeClass = 'badge-export'; badgeLabel = 'Export'; }
+    else if (v.categorie === 'france') { badgeClass = 'badge-france'; badgeLabel = 'France'; }
 
     const kmSpec = v.kilometrage
         ? `<span class="vehicle-card-spec"><i class="fas fa-tachometer-alt"></i> ${Number(v.kilometrage).toLocaleString('fr-FR')} km</span>`
         : '';
 
-    const detailUrl = `vehicule-detail.html?id=${v.id}&type=${v.collection || 'neufs'}`;
+    const detailUrl = `vehicule-detail.html?id=${v.id}&categorie=${v.categorie || 'neuf'}`;
     const waText = encodeURIComponent(`Bonjour, je suis intéressé(e) par le véhicule ${v.brand} ${v.model} ${v.year || ''} — réf. ${v.id}`);
 
     return `
@@ -160,11 +157,11 @@ async function initVehiclesPage() {
 
     let allVehicles = [];
     try {
-        allVehicles = await getAllVehicles('neufs');
+        allVehicles = await getAllVehicles('neuf');
     } catch { allVehicles = []; }
 
-    renderVehicleGrid(grid, allVehicles, 'neufs');
-    initFilters(allVehicles, grid, 'neufs');
+    renderVehicleGrid(grid, allVehicles);
+    initFilters(allVehicles, grid);
 }
 
 // ===== PAGE OCCASIONS =====
@@ -173,13 +170,13 @@ async function initOccasionsPage() {
     const gridFrance = document.getElementById('vehiclesGridFrance');
     if (!gridExport && !gridFrance) return;
 
-    let allVehicles = [];
+    let exportVehicles = [], franceVehicles = [];
     try {
-        allVehicles = await getAllVehicles('occasions');
-    } catch { allVehicles = []; }
-
-    const exportVehicles = allVehicles.filter(v => v.type === 'export');
-    const franceVehicles = allVehicles.filter(v => v.type === 'france');
+        [exportVehicles, franceVehicles] = await Promise.all([
+            getAllVehicles('export'),
+            getAllVehicles('france')
+        ]);
+    } catch { exportVehicles = []; franceVehicles = []; }
 
     // Mettre à jour les compteurs
     const countExport = document.getElementById('count-export');
@@ -187,14 +184,14 @@ async function initOccasionsPage() {
     if (countExport) countExport.textContent = exportVehicles.length;
     if (countFrance) countFrance.textContent = franceVehicles.length;
 
-    if (gridExport) renderVehicleGrid(gridExport, exportVehicles, 'occasions');
-    if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles, 'occasions');
+    if (gridExport) renderVehicleGrid(gridExport, exportVehicles);
+    if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles);
 
     // Onglets + mise à jour du resultsCount au changement de tab
     initTabs();
 
     // Filtres
-    initFiltersOccasions(allVehicles, gridExport, gridFrance);
+    initFiltersOccasions([...exportVehicles, ...franceVehicles], gridExport, gridFrance);
 
     // Afficher le count initial du tab actif
     updateOccasionsCount();
@@ -231,7 +228,7 @@ function updateOccasionsCount() {
     countEl.innerHTML = `<span class="results-count-number">${n}</span><span class="results-count-text"> véhicule${n > 1 ? 's' : ''} ${label} trouvé${n > 1 ? 's' : ''}</span>`;
 }
 
-function renderVehicleGrid(grid, vehicles, collection) {
+function renderVehicleGrid(grid, vehicles) {
     if (!vehicles || vehicles.length === 0) {
         grid.innerHTML = `
         <div class="no-vehicles">
@@ -244,10 +241,10 @@ function renderVehicleGrid(grid, vehicles, collection) {
         </div>`;
         return;
     }
-    grid.innerHTML = vehicles.map(v => buildCatalogueCard(v, collection)).join('');
+    grid.innerHTML = vehicles.map(v => buildCatalogueCard(v)).join('');
 }
 
-function buildCatalogueCard(v, collection) {
+function buildCatalogueCard(v) {
     const isVendu = v.disponibilite === 'vendu';
 
     const imgHtml = v.image
@@ -255,10 +252,8 @@ function buildCatalogueCard(v, collection) {
         : `<div class="vc-img-placeholder"><i class="fas fa-car"></i></div>`;
 
     let badgeClass = 'neuf', badgeLabel = 'Neuf';
-    if (collection === 'occasions') {
-        badgeClass = v.type === 'export' ? 'export' : 'france';
-        badgeLabel = v.type === 'export' ? 'Export' : 'France';
-    }
+    if (v.categorie === 'export') { badgeClass = 'export'; badgeLabel = 'Export'; }
+    else if (v.categorie === 'france') { badgeClass = 'france'; badgeLabel = 'France'; }
 
     const dispoClass = isVendu ? 'vendu' : (v.disponibilite === 'commande' ? 'commande' : 'stock');
     const dispoLabel = isVendu ? 'Vendu' : (v.disponibilite === 'commande' ? 'Sur commande' : 'En stock');
@@ -271,7 +266,7 @@ function buildCatalogueCard(v, collection) {
         ? `<span class="vc-spec"><i class="fas fa-tachometer-alt"></i> ${Number(v.kilometrage).toLocaleString('fr-FR')} km</span>`
         : '';
 
-    const detailUrl = `vehicule-detail.html?id=${v.id}&type=${collection}`;
+    const detailUrl = `vehicule-detail.html?id=${v.id}&categorie=${v.categorie}`;
     const waText = encodeURIComponent(`Bonjour AUTO EXPORT, je suis intéressé(e) par le véhicule :\n${v.brand} ${v.model} ${v.year || ''} (réf. ${v.id})\n\nPouvez-vous me donner plus d'informations ?`);
 
     const actions = isVendu
@@ -303,7 +298,7 @@ function buildCatalogueCard(v, collection) {
 }
 
 // ===== FILTRES NEUFS =====
-function initFilters(allVehicles, grid, collection) {
+function initFilters(allVehicles, grid) {
     const brandInput = document.getElementById('filterBrand');
     const minPrice   = document.getElementById('filterMinPrice');
     const maxPrice   = document.getElementById('filterMaxPrice');
@@ -325,7 +320,7 @@ function initFilters(allVehicles, grid, collection) {
         if (fuelSelect && fuelSelect.value) filtered = filtered.filter(v => v.fuel === fuelSelect.value);
         if (transSelect && transSelect.value) filtered = filtered.filter(v => v.transmission === transSelect.value);
 
-        renderVehicleGrid(grid, filtered, collection);
+        renderVehicleGrid(grid, filtered);
         if (countEl) {
             countEl.innerHTML = `<span class="results-count-number">${filtered.length}</span><span class="results-count-text"> véhicule${filtered.length > 1 ? 's' : ''} trouvé${filtered.length > 1 ? 's' : ''}</span>`;
         }
@@ -353,7 +348,6 @@ function initFiltersOccasions(allVehicles, gridExport, gridFrance) {
     const maxPrice   = document.getElementById('filterMaxPrice');
     const fuelSelect = document.getElementById('filterFuel');
     const resetBtn   = document.getElementById('resetFilters');
-    const countEl    = document.getElementById('resultsCount');
 
     const applyFilters = () => {
         let filtered = [...allVehicles];
@@ -368,16 +362,16 @@ function initFiltersOccasions(allVehicles, gridExport, gridFrance) {
         if (maxPrice && maxPrice.value) filtered = filtered.filter(v => (v.price || 0) <= Number(maxPrice.value));
         if (fuelSelect && fuelSelect.value) filtered = filtered.filter(v => v.fuel === fuelSelect.value);
 
-        const exportVehicles = filtered.filter(v => v.type === 'export');
-        const franceVehicles = filtered.filter(v => v.type === 'france');
+        const exportVehicles = filtered.filter(v => v.categorie === 'export');
+        const franceVehicles = filtered.filter(v => v.categorie === 'france');
 
         const countExport = document.getElementById('count-export');
         const countFrance = document.getElementById('count-france');
         if (countExport) countExport.textContent = exportVehicles.length;
         if (countFrance) countFrance.textContent = franceVehicles.length;
 
-        if (gridExport) renderVehicleGrid(gridExport, exportVehicles, 'occasions');
-        if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles, 'occasions');
+        if (gridExport) renderVehicleGrid(gridExport, exportVehicles);
+        if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles);
 
         // Afficher le count du tab actif seulement
         updateOccasionsCount();
@@ -402,9 +396,9 @@ async function initVehicleDetailPage() {
     const infoCard = document.getElementById('vehicleInfoCard');
     if (!infoCard) return;
 
-    const params     = new URLSearchParams(window.location.search);
-    const vehicleId  = params.get('id');
-    const collection = params.get('type') || 'neufs';
+    const params    = new URLSearchParams(window.location.search);
+    const vehicleId = params.get('id');
+    const categorie = params.get('categorie') || 'neuf';
 
     if (!vehicleId) {
         infoCard.innerHTML = '<p style="color:var(--text-light);padding:2rem;">Véhicule introuvable.</p>';
@@ -412,7 +406,7 @@ async function initVehicleDetailPage() {
     }
 
     try {
-        const vehicles = await getAllVehicles(collection);
+        const vehicles = await getAllVehicles(categorie);
         const vehicle  = vehicles.find(v => String(v.id) === String(vehicleId));
 
         if (!vehicle) {
@@ -425,8 +419,9 @@ async function initVehicleDetailPage() {
         const breadcrumbType  = document.getElementById('breadcrumbType');
         if (breadcrumbTitle) breadcrumbTitle.textContent = `${vehicle.brand} ${vehicle.model}`;
         if (breadcrumbType) {
-            breadcrumbType.textContent = collection === 'occasions' ? "Véhicules d'Occasion" : "Véhicules Neufs";
-            breadcrumbType.href = collection === 'occasions' ? 'vehicules-occasions.html' : 'vehicules-neufs.html';
+            const isOccasion = vehicle.categorie === 'export' || vehicle.categorie === 'france';
+            breadcrumbType.textContent = isOccasion ? "Véhicules d'Occasion" : "Véhicules Neufs";
+            breadcrumbType.href = isOccasion ? 'vehicules-occasions.html' : 'vehicules-neufs.html';
         }
 
         // Galerie
@@ -454,10 +449,8 @@ async function initVehicleDetailPage() {
 
         // Info card
         let badgeClass = 'neuf', badgeLabel = 'Neuf';
-        if (collection === 'occasions') {
-            badgeClass = vehicle.type === 'export' ? 'export' : 'france';
-            badgeLabel = vehicle.type === 'export' ? 'Export Maghreb' : 'Occasion France';
-        }
+        if (vehicle.categorie === 'export') { badgeClass = 'export'; badgeLabel = 'Export Maghreb'; }
+        else if (vehicle.categorie === 'france') { badgeClass = 'france'; badgeLabel = 'Occasion France'; }
 
         const dispoClass = vehicle.disponibilite === 'vendu' ? 'vendu' : (vehicle.disponibilite === 'commande' ? 'commande' : 'stock');
         const dispoLabel = vehicle.disponibilite === 'vendu' ? 'Vendu' : (vehicle.disponibilite === 'commande' ? 'Sur commande' : 'En stock');

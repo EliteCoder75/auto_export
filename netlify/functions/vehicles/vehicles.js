@@ -1,8 +1,8 @@
 /**
  * AUTO EXPORT — Netlify Function
- * Endpoint : /.netlify/functions/vehicles?collection=neufs|occasions
+ * Endpoint : /.netlify/functions/vehicles?categorie=neuf|export|france
  *
- * Lit les fichiers markdown dans _vehicules-neufs/ ou _vehicules-occasions/
+ * Lit les fichiers markdown dans _vehicules/
  * (copiés par le script de build)
  */
 
@@ -16,13 +16,15 @@ const HEADERS = {
     'Content-Type': 'application/json'
 };
 
-function normalizeVehicle(data, collection) {
-    const base = {
+function normalizeVehicle(data) {
+    return {
         id:             data.id || '',
+        categorie:      data.categorie || 'neuf',
         brand:          (data.brand || '').toUpperCase(),
         model:          data.model || '',
         finition:       data.finition || '',
         year:           data.year || '',
+        kilometrage:    data.kilometrage || 0,
         price:          data.price || 0,
         fuel:           data.fuel || '',
         transmission:   data.transmission || '',
@@ -32,14 +34,8 @@ function normalizeVehicle(data, collection) {
         disponibilite:  data.disponibilite || 'stock',
         image:          data.image || '',
         gallery:        Array.isArray(data.gallery) ? data.gallery : [],
-        desc:           data.desc || data.description || '',
-        collection
+        desc:           data.desc || data.description || ''
     };
-    if (collection === 'occasions') {
-        base.kilometrage = data.kilometrage || 0;
-        base.type        = data.type || 'france';
-    }
-    return base;
 }
 
 exports.handler = async (event) => {
@@ -48,10 +44,9 @@ exports.handler = async (event) => {
     }
 
     try {
-        const params     = new URLSearchParams(event.queryStringParameters || {});
-        const collection = params.get('collection') || 'neufs';
-        const dirName    = collection === 'occasions' ? '_vehicules-occasions' : '_vehicules-neufs';
-        const vehiclesDir = path.join(__dirname, dirName);
+        const params    = new URLSearchParams(event.queryStringParameters || {});
+        const categorie = params.get('categorie') || null;
+        const vehiclesDir = path.join(__dirname, '_vehicules');
 
         if (!fs.existsSync(vehiclesDir)) {
             return {
@@ -62,18 +57,22 @@ exports.handler = async (event) => {
         }
 
         const files = fs.readdirSync(vehiclesDir).filter(f => f.endsWith('.md'));
-        const vehicles = [];
+        let vehicles = [];
 
         for (const file of files) {
             try {
                 const content = fs.readFileSync(path.join(vehiclesDir, file), 'utf8');
                 const { data } = matter(content);
                 if (data && data.id) {
-                    vehicles.push(normalizeVehicle(data, collection));
+                    vehicles.push(normalizeVehicle(data));
                 }
             } catch (e) {
                 console.error(`Erreur lecture ${file}:`, e.message);
             }
+        }
+
+        if (categorie) {
+            vehicles = vehicles.filter(v => v.categorie === categorie);
         }
 
         vehicles.sort((a, b) => String(a.id).localeCompare(String(b.id)));
