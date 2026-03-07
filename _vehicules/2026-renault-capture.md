@@ -1,4 +1,5 @@
 ---
+categorie: france
 id: capture_noir
 brand: renault
 model: capture
@@ -8,10 +9,10 @@ transmission: Automatique
 motor: 1.3 tce 140 ch
 fuel: Essence
 exterior_color: noir
-interior_color: noir
 price: 19499
-disponibilite: stock
 destination: export
+interior_color: noir
+disponibilite: stock
 image: images/capture_noir.webp
 desc: |-
   climatisation auto
