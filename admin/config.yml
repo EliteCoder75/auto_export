@@ -19,6 +19,21 @@ collections:
     create: true
     slug: "{{fields.year}}-{{fields.brand}}-{{fields.model}}"
     summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.price}} €"
+    view_filters:
+      - label: "En stock"
+        field: disponibilite
+        pattern: "stock"
+      - label: "Sur commande"
+        field: disponibilite
+        pattern: "commande"
+      - label: "Vendu"
+        field: disponibilite
+        pattern: "vendu"
+    view_groups:
+      - label: "Par disponibilité"
+        field: disponibilite
+      - label: "Par marque"
+        field: brand
     fields:
       - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VN-001)"}
       - {label: "Marque", name: "brand", widget: "string", hint: "Ex: Peugeot, Renault..."}
@@ -71,6 +86,26 @@ collections:
     create: true
     slug: "{{fields.year}}-{{fields.brand}}-{{fields.model}}"
     summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.kilometrage}} km — {{fields.price}} €"
+    view_filters:
+      - label: "Export (Moins de 3 ans)"
+        field: type
+        pattern: "export"
+      - label: "Occasion France"
+        field: type
+        pattern: "france"
+      - label: "En stock"
+        field: disponibilite
+        pattern: "stock"
+      - label: "Vendu"
+        field: disponibilite
+        pattern: "vendu"
+    view_groups:
+      - label: "Par type"
+        field: type
+      - label: "Par disponibilité"
+        field: disponibilite
+      - label: "Par marque"
+        field: brand
     fields:
       - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VO-001)"}
       - {label: "Marque", name: "brand", widget: "string"}

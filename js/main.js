@@ -190,11 +190,19 @@ async function initOccasionsPage() {
     if (gridExport) renderVehicleGrid(gridExport, exportVehicles, 'occasions');
     if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles, 'occasions');
 
-    // Onglets
+    // Onglets + mise à jour du resultsCount au changement de tab
     initTabs();
 
-    // Filtres sur le tab actif
+    // Filtres
     initFiltersOccasions(allVehicles, gridExport, gridFrance);
+
+    // Afficher le count initial du tab actif
+    updateOccasionsCount();
+}
+
+function getActiveTab() {
+    const activeBtn = document.querySelector('.tab-btn.active');
+    return activeBtn ? activeBtn.dataset.tab : 'export';
 }
 
 function initTabs() {
@@ -207,8 +215,20 @@ function initTabs() {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             const content = document.getElementById(`tab-content-${tab}`);
             if (content) content.classList.add('active');
+            // Mettre à jour le resultsCount pour l'onglet actif
+            updateOccasionsCount();
         });
     });
+}
+
+function updateOccasionsCount() {
+    const countEl = document.getElementById('resultsCount');
+    if (!countEl) return;
+    const activeTab = getActiveTab();
+    const countEl2 = document.getElementById(`count-${activeTab}`);
+    const n = countEl2 ? parseInt(countEl2.textContent, 10) || 0 : 0;
+    const label = activeTab === 'export' ? 'Export' : 'France';
+    countEl.innerHTML = `<span class="results-count-number">${n}</span><span class="results-count-text"> véhicule${n > 1 ? 's' : ''} ${label} trouvé${n > 1 ? 's' : ''}</span>`;
 }
 
 function renderVehicleGrid(grid, vehicles, collection) {
@@ -359,10 +379,8 @@ function initFiltersOccasions(allVehicles, gridExport, gridFrance) {
         if (gridExport) renderVehicleGrid(gridExport, exportVehicles, 'occasions');
         if (gridFrance) renderVehicleGrid(gridFrance, franceVehicles, 'occasions');
 
-        if (countEl) {
-            const total = filtered.length;
-            countEl.innerHTML = `<span class="results-count-number">${total}</span><span class="results-count-text"> véhicule${total > 1 ? 's' : ''} trouvé${total > 1 ? 's' : ''}</span>`;
-        }
+        // Afficher le count du tab actif seulement
+        updateOccasionsCount();
     };
 
     [brandInput, maxKm, minPrice, maxPrice, fuelSelect].forEach(el => {
