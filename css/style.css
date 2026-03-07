@@ -145,7 +145,7 @@ body:not(.page-index) .logo img { opacity: 1; visibility: visible; }
 /* ===== HERO ===== */
 .hero {
     position: relative; min-height: 100vh; display: flex; align-items: center;
-    background-image: url('../images/photo_de_couverture.png');
+    background-image: url('../images/photo_de_couverture.webp');
     background-size: cover; background-position: center; background-attachment: fixed; overflow: hidden;
 }
 .hero::before {
@@ -428,7 +428,7 @@ body:not(.page-index) .logo img { opacity: 1; visibility: visible; }
 /* ===== PAGE HEADER (inner pages) ===== */
 .page-header {
     position: relative; padding: 180px 0 70px;
-    background-image: url('../images/photo_de_couverture.png');
+    background-image: url('../images/photo_de_couverture.webp');
     background-size: cover; background-position: center;
     text-align: center; color: var(--text-white); overflow: hidden;
 }
