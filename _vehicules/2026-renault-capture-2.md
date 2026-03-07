@@ -1,4 +1,5 @@
 ---
+categorie: export
 id: capture_bleu
 brand: renault
 model: capture
@@ -10,7 +11,7 @@ fuel: Essence
 exterior_color: gris metalisé
 interior_color: noir
 price: 19499
-disponibilite: stock
 destination: export
+disponibilite: stock
 image: images/2020-opel-mokka-x-rendering.jpg
 ---
