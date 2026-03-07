@@ -17,8 +17,8 @@ collections:
     label_singular: "Véhicule Neuf"
     folder: "_vehicules-neufs"
     create: true
-    slug: "{{year}}-{{fields.brand}}-{{fields.model}}"
-    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.price}} € {{#if fields.disponibilite}}[{{fields.disponibilite}}]{{/if}}"
+    slug: "{{fields.year}}-{{fields.brand}}-{{fields.model}}"
+    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.price}} €"
     fields:
       - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VN-001)"}
       - {label: "Marque", name: "brand", widget: "string", hint: "Ex: Peugeot, Renault..."}
@@ -69,14 +69,14 @@ collections:
     label_singular: "Véhicule d'Occasion"
     folder: "_vehicules-occasions"
     create: true
-    slug: "{{year}}-{{fields.brand}}-{{fields.model}}"
-    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.kilometrage}} km — {{fields.price}} € {{#if fields.disponibilite}}[{{fields.disponibilite}}]{{/if}}"
+    slug: "{{fields.year}}-{{fields.brand}}-{{fields.model}}"
+    summary: "{{fields.brand}} {{fields.model}} {{fields.year}} — {{fields.kilometrage}} km — {{fields.price}} €"
     fields:
       - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique (ex: VO-001)"}
       - {label: "Marque", name: "brand", widget: "string"}
       - {label: "Modèle", name: "model", widget: "string"}
       - {label: "Finition", name: "finition", widget: "string", required: false}
-      - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2010, max: 2026}
+      - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2010, max: 2028}
       - {label: "Kilométrage", name: "kilometrage", widget: "number", value_type: "int", hint: "En km"}
       - label: "Type de véhicule"
         name: "type"
@@ -108,6 +108,7 @@ collections:
         default: "stock"
         options:
           - {label: "En stock", value: "stock"}
+          - {label: "Sur commande", value: "commande"}
           - {label: "Vendu", value: "vendu"}
       - {label: "Image principale", name: "image", widget: "image"}
       - label: "Galerie (max 20 photos)"
@@ -128,7 +129,9 @@ collections:
         name: "contact"
         file: "_settings/contact.json"
         fields:
-          - {label: "Téléphone", name: "phone", widget: "string", default: "+33602159385"}
-          - {label: "WhatsApp", name: "whatsapp", widget: "string", default: "+33602159385"}
-          - {label: "Adresse garage", name: "address", widget: "string", default: "87 Route de Genas, 69120 Vaulx-en-Velin"}
-          - {label: "Horaires", name: "hours", widget: "string", default: "Lun–Sam : 9h00 – 13h00"}
+          - {label: "Téléphone mobile", name: "phone", widget: "string"}
+          - {label: "Téléphone fixe", name: "phone_fixe", widget: "string", required: false}
+          - {label: "WhatsApp", name: "whatsapp", widget: "string"}
+          - {label: "Email", name: "email", widget: "string", required: false}
+          - {label: "Adresse garage", name: "address", widget: "string"}
+          - {label: "Horaires", name: "hours", widget: "string", default: "Lun–Sam : 9h00 – 19h00"}

@@ -527,6 +527,7 @@ textarea.form-control { min-height: 140px; resize: vertical; }
 }
 
 @media (max-width: 768px) {
+    .hero { background-image: url('../images/renault-clio-VI-avant.webp'); background-position: center; }
     :root { --spacing-xl: 3rem; --spacing-lg: 2rem; }
     .nav-toggle { display: flex; }
     .nav-menu {
