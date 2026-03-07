@@ -1,4 +1,5 @@
 ---
+categorie: export
 id: capture_gris
 brand: renault
 model: capture
@@ -10,7 +11,7 @@ fuel: Essence
 exterior_color: gris metalisé
 interior_color: noir
 price: 19499
-disponibilite: stock
 destination: export
+disponibilite: stock
 image: images/photo-catalogue-site-internet-2.png
 ---
