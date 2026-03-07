@@ -1,4 +1,5 @@
 ---
+categorie: neuf
 id: duster_noir
 brand: dacia
 model: duster
@@ -12,9 +13,9 @@ price: 17500
 color_variants:
   - duster_noir
   - duster_gris_shiste
+destination: export
 interior_color: noir
 disponibilite: stock
-destination: export
 image: images/duster_noir.webp
 desc: |-
   climatisation automatique
