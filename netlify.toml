@@ -3,6 +3,19 @@
   command = "npm install && npm run build"
   functions = "netlify/functions"
 
+# Force HTTPS
+[[redirects]]
+  from = "http://autoexportithri.fr/*"
+  to   = "https://autoexportithri.fr/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from = "http://www.autoexportithri.fr/*"
+  to   = "https://autoexportithri.fr/:splat"
+  status = 301
+  force  = true
+
 [build.environment]
   NODE_VERSION = "18"
 
