@@ -146,7 +146,7 @@ body:not(.page-index) .logo img { opacity: 1; visibility: visible; }
 .hero {
     position: relative; min-height: 100vh; display: flex; align-items: center;
     background-image: url('../images/photo_de_couverture.webp');
-    background-size: cover; background-position: center; background-attachment: fixed; overflow: hidden;
+    background-size: cover; background-position: center; background-attachment: scroll; overflow: hidden;
 }
 .hero::before {
     content: ''; position: absolute; inset: 0;
