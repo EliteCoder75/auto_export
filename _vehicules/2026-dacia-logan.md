@@ -5,10 +5,10 @@ brand: dacia
 model: logan
 year: 2026
 transmission: Manuelle
-motor: 1.0 tce 90 ch
-fuel: Diesel
-exterior_color: gris foncé
-price: 11799
+motor: 1.0 tce 100 ch
+fuel: Essence
+exterior_color: gris shiste
+price: 11500
 destination: export
 interior_color: noir
 disponibilite: stock
