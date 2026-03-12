@@ -7,7 +7,7 @@ year: 2026
 transmission: Automatique
 motor: 1.3 tce 155 ch
 fuel: Essence
-exterior_color: gris nardo
+exterior_color: gris shiste
 interior_color: noir
 price: 19800
 destination: export
