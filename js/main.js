@@ -2,6 +2,10 @@
  * AUTO EXPORT — Script principal
  */
 
+// ===== GALLERY STATE =====
+let _galleryImages = [];
+let _galleryIndex = 0;
+
 // ===== MODAL (index) =====
 function openVehicleModal() {
     const modal = document.getElementById('vehicleModal');
@@ -428,13 +432,16 @@ async function initVehicleDetailPage() {
         const thumbGallery = document.getElementById('thumbnailGallery');
         const images = [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
 
+        _galleryImages = images;
+        _galleryIndex = 0;
+
         if (mainImg && images.length > 0) {
             mainImg.src = images[0];
             mainImg.alt = `${vehicle.brand} ${vehicle.model}`;
         }
-        if (thumbGallery && images.length > 1) {
+        if (thumbGallery && images.length > 0) {
             thumbGallery.innerHTML = images.map((img, i) => `
-                <div class="thumb ${i === 0 ? 'active' : ''}" onclick="switchImage('${img}', this)">
+                <div class="thumb ${i === 0 ? 'active' : ''}" onclick="switchImage(${i})">
                     <img src="${img}" alt="Photo ${i+1}">
                 </div>`).join('');
         }
@@ -505,12 +512,22 @@ async function initVehicleDetailPage() {
     }
 }
 
-function switchImage(src, el) {
+function switchImage(index) {
+    if (index < 0 || index >= _galleryImages.length) return;
+    _galleryIndex = index;
     const mainImg = document.getElementById('mainImage');
-    if (mainImg) mainImg.src = src;
-    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-    if (el) el.classList.add('active');
+    if (mainImg) mainImg.src = _galleryImages[index];
+    const thumbs = document.querySelectorAll('.thumb');
+    thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
+    // Scroll active thumb into view
+    if (thumbs[index]) thumbs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
+
+document.addEventListener('keydown', e => {
+    if (_galleryImages.length === 0) return;
+    if (e.key === 'ArrowLeft') switchImage(_galleryIndex - 1);
+    else if (e.key === 'ArrowRight') switchImage(_galleryIndex + 1);
+});
 
 // ===== CARROUSEL AVIS =====
 function initReviewsCarousel() {
