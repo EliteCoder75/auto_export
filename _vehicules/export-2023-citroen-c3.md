@@ -3,7 +3,7 @@ categorie: export
 id: citroen_c3
 brand: citroen
 model: C3
-year: 2023
+year: 2024
 kilometrage: 43000
 transmission: Manuelle
 motor: 1.2 puretech 83 ch
