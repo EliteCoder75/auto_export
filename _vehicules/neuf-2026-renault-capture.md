@@ -1,19 +1,19 @@
 ---
 categorie: neuf
-id: capture_gris_shiste
+id: capture_gris_nardo
 brand: renault
 model: capture
 year: 2026
 transmission: Automatique
 motor: 1.3 tce 155 ch
 fuel: Essence
-exterior_color: gris shiste
+exterior_color: gris nardo
 interior_color: noir
 price: 19800
 destination: export
 finition: evolution
 disponibilite: stock
-image: images/renault-captur-techno-1.3-tce-155ch-bva-gris-rafale-630x535.webp
+image: images/renault_26capturhevtechnosu2ffr_grisrafaletoitnoirétoilé_angular-front.webp
 gallery:
   - images/whatsapp-image-2026-03-08-at-19.09.45-4-.webp
   - images/whatsapp-image-2026-03-08-at-19.09.45-5-.webp

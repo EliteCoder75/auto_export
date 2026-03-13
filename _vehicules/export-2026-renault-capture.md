@@ -1,20 +1,18 @@
 ---
-categorie: france
+categorie: neuf
 id: capture_noir
 brand: renault
 model: capture
-finition: techno
+finition: evolution
 year: 2026
 transmission: Automatique
-motor: 1.3 tce 140 ch
+motor: 1.3 tce 155 ch
 fuel: Essence
 exterior_color: noir
-price: 19499
+price: 19800
 destination: export
 interior_color: noir
 disponibilite: stock
 image: images/capture_noir.webp
-desc: |-
-  climatisation auto
-  led d'ambiance
+gallery: []
 ---

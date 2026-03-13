@@ -1,13 +1,13 @@
 ---
 categorie: neuf
-id: logan_gris_nardo
+id: logan_gris_shiste
 brand: dacia
 model: logan
 year: 2026
 transmission: Manuelle
 motor: 1.0 tce 100 ch
 fuel: Essence
-exterior_color: gris nardo
+exterior_color: gris shiste
 price: 11500
 destination: export
 interior_color: noir
