@@ -14,4 +14,9 @@ interior_color: noir
 price: 16500
 disponibilite: stock
 image: images/renault-clio-v-esprit-alpine-1.5-dci-115ch-bvm-noir-265x190.webp
+gallery:
+  - images/whatsapp-image-2026-03-08-at-19.09.47-5-.webp
+  - images/whatsapp-image-2026-03-08-at-19.09.47-4-.webp
+  - images/whatsapp-image-2026-03-08-at-19.09.48-2-.webp
+  - images/whatsapp-image-2026-03-08-at-19.09.48-3-.webp
 ---
