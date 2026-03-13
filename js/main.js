@@ -137,7 +137,7 @@ function buildVehicleCard(v) {
         </div>
         <div class="vehicle-card-body">
             <div class="vehicle-card-title">${v.brand} ${v.model}</div>
-            <div class="vehicle-card-sub">${v.year || ''} ${v.finition ? '· ' + v.finition : ''}</div>
+            <div class="vehicle-card-sub">${v.year || ''}${v.finition ? ' · ' + v.finition : ''}${v.exterior_color ? ' · ' + v.exterior_color : ''}</div>
             <div class="vehicle-card-specs">
                 ${v.fuel ? `<span class="vehicle-card-spec"><i class="fas fa-gas-pump"></i> ${v.fuel}</span>` : ''}
                 ${v.transmission ? `<span class="vehicle-card-spec"><i class="fas fa-cog"></i> ${v.transmission}</span>` : ''}
@@ -145,10 +145,7 @@ function buildVehicleCard(v) {
             </div>
             <div class="vehicle-card-price">${v.price ? Number(v.price).toLocaleString('fr-FR') + ' €' : 'Prix sur demande'}</div>
             <div class="vehicle-card-actions">
-                <a href="${detailUrl}" class="btn btn-outline-gold">Voir détail</a>
-                <a href="https://wa.me/33602159385?text=${waText}" class="btn btn-wa" target="_blank" rel="noopener" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+                <a href="${detailUrl}" class="btn btn-outline-gold" style="width:100%;justify-content:center;">Voir détail</a>
             </div>
         </div>
     </div>`;
@@ -287,7 +284,7 @@ function buildCatalogueCard(v) {
         </div>
         <div class="vc-body">
             <div class="vc-title">${v.brand} ${v.model}</div>
-            <div class="vc-sub">${v.year || ''} ${v.finition ? '· ' + v.finition : ''}</div>
+            <div class="vc-sub">${v.year || ''}${v.finition ? ' · ' + v.finition : ''}${v.exterior_color ? ' · ' + v.exterior_color : ''}</div>
             <div class="vc-specs">
                 ${v.fuel ? `<span class="vc-spec"><i class="fas fa-gas-pump"></i> ${v.fuel}</span>` : ''}
                 ${v.transmission ? `<span class="vc-spec"><i class="fas fa-cog"></i> ${v.transmission}</span>` : ''}
