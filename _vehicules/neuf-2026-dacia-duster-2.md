@@ -9,9 +9,9 @@ kilometrage: 0
 transmission: Automatique
 motor: 1.3  TCE 150CH
 fuel: Essence
-exterior_color: " BEIGE"
+exterior_color: GRIS
 interior_color: NOIR
 price: 17500
 disponibilite: stock
-image: images/duster-journey_hybrid_155.png
+image: images/dacia_24dusterjourneysu3fr_grisschiste_angular-front.webp
 ---
