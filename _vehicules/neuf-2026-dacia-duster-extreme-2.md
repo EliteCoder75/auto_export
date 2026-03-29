@@ -9,9 +9,9 @@ kilometrage: 0
 transmission: Automatique
 motor: 1.3TCE 130CH
 fuel: Essence
-exterior_color: NOIR
+exterior_color: BEIGE
 interior_color: NOIR
 price: 18500
 disponibilite: stock
-image: images/dacia_25dusterhevextremesu3bfr_noirnacré_angular-front-1-.webp
+image: images/jskcjjqyjrjotk42aujskga7fe.avif
 ---
