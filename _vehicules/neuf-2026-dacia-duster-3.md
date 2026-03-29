@@ -9,9 +9,9 @@ kilometrage: 0
 transmission: Automatique
 motor: 1.3  TCE 150CH
 fuel: Essence
-exterior_color: VERT CEDER
+exterior_color: VERT KAKI
 interior_color: NOIR
 price: 17500
 disponibilite: stock
-image: images/vert.webp
+image: images/kaki.jpg
 ---
