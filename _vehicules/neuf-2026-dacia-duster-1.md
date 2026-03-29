@@ -9,7 +9,7 @@ kilometrage: 0
 transmission: Automatique
 motor: 1.3TCE 130CH
 fuel: Essence
-exterior_color: VERT BEIGE
+exterior_color: " BEIGE"
 interior_color: NOIR
 price: 17500
 disponibilite: stock
