@@ -13,5 +13,5 @@ exterior_color: NOIR
 interior_color: NOIR
 price: 18500
 disponibilite: stock
-image: images/images-1-.jpg
+image: images/dacia_25dusterhevextremesu3bfr_noirnacré_angular-front-1-.webp
 ---
