@@ -10,7 +10,7 @@ motor: 1.2 puretech 83 ch
 fuel: Essence
 exterior_color: gris
 interior_color: noir
-price: 8700
+price: 9000
 disponibilite: vendu
 image: images/SITE-CATALOGUE-40-630x535.webp
 gallery:
