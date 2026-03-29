@@ -22,4 +22,5 @@ gallery:
   - images/369716f4-2eeb-42ea-ae40-04511e53df06.jpg
   - images/21d2045c-42c3-4d46-9378-4c034c335b4d.jpg
   - images/958b173b-b4f2-4149-95c8-f1e74b0ca8ed.jpg
+  - images/fa553942-1e70-4238-8ee0-972cfeec7b9a.jpg
 ---
