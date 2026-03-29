@@ -5,7 +5,7 @@ brand: CITROEN
 model: c3
 finition: plus
 year: 2025
-kilometrage: 23000
+kilometrage: 19000
 transmission: Manuelle
 motor: 1.2 PureTech 100 CH
 fuel: Essence
