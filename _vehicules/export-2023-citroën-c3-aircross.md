@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: GRIS
 interior_color: NOIR
 price: 12500
-disponibilite: stock
+disponibilite: vendu
 image: images/citroen-c3-aircross-1.2-puretech-shine-110-ch-ss-bvm6-gris-848x535.webp
 gallery:
   - images/b12ca31f-7128-4034-a271-3098b68fb0da.jpg
