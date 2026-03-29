@@ -16,4 +16,11 @@ disponibilite: stock
 image: images/dacia_24dusterjourneysu3fr_grisschiste_angular-front.webp
 gallery:
   - images/dacia_24dusterjourneysu3fr_grisschiste_angular-front.webp
+desc: |-
+  LES COULEUR DISPONIBLE
+  NOIR 
+  GRIS CHISTE
+  VERT MITAL
+  VERT KAKI
+  BEIGE
 ---
