@@ -9,7 +9,7 @@ kilometrage: 0
 transmission: Automatique
 motor: 1.3TCE 130CH
 fuel: Essence
-exterior_color: VERT CEDER
+exterior_color: VERT KAKI
 interior_color: NOIR
 price: 18500
 disponibilite: stock
