@@ -12,7 +12,7 @@ exterior_color: noir
 price: 19800
 destination: export
 interior_color: noir
-disponibilite: stock
+disponibilite: vendu
 image: images/capture_noir.webp
 gallery: []
 ---
