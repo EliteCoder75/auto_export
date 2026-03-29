@@ -7,7 +7,7 @@ finition: JOURNEY
 year: 2026
 kilometrage: 0
 transmission: Automatique
-motor: 1.3TCE 130CH
+motor: 1.3 TCE 150CH
 fuel: Essence
 exterior_color: " BEIGE"
 interior_color: NOIR
