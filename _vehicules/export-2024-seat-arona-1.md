@@ -1,17 +1,17 @@
 ---
 categorie: export
-id: arona_gris_2025
+id: arona_gris_2024
 brand: seat
 model: arona
 finition: style
 year: 2024
-kilometrage: 50000
+kilometrage: 12500
 transmission: Automatique
 motor: 1.0 tsi 95 ch
 fuel: Essence
-exterior_color: blanc
+exterior_color: GRIS
 interior_color: noir
-price: 16000
+price: 15700
 disponibilite: stock
 image: images/SEAT-ARONA-PHASE-2-10-TSI-115CH-FR-EDITION-SPECIALE-BLANC-265x190.webp
 gallery:
