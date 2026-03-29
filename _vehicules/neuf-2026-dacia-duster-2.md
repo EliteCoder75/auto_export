@@ -13,5 +13,5 @@ exterior_color: GRIS
 interior_color: NOIR
 price: 17500
 disponibilite: stock
-image: images/dacia_24dusterjourneysu3fr_grisschiste_angular-front.webp
+image: images/noir.jpg
 ---
