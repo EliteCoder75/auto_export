@@ -7,7 +7,7 @@ year: 2026
 transmission: Automatique
 motor: 1.0 tce 100 ch
 fuel: Essence
-exterior_color: gris shiste
+exterior_color: gris NARDO
 price: 12800
 destination: export
 interior_color: noir
