@@ -12,6 +12,6 @@ fuel: Essence
 exterior_color: BLUE
 interior_color: NOIR
 price: 17400
-disponibilite: stock
+disponibilite: vendu
 image: images/volkswagen-t-roc-disponibles-chez-vgrf.webp
 ---
