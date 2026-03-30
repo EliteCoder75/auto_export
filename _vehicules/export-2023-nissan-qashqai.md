@@ -3,11 +3,11 @@ categorie: export
 id: "NISSAN QASHQAI "
 brand: NISSAN
 model: QASHQAI
-finition: NISSAN
+finition: ACENTA
 year: 2023
 kilometrage: 37999
 transmission: Manuelle
-motor: 1.3 TCE 140CH
+motor: 1.3 TCE 140CP
 fuel: Essence
 exterior_color: gris shiste
 interior_color: noir
