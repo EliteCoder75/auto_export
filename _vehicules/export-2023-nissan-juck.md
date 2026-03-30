@@ -2,7 +2,7 @@
 categorie: export
 id: NISSAN JUKE
 brand: NISSAN
-model: JUCK
+model: JUKE
 finition: CONNECTA
 year: 2023
 kilometrage: 46000
