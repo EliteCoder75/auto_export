@@ -1,6 +1,6 @@
 ---
 categorie: export
-id: NISSAN JUCK
+id: NISSAN JUKE
 brand: NISSAN
 model: JUCK
 finition: CONNECTA
