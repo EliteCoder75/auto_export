@@ -19,5 +19,4 @@ gallery:
   - images/5d8480a2-36c3-4d8e-af41-5d486d0821fd.jpg
   - images/e6798eaa-b412-4838-9ae4-aa1b11effffa.jpg
   - images/84f6d4b4-b6fb-492a-afed-3511604caa61.jpg
-  - images/3647ed8b-36a8-4e09-8c0c-e853c8d02441.jpg
 ---
