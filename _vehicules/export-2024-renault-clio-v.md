@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: NOIR
 interior_color: NOIR
 price: 13200
-disponibilite: stock
+disponibilite: vendu
 image: images/renault-clio-5-evolution-ph1-1.0-tce-90-ch-noir-630x535.webp
 gallery:
   - images/0850a1d1-c474-42ea-9008-0960507ab892.jpg
