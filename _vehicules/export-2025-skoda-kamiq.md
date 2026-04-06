@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: NOIR
 interior_color: NOIR
 price: 14999
-disponibilite: stock
+disponibilite: vendu
 image: images/kamiq_design.png
 gallery:
   - images/01b99f7a-336c-4d42-bdd5-2a7db28220de.jpg
