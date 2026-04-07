@@ -11,7 +11,7 @@ fuel: Essence
 exterior_color: Gris platinium
 interior_color: "GRIS "
 price: 13000
-disponibilite: stock
+disponibilite: vendu
 image: images/copie-de-site-catalogue-1-630x535-1.webp
 gallery:
   - images/1.jpg
