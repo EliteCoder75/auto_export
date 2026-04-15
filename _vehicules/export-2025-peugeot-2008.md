@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: BLANC
 interior_color: NOIR
 price: 15000
-disponibilite: stock
+disponibilite: vendu
 image: images/achat-peugeot-2008-1-2-puretech-100ch-ss-bvm6-allure-5p-07-03-2025-france-importation-algerie-occasion-dj-car-1-630x535.webp
 gallery:
   - images/e6798eaa-b412-4838-9ae4-aa1b11effffa.jpg
