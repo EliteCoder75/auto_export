@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: gris shiste
 interior_color: noir
 price: 15900
-disponibilite: stock
+disponibilite: vendu
 image: images/qqmc-ice-nconnecta-2025.png
 gallery:
   - images/add7230a-a658-4cba-bfb8-e21f9dc9b326.jpg
