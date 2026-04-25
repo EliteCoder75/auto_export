@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: "gris "
 interior_color: noir
 price: 13000
-disponibilite: stock
+disponibilite: vendu
 image: images/citroen-c3-v5-turbo-100-ch-bvm6-plus-gris-fonce-265x190.webp
 gallery:
   - images/98f6a6c6-db01-4d9a-a744-24002c39ea6b.jpg
