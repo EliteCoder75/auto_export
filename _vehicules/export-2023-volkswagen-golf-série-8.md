@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: Gris dauphin
 interior_color: Noir
 price: 16500
-disponibilite: stock
+disponibilite: vendu
 image: images/1000011979.jpg
 gallery:
   - images/1000011458.jpg
