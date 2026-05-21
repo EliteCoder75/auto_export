@@ -11,7 +11,7 @@ exterior_color: gris NARDO
 price: 12800
 destination: export
 interior_color: noir
-disponibilite: stock
+disponibilite: vendu
 image: images/SITE-CATALOGUE-11-630x535.webp
 gallery: []
 ---
