@@ -7,7 +7,7 @@ year: 2026
 kilometrage: 0
 transmission: Manuelle
 motor: 1.6 HDI 90 CH
-fuel: Essence
+fuel: Diesel
 exterior_color: Gris
 interior_color: Noir
 price: 13500
