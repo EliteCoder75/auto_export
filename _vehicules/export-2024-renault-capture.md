@@ -1,26 +1,25 @@
 ---
 categorie: export
-id: "Renault capture "
-brand: "Renault "
-model: Capture
-finition: "Techno "
-year: 2024
-kilometrage: 73000
-transmission: Manuelle
-motor: 1.0 TCE 90 ch
-fuel: Essence
-exterior_color: Noir
+id: Peugeot 208
+brand: "Peugeot "
+model: "208"
+finition: STYLE
+year: 2023
+kilometrage: 69000
+transmission: Automatique
+motor: 1.2  pureTech 110 CH
+fuel: Diesel
+exterior_color: Gris
 interior_color: Noir
-price: 13500
-disponibilite: stock
-image: images/1000018564.webp
+price: 11800
+disponibilite: commande
+image: images/1000018600.jpg
 gallery:
-  - images/1000018567.jpg
-  - images/1000018568.jpg
-  - images/1000018569.jpg
-  - images/1000018572.jpg
-  - images/1000018573.jpg
-  - images/1000018575.jpg
-  - images/1000018576.jpg
-  - images/1000018577.jpg
+  - images/1000018578.jpg
+  - images/1000018582.jpg
+  - images/1000018580.jpg
+  - images/1000018579.jpg
+  - images/1000018584.jpg
+  - images/1000018585.jpg
+  - images/1000018588.jpg
 ---
