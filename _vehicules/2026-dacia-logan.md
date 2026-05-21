@@ -11,7 +11,7 @@ exterior_color: gris nardo
 price: 11500
 destination: export
 interior_color: noir
-disponibilite: stock
+disponibilite: vendu
 image: images/SITE-CATALOGUE-7-630x535.webp
 gallery: []
 ---
