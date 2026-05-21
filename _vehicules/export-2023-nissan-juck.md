@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: NOIR
 interior_color: NOIR
 price: 13800
-disponibilite: stock
+disponibilite: vendu
 image: images/24tdieu_ps_jukemc_hev_n-connecta_gat_001.webp
 gallery:
   - images/51e586a5-073f-48a1-8b27-c6f4260c88d7.jpg
