@@ -28,4 +28,8 @@ gallery:
   - images/1000036338.jpg
   - images/1000036341.jpg
   - images/1000036340.jpg
+desc: |-
+  Dacia Stepway année 2024 à 39000 km
+  1.0tce 100ch 
+  État général 9 sur 10
 ---
