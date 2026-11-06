@@ -11,7 +11,7 @@ motor: 1.5 dci 115 ch
 fuel: Diesel
 exterior_color: gris nardo
 interior_color: noir
-price: 16500
+price: 15000
 disponibilite: stock
 image: images/renault-clio-v-esprit-alpine-1.5-dci-115ch-bvm-gris-schiste-630x535.webp
 ---
