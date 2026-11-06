@@ -11,7 +11,7 @@ fuel: Diesel
 exterior_color: "gris "
 interior_color: noir
 price: 26800
-disponibilite: stock
+disponibilite: vendu
 image: images/citroen-jumpy-combi-business-2.0-hdi-150ch-bvm6-gris-265x190.webp
 gallery:
   - images/whatsapp-image-2026-03-08-at-18.18.26.webp
