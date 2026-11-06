@@ -12,7 +12,7 @@ fuel: Essence
 exterior_color: GRIS
 interior_color: noir
 price: 15700
-disponibilite: stock
+disponibilite: vendu
 image: images/SEAT-ARONA-PHASE-2-10-TSI-115CH-FR-EDITION-SPECIALE-BLANC-265x190.webp
 gallery:
   - images/whatsapp-image-2026-03-08-at-19.09.43-4-.webp
