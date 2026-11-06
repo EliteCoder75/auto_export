@@ -11,7 +11,7 @@ fuel: Diesel
 exterior_color: Noir
 interior_color: Noir
 price: 11500
-disponibilite: stock
+disponibilite: vendu
 image: images/1000018848.jpg
 gallery:
   - images/1000018838.jpg
