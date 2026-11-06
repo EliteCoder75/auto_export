@@ -12,6 +12,6 @@ fuel: Essence
 exterior_color: BEIGE
 interior_color: NOIR
 price: 18500
-disponibilite: stock
+disponibilite: vendu
 image: images/jskcjjqyjrjotk42aujskga7fe.avif
 ---
