@@ -12,6 +12,6 @@ fuel: Essence
 exterior_color: " BEIGE"
 interior_color: NOIR
 price: 17500
-disponibilite: stock
+disponibilite: vendu
 image: images/duster-journey_hybrid_155.png
 ---
