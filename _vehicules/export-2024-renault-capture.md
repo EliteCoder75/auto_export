@@ -12,7 +12,7 @@ fuel: Diesel
 exterior_color: Gris
 interior_color: Noir
 price: 11800
-disponibilite: commande
+disponibilite: vendu
 image: images/1000018600.jpg
 gallery:
   - images/1000018578.jpg
