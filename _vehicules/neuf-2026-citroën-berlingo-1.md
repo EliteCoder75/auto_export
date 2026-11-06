@@ -3,6 +3,7 @@ categorie: neuf
 id: "Citroën berlingo "
 brand: "Citroën "
 model: "Berlingo "
+finition: Xtr
 year: 2026
 kilometrage: 0
 transmission: Manuelle
