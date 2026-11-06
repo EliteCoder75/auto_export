@@ -3,7 +3,7 @@ categorie: neuf
 id: capture_noir
 brand: renault
 model: capture
-finition: evolution
+finition: "Alpine "
 year: 2026
 transmission: Automatique
 motor: 1.3 tce 155 ch
